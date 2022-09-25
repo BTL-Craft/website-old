@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <script src="/assets/script/jquery.js"></script>
 
-    <title>{{site_name}}</title>
+    <title>帮助中心 - BTL Craft</title>
     <link rel="stylesheet" type="text/css" href="/assets/style/markdown.css">
     <link rel="stylesheet" type="text/css" href="/assets/style/help.css">
     <link href="/assets/style/loading.css" rel="stylesheet" type="text/css" />
@@ -28,7 +28,7 @@
 <body style="margin: 0">
     <div class="top">
         <a href="/" class="link">
-            <p class="title-top">{{site_name}}</p>
+            <p class="title-top">BTL Craft</p>
         </a>
         <ul class="alist">
             <li><a href="/user" class="ha">用户中心</a></li>

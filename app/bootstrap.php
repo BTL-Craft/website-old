@@ -49,9 +49,9 @@ switch ($_GET['url']) {
     default:
         if (substr($_GET['url'], 0, 4) == 'help') {
             $url = substr(strchr($_GET['url'], '/'), 1);
-            require __DIR__ . '/../assets/view/help.twig';
+            require __DIR__ . '/../assets/view/help.php';
         } else {
-            require __DIR__ . '/../assets/view/404.twig';
+            $view->load_twig_file(__DIR__.'/../assets/view/404.twig', $custom_texts);
         }
 }
 
