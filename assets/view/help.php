@@ -48,7 +48,7 @@
                             echo 1;
                         }
                     } */
-               if ($_GET['url'] == 'help') {
+/*                if ($_GET['url'] == 'help') {
                 echo <<<EOF
     <li class="sidebar-active"><a href="/help" class="sidebar">介绍</a></li>
     <li class="sidebar-link"><a href="/help/start" class="sidebar">快速上手</a></li>
@@ -113,7 +113,7 @@
                     default:
                         require '../app/404.php';
                 };
-            }; 
+            };  */
             ?>
         </ul>
         </div>
