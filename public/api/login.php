@@ -34,7 +34,7 @@ if (array_key_exists("email", $_POST) && array_key_exists("password", $_POST))
     } 
     else 
     {
-        goto end;
+        exit();
     }
 } 
 else 

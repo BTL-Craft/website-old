@@ -48,11 +48,11 @@ if ($_POST['type'] == 'captcha')
         if ($value[0] == $code && $value[1] > time()) 
         {
             $app->save_qid($eml, $key);
-            goto end;
+            exit();
         }
     }
     echo '无效的验证码';
-    goto end;
+    exit();
 }
 if (!array_key_exists("email", $_POST) || !array_key_exists("password", $_POST) || !array_key_exists("username", $_POST)) 
 {

@@ -8,7 +8,7 @@ $result = $database->execute_command(file_get_contents(__DIR__.'/sql/usr.sql'), 
 if (gettype($result) == 'integer') {
     if ($result == -1) {
         echo '添加表usr失败：数据库错误。请检查日志文件';
-        goto end;
+        exit();
     }
 } 
 
@@ -17,7 +17,7 @@ $result = $database->execute_command(file_get_contents(__DIR__.'/sql/options.sql
 if (gettype($result) == 'integer') {
     if ($result == -1) {
         echo '添加表usr失败：数据库错误。请检查日志文件';
-        goto end;
+        exit();
     }
 } 
 

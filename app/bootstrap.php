@@ -7,7 +7,7 @@ $database_app = new DatabaseApp;
 $custom_texts = $database_app->load_custom_text();
 if (array_key_exists('key', $_GET)) {
     require __DIR__ . '/../app/debug/autoload.php';
-    goto end;
+    exit();
 }
 
 if (!array_key_exists('url', $_GET)) {
@@ -21,7 +21,7 @@ if (!array_key_exists('url', $_GET)) {
     $custom_texts['day'] = $second / 86400;
 
     $view->load_twig_file(__DIR__ . '/../assets/view/index.twig', $custom_texts);
-    goto end;
+    exit();
 }
 
 switch ($_GET['url']) {

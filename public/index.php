@@ -25,7 +25,7 @@ if (file_exists(__DIR__.'/../storage/install.lock')) {
 
 if (array_key_exists('key', $_GET)) {
     require __DIR__.'/../app/bootstrap.php';
-    goto end;
+    exit();
 } else {
     require __DIR__.'/../app/bootstrap.php';
 }
