@@ -1,0 +1,182 @@
+/*
+By Big_Deer
+*/
+
+/* 
+|-----------------------------------------------------
+| 导入字体
+|-----------------------------------------------------
+*/
+@import url(/assets/style/font.css);
+
+/* 
+|-----------------------------------------------------
+| 滚动条样式
+|-----------------------------------------------------
+*/
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #cbdcf7;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #568de5;
+    border-radius: 10px;
+}
+
+/* 
+|-----------------------------------------------------
+| 初始化
+|-----------------------------------------------------
+*/
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    user-select: none;
+}
+
+/* 
+|-----------------------------------------------------
+| 普通链接的样式
+|-----------------------------------------------------
+*/
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a.link {
+    text-decoration: none;
+    font-size: 27px;
+    margin: -11px 0 0 0;
+    color: #272727
+}
+
+a.link:visited {
+    color: #272727
+}
+
+/* 
+|-----------------------------------------------------
+| 滚动贴合
+|-----------------------------------------------------
+*/
+.container{
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.container div{
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    scroll-snap-align: start;
+}
+
+/* 
+|-----------------------------------------------------
+| 顶部菜单栏
+|-----------------------------------------------------
+*/
+.top {
+    display: flex;
+    margin-top: -15px;
+    padding: 15px 0px 0px 22px;
+    height: 65.6px;
+    width: 100%;
+    position: fixed;
+    background: #383838;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0px -2px 15px rgb(0, 0, 0);
+}
+
+.top ul {
+    list-style-type: none;
+    color: black;
+    display: flex;
+    position: absolute;
+    right: 60px;
+    text-shadow: 2px 2px 25px;
+}
+
+.top ul .a {
+    border-radius: 100px;
+    display: block;
+    color: black;
+    margin: 0px 0px auto 1px;
+    padding-top: 5px;
+    width: 80px;
+    height: 30px;
+    background-color: #00000000;
+    text-align: center;
+    color: #9D9D9D;
+    transition: color 0.3s;
+    text-decoration-color: #00000000;
+    font-size: 16px;
+    font-family: Harmony;
+}
+
+.top ul .a:hover {
+    color: #ffffff
+}
+
+.top p {
+    font-family: minecraft_ten;
+    color: #fff;
+}
+
+/* 
+|-----------------------------------------------------
+| 大标题
+|-----------------------------------------------------
+*/
+div.splash {
+    height: 10rem;
+    text-align: center;
+    scroll-snap-align: none;
+}
+
+div.splash p {
+    font-family: minecraft_ten;
+    font-size: 55px;
+    color: white;
+    line-height: 1.5em;
+    margin: 30px 0 60px 0;
+    text-shadow: 2px 2px 15px black;
+}
+
+div.splash a {
+    text-decoration-color: #00000000;
+    border-radius: 5px;
+    color: #fff;
+    padding: .6em 2em;
+    pointer-events: all;
+    transition: color .25s ease-in-out, background-color .25s ease-in-out;
+}
+
+div.splash a:hover {
+    background-color: hsla(0, 0%, 100%, .2);
+    color: #fff
+}
+
+/* 
+|-----------------------------------------------------
+| 页面设置
+|-----------------------------------------------------
+*/
+.pg0{
+    display: flex;
+}
+.pg1{
+	background-color: rgba(73, 73, 73, 0.464);
+	border-bottom: 10rem #383838;
+	overflow: hidden;
+}

@@ -1,0 +1,29 @@
+<IfModule mod_rewrite.c>
+
+    RewriteEngine On
+
+    # You may need to uncomment the following line for some hosting environments,
+    # if you have installed to a subdirectory, enter the name here also.
+    #
+    # RewriteBase /
+
+    # 保护关键文件
+    RewriteRule (^\.|/\.) - [F]
+    RewriteRule ^storage/.* - [F]
+    # 去除末尾斜杠 (在代理之前)
+    RewriteCond %{HTTP:X-Forwarded-Proto} ^https$
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ "%{HTTP:X-Forwarded-Proto}://%{HTTP_HOST}%1" [L,R=301]
+    
+    # 去除末尾斜杠
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # e.g. http://127.0.0.1/auth -> http://127.0.0.1/index.php?url=auth
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+  
+</IfModule>

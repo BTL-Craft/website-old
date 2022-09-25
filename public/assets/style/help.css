@@ -1,0 +1,224 @@
+/*
+©BTL Craft
+保留所有权利
+*/
+* {
+    scroll-behavior: smooth;
+}
+*::selection {
+    background: rgba(45, 170, 219, 0.3);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #686868;
+    border-radius: 10px;
+}
+
+@font-face {
+    font-family: font-2;
+    src: url('/assets/font/HarmonyOS_Sans_SC_Regular.ttf')
+}
+
+@font-face {
+    font-family: minecraft_ten;
+    src: url("/assets/font/MinecraftTen.ttf")
+}
+
+
+html {
+    scroll-behavior: smooth;
+    font-family: font-2;
+    overflow-x: hidden;
+}
+
+
+
+.top {
+    display: flex;
+    margin-top: -15px;
+    padding: 15px 0px 0px 22px;
+    height: 65.6px;
+    width: 100%;
+    position: fixed;
+    background: #FFFFFF;
+    top: 0;
+    z-index: 20;
+    box-shadow: 0px -2px 15px #8f8f8f
+}
+
+a.ha {
+    border-radius: 100px;
+    display: block;
+    color: black;
+    margin: 0px 0px auto 1px;
+    padding-top: 5px;
+    width: 80px;
+    height: 30px;
+    background-color: #00000000;
+    text-align: center;
+    color: #9D9D9D;
+    transition: color 0.3s;
+    text-decoration-color: #00000000;
+    font-size: 16px;
+    font-family: font-2;
+    opacity: 1 !important;
+    border-bottom: 0 !important
+}
+
+a.ha:hover {
+    color: #000000
+}
+
+ul.alist {
+    list-style-type: none;
+    color: black;
+    display: flex;
+    position: absolute;
+    right: 60px;
+    text-shadow: 2px 2px 25px;
+}
+
+p.title-top {
+    font-family: minecraft_ten;
+}
+
+a.link {
+    text-decoration: none;
+    font-size: 27px;
+    margin: -14px 0 0 0;
+    color: #272727;
+    opacity: 1 !important;
+    border-bottom: 0 !important;
+}
+
+aside.sidebar {
+    box-shadow: 0 0 20px #aeaeae;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    width: clamp(180px, 24vw, 245px);
+    position: fixed;
+    z-index: 10;
+    margin: 0;
+    top: 65.6px;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+ul.sidebar-links {
+    padding: 1.5rem 0;
+    margin: 0;
+    list-style-type: none;
+    line-height: 1.7;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+main.page {
+    box-sizing: border-box;
+    padding-bottom: 2rem;
+    /* margin-bottom: 2rem; */
+    display: block;
+    padding-left: clamp(180px, 24vw, 245px);
+    height: 100vh;
+    overflow: auto;
+}
+
+div.page {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 2rem 4.5rem;
+    display: block;
+}
+
+li.sidebar-link {
+    font-size: 1.1em;
+    font-weight: 500;
+    line-height: 1.7;
+    margin-top: 0.8em;
+    margin-left: 40px;
+}
+
+li.sidebar-active {
+    border-left: 5px solid #000000;
+    color: #8f8f8f;
+    font-size: 1.25em;
+    font-weight: 700;
+    line-height: 1.7;
+    margin-top: 0.8em;
+    padding-left: 1.5rem;
+}
+
+a.sidebar {
+    margin-left: -0.5rem;
+    opacity: 1 !important;
+    border-bottom: 0 !important;
+
+}
+
+a.sidebar-h3 {
+    margin-left: -0.5rem;
+    opacity: 0.7 !important;
+    border-bottom: 0 !important;
+    margin-bottom: 0.3rem;
+}
+
+a.sidebar-h3:hover {
+    opacity: 1.0 !important;
+}
+
+li.active {
+    font-size: 0.85em;
+    font-weight: 400;
+    margin-left: 3.5rem;
+}
+
+li.sidebar-h3 {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+li.sidebar-h4 {
+    font-size: 0.8em;
+    margin-left: 4rem;
+}
+
+li.sidebar-h4-active {
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+a.sidebar-h4 {
+    margin-left: -0.5rem;
+    border-bottom: 0 !important;
+}
+
+li.sidebar-link:hover {
+    font-weight: 600;
+}
+
+#loading {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 32px;
+}
+
+#loading p {
+    color: #8e8e8e;
+    width: 3em;
+    text-align: center;
+    margin-left: -.5em;
+}

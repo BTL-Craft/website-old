@@ -1,0 +1,80 @@
+[11:44:17] [login/INFO]: The user is logged in. 
+[11:44:17] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[11:44:17] [login/INFO]: IP: 127.0.0.1
+[13:43:16] [login/INFO]: The user is logged in. 
+[13:43:16] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[13:43:16] [login/INFO]: IP: 127.0.0.1
+[13:45:06] [login/INFO]: The user is logged in. 
+[13:45:06] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[13:45:06] [login/INFO]: IP: 127.0.0.1
+[14:47:21] [MySQL/ERROR]: SQLSTATE[22003]: Numeric value out of range: 1264 Out of range value for column 'qq' at row 17
+[14:48:16] [MySQL/ERROR]: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''qq'='3472054691' WHERE 'eml'='eeeeeeeeeebook@Outlook.com'' at line 1
+[14:51:00] [MySQL/ERROR]: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''qq'='3472054691' WHERE 'eml'='eeeeeeeeeebook@Outlook.com'' at line 1
+[14:51:57] [MySQL/ERROR]: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`eml'='eeeeeeeeeebook@Outlook.com'' at line 1
+[14:53:21] [login/INFO]: The user is logged in. 
+[14:53:21] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[14:53:21] [login/INFO]: IP: 127.0.0.1
+[15:27:14] [MySQL/ERROR]: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'qq' cannot be null
+[15:27:16] [MySQL/ERROR]: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'qq' cannot be null
+[15:27:21] [MySQL/ERROR]: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'qq' cannot be null
+[15:27:23] [MySQL/ERROR]: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'qq' cannot be null
+[15:32:06] [MySQL/INFO]: Cleared table: usr
+[15:34:04] [login/INFO]: The user is logged in. 
+[15:34:04] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[15:34:04] [login/INFO]: IP: 127.0.0.1
+[15:34:11] [MySQL/INFO]: Cleared table: usr
+[15:38:07] [MySQL/INFO]: Cleared table: usr
+[17:31:46] [login/INFO]: The user is logged in. 
+[17:31:46] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[17:31:46] [login/INFO]: IP: 127.0.0.1
+[17:49:06] [MySQL/INFO]: Cleared table: usr
+[17:53:49] [login/INFO]: The user is logged in. 
+[17:53:49] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[17:53:49] [login/INFO]: IP: 127.0.0.1
+[18:09:05] [login/INFO]: The user is logged in. 
+[18:09:05] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[18:09:05] [login/INFO]: IP: 127.0.0.1
+[18:27:26] [MySQL/INFO]: Cleared table: usr
+[18:35:41] [login/INFO]: The user is logged in. 
+[18:35:41] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[18:35:41] [login/INFO]: IP: 127.0.0.1
+[19:49:22] [MySQL/INFO]: Cleared table: usr
+[20:05:09] [login/INFO]: The user is logged in. 
+[20:05:09] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[20:05:09] [login/INFO]: IP: 127.0.0.1
+[20:05:35] [login/INFO]: The user is logged in. 
+[20:05:35] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[20:05:35] [login/INFO]: IP: 127.0.0.1
+[20:05:44] [MySQL/INFO]: Cleared table: usr
+[20:08:59] [login/INFO]: The user is logged in. 
+[20:08:59] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[20:08:59] [login/INFO]: IP: 127.0.0.1
+[20:09:26] [login/INFO]: The user is logged in. 
+[20:09:26] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[20:09:26] [login/INFO]: IP: 127.0.0.1
+[20:09:32] [MySQL/INFO]: Cleared table: usr
+[20:10:56] [login/INFO]: The user is logged in. 
+[20:10:56] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[20:10:56] [login/INFO]: IP: 127.0.0.1
+[20:11:14] [MySQL/INFO]: Cleared table: usr
+[20:11:46] [MySQL/INFO]: Cleared table: usr
+[20:12:57] [login/INFO]: The user is logged in. 
+[20:12:57] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[20:12:57] [login/INFO]: IP: 127.0.0.1
+[20:13:04] [MySQL/INFO]: Cleared table: usr
+[20:14:23] [login/INFO]: The user is logged in. 
+[20:14:23] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[20:14:23] [login/INFO]: IP: 127.0.0.1
+[20:14:53] [login/INFO]: The user is logged in. 
+[20:14:53] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[20:14:53] [login/INFO]: IP: 127.0.0.1
+[20:15:04] [MySQL/INFO]: Cleared table: usr
+[20:15:27] [login/INFO]: The user is logged in. 
+[20:15:27] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[20:15:27] [login/INFO]: IP: 127.0.0.1
+[20:15:37] [MySQL/INFO]: Cleared table: usr
+[20:15:58] [MySQL/INFO]: Cleared table: usr
+[20:16:46] [login/INFO]: The user is logged in. 
+[20:16:46] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[20:16:46] [login/INFO]: IP: 127.0.0.1
+[20:18:46] [MySQL/INFO]: Cleared table: usr

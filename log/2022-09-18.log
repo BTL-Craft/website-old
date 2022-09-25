@@ -1,0 +1,28 @@
+[10:19:58] [MySQL/ERROR]: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: YES)
+[10:20:12] [MySQL/ERROR]: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: YES)
+[14:03:29] [register/ERROR]: The file was not found: auth.php
+[14:03:34] [register/ERROR]: The file was not found: auth.php
+[14:03:38] [register/ERROR]: The file was not found: auth.php
+[14:03:49] [register/ERROR]: The file was not found: auth.php
+[14:03:52] [register/ERROR]: The file was not found: auth.php
+[14:03:55] [register/ERROR]: The file was not found: auth.php
+[14:03:57] [register/ERROR]: The file was not found: auth.php
+[14:05:53] [register/ERROR]: The file was not found: auth.php
+[14:05:55] [register/ERROR]: The file was not found: auth.php
+[14:07:38] [register/ERROR]: The file was not found: auth.php
+[14:07:49] [register/ERROR]: The file was not found: auth.php
+[14:07:52] [register/ERROR]: The file was not found: auth.php
+[14:07:57] [register/ERROR]: The file was not found: auth.php
+[14:26:35] [MySQL/INFO]: Cleared table: usr
+[14:27:06] [MySQL/INFO]: Cleared table: usr
+[14:27:17] [MySQL/INFO]: Cleared table: usr
+[14:28:56] [MySQL/INFO]: Cleared table: usr
+[14:32:38] [login/INFO]: The user is logged in. 
+[14:32:38] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[14:32:38] [login/INFO]: IP: 127.0.0.1
+[14:34:17] [login/INFO]: The user is logged in. 
+[14:34:17] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[14:34:17] [login/INFO]: IP: 127.0.0.1
+[14:37:11] [login/INFO]: The user is logged in. 
+[14:37:11] [login/INFO]: Email: kxscluabcbook@Outlook.com
+[14:37:11] [login/INFO]: IP: 127.0.0.1

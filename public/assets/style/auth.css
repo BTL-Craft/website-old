@@ -1,0 +1,406 @@
+* {
+    caret-color: #007bff;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    /* 这个属性是告诉浏览器：你想要设置的边框和内边距的值是包含在总宽高内的 */
+    box-sizing: border-box;
+    /* 禁用文字选中 */
+    user-select: none;
+}
+
+body {
+    /* 弹性布局 水平垂直居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 设置body最小高度为100%窗口高度 */
+    min-height: 100vh;
+    /* 浅蓝背景 */
+    background-color: #cbdcf7;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    /* 移除移动端点击链接时的蓝色方框 */
+    -webkit-tap-highlight-color: #00000000;
+}
+
+/**************************
+输入框动画 By 艾恩小灰灰
+**************************/
+.wrapper {
+    margin: 0 auto;
+    width: 382px;
+    background-color: #ffffff90;
+    /* 内边距（上下左右） */
+    padding: 40px 40px;
+    /* 盒子阴影 */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* 圆角 */
+    border-radius: 8px;
+}
+
+.wrapper .input-data {
+    /* 相对定位 */
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+.input-data {
+    border-bottom: 2px solid #c0c0c0;
+}
+
+.wrapper .input-data input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 17px;
+}
+
+/* 输入框获得焦点时 */
+.wrapper .input-data input:focus~label {
+    transform: translateY(-25px);
+    font-size: 12px;
+    color: #2c6fdb;
+}
+
+/* 输入框的值为合法时 */
+.wrapper .input-data input:valid~label {
+    /* label上移，同时改变字号、字体颜色 */
+    transform: translateY(-25px);
+    font-size: 12px;
+}
+
+.wrapper .input-data label {
+    /* 绝对定位 */
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    color: #808080;
+    /* 这个属性可以使点击label穿透到输入框 */
+    pointer-events: none;
+    /* 现在动画有点生硬，在这里需要给动画加个过渡 */
+    transition: all .2s ease;
+}
+
+.wrapper .input-data .underline {
+    position: absolute;
+    bottom: -2px;
+    height: 2px;
+    width: 100%;
+    background-color: #2c6fdb;
+    /* 沿X轴缩小 */
+    transform: scaleX(0);
+    opacity: 0;
+    /* 这里同样给动画加个过渡 */
+    transition: all .2s ease;
+
+}
+
+.wrapper .input-data input:focus~.underline {
+    /* 沿X轴放大 */
+    transform: scaleX(1);
+    opacity: 1;
+    transition: transform 0;
+}
+
+
+
+
+/**************************
+自定义 By Big_Deer
+**************************/
+@font-face {
+    font-family: minecraft-ten;
+    src: url(/assets/font/MinecraftTen.ttf);
+}
+
+@font-face {
+    font-family: fa;
+    src: url(/assets/font/fa-solid-900.ttf);
+}
+
+p.title,
+p.little-title {
+    font-family: minecraft-ten;
+    font-size: 40px;
+    color: #568de5;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+    transition: all;
+}
+
+
+a {
+    color: #568de5;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #568de5;
+}
+
+.btn {
+    font-size: .9rem;
+    color: #fff;
+    margin-top: 1rem;
+    width: 100%;
+    height: 2.5rem;
+    background-color: #007bff;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    transition: all 0.1s ease-out;
+}
+
+.btn:hover {
+    background-color: #2c6fdb;
+}
+
+.bt {
+    margin: 1rem 0 0 0;
+    width: auto;
+    background-color: #00000000;
+    color: #000000;
+    float: right;
+    border-color: #00000000;
+    transition: all .2s ease;
+}
+
+button.bt:hover,
+input.bt:hover {
+    background-color: #00000000;
+    color: #2c6fdb;
+}
+
+button.forget {
+    float: left;
+}
+
+i.icon {
+    font-weight: 900;
+    text-align: center;
+    width: 1.25em;
+    font-family: fa;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+i.back {
+    margin: 0 0 .8rem -1.3rem;
+}
+
+i.reg:before {
+    content: "\f2c2";
+}
+
+i.back::before {
+    content: "\f060";
+}
+
+i.info::before {
+    content: "\f05a";
+}
+
+button.back:hover {
+    color: #007bff;
+}
+
+button.back {
+    background-color: #00000000;
+    border: none;
+    transition: all .2s ease;
+}
+
+input {
+    max-width: 90%;
+    background-color: #00000000;
+}
+
+.main {
+    margin: 0 auto;
+    position: relative;
+}
+
+#l-alert,
+#r-alert,
+#c-alert {
+    transition: background-color .5s ease;
+    cursor: pointer;
+}
+
+#mr {
+    margin-right: .25rem !important;
+}
+
+.input-data {
+    background-color: #00000000 !;
+}
+
+.wrapper {
+    display: flex;
+    height: 317px;
+    overflow: hidden;
+    transition: all .3s ease;
+}
+
+div.login,
+div.register,
+div.forget,
+div.register-2 {
+    position: fixed;
+    transition: all .3s ease;
+    width: 302px;
+}
+
+div.register, div.register-2, div.login {
+    margin-left: 40px;
+    opacity: 0;
+    z-index: -1;
+    width: 302px;
+}
+
+div.forget {
+    margin-top: 0px;
+    opacity: 0;
+    z-index: -1;
+}
+
+p.tip {
+    color: hsl(0, 0%, 50%);
+    font-size: 15px;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+a.tip {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: 13px;
+    width: 117px;
+    transform: color .1s ease;
+}
+
+a.tip:hover {
+    color: #007bff;
+}
+
+
+
+/**************************
+复选框动画 By 艾恩小灰灰
+**************************/
+
+.input-box label span.yes,
+.input-box {
+    /* 相对定位 */
+    position: relative;
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    /* 设置过渡 */
+    transition: 0.5s;
+}
+
+.input-box label span.yes::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.6px;
+    background-color: rgb(128, 128, 128);
+    box-shadow: 0 -11.5px 0 rgb(128, 128, 128);
+    transition: 0.5s;
+}
+
+.input-box label span.yes::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 1.6px;
+    height: 100%;
+    background-color: rgba(128, 128, 128);
+    box-shadow: 11.5px 0 0 rgb(128, 128, 128);
+    transition: 0.5s;
+}
+
+/* 选中"必须滴"的图形变化 */
+.input-box label input:checked~span.yes::before {
+    background-color: rgb(0, 194, 58);
+    box-shadow: none;
+}
+
+.input-box label input:checked~span.yes::after {
+    background-color: rgb(0, 194, 58);
+    box-shadow: none;
+    height: 55%;
+}
+
+.input-box label input:checked~span.yes {
+    transform: rotate(-45deg) translate(2px, -5px);
+}
+
+
+.input-box input {
+    display: none;
+}
+
+.input-box {
+    width: 100%;
+}
+
+/* ::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #cbdcf7;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #568de5;
+    border-radius: 10px;
+}
+ */
+
+
+/* 小窗口 */
+p.little-title {
+    display: none;
+}
+@media (max-width: 450px) {
+    .wrapper {
+        width: 100vw;
+        height: 100vh !important;
+        border-radius: 0;
+        display: block;
+        /* transition: width .3s ease; */
+    }
+
+    div.login,
+    div.register,
+    div.forget,
+    div.register-2,p.little-title {
+        width: calc(100vw - 80px);
+    }
+
+    p.title {
+        display: none;
+    }
+
+    p.little-title {
+        display: block;
+        z-index: 10;
+        margin-bottom: 10px;
+    }
+}
