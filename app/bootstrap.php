@@ -42,12 +42,16 @@ switch ($_GET['url']) {
         $view->load_twig_file(__DIR__ . '/../assets/view/anti-ie.twig', $custom_texts);
         break;
 
+    case 'join':
+        $view->load_twig_file(__DIR__.'/../assets/view/join.twig', $custom_texts);
+        break;
+
     default:
         if (substr($_GET['url'], 0, 4) == 'help') {
             $url = substr(strchr($_GET['url'], '/'), 1);
-            require __DIR__ . '/../assets/view/help.php';
+            require __DIR__ . '/../assets/view/help.twig';
         } else {
-            require __DIR__ . '/../assets/view/404.php';
+            require __DIR__ . '/../assets/view/404.twig';
         }
 }
 
