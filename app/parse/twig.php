@@ -7,7 +7,7 @@ class TwigFilesLoader
             'index' => file_get_contents($dir),
         ]);
 
-        $twig = new \Twig\Environment($loader);
+        $twig = new \Twig\Environment($loader, ['autoescape' => false]);
 
         echo $twig->render('index', $context);
     }

@@ -57,23 +57,7 @@
             </div>
             <p>请稍候</p>
         </div>
-        <div class="page" id="page" style="display: none;">
-
-            <?php
-
-
-            include '../app/parse/markdown.php';
-            include '../app/parse/markdownextra.php';
-
-            if ($url != '') {
-                $Dir = __DIR__ . '/../doc/' . $url . '.md';
-                $Extra = new ParsedownExtra();
-                echo $Extra->text(file_get_contents($Dir));
-            } else {
-                $Extra = new ParsedownExtra();
-                echo $Extra->text(file_get_contents(__DIR__ . '/../doc/welcome.md'));
-            }
-            ?>
+        <div class="page" id="page" style="display: none;">{{page}}
         </div>
         <hr>
         <div style="padding-left: 3rem; padding-top: 1rem;">
@@ -88,7 +72,7 @@
         <script src="/scripts/app.de1c.js"></script>
         <script src="/scripts/app.de2c.js"></script>
         <script>
-            var url = <?php echo '"' . substr($_GET['url'], 5) . '";'; ?>
+            var url = {{url}}
             if (url != '') {
                 $('#' + url).attr('class', 'sidebar-active')
             } else {
