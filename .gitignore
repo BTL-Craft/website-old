@@ -1,4 +1,4 @@
 /.vscode
 /vendor
-/conf/*
-/log/*
+/conf/*.json
+/log/*.log
