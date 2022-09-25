@@ -2,8 +2,7 @@
 
 [![License](https://img.shields.io/github/license/Rene8028/carpet-iee-addition.svg)](https://www.gnu.org/licenses/quick-guide-gplv3.html)
 
-如果你需要使用此项目，请前往release下载或手动构建，填写上自己的服务器名称。
-如果你使用此项目，你必须**保留程序版权信息，且遵守开源协议内容**。
+如果你需要使用此项目，请前往release下载或手动构建，并在相关文件中改成自己的服务器名称。以后可能会做一个安装界面（咕~）。
 
 ## 手动构建
 确保你已经安装composer，然后运行build.bat
