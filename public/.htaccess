@@ -10,7 +10,7 @@
     # 保护关键文件
     RewriteRule (^\.|/\.) - [F]
     RewriteRule ^storage/.* - [F]
-    # 去除末尾斜杠 (在代理之前)
+    # 去除末尾斜杠
     RewriteCond %{HTTP:X-Forwarded-Proto} ^https$
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
