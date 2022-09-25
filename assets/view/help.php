@@ -39,82 +39,12 @@
     </div>
     <aside class="sidebar">
         <ul class="sidebar-links">
-
-
-            <?php
-/*                 $sidebar_a = json_decode(file_get_contents(__DIR__."/../doc/sidebar.json"), true);
-                    foreach ($sidebar_a as $key => $value) {
-                        if (array_key_exists('help', $sidebar_a)) {
-                            echo 1;
-                        }
-                    } */
-/*                if ($_GET['url'] == 'help') {
-                echo <<<EOF
-    <li class="sidebar-active"><a href="/help" class="sidebar">介绍</a></li>
-    <li class="sidebar-link"><a href="/help/start" class="sidebar">快速上手</a></li>
-    <li class="sidebar-link"><a href="/help/faq" class="sidebar">常见问题解答</a></li>
-    EOF;
-            } else {
-                switch ($_GET['url']) {
-                    case "help/start":
-                        echo <<<EOF
-            <li class="sidebar-link"><a href="/help" class="sidebar">介绍</a></li>
-            <li class="sidebar-active"><a href="/help/start" class="sidebar">快速上手</a></li>
-            <li class="sidebar-link active"><a href="/help/role" class="sidebar">角色系统</a></li>
-            <li class="sidebar-link active"><a href="/help/skin" class="sidebar">更改你的皮肤</a></li>
-            <li class="sidebar-link active"><a href="/help/mod" class="sidebar">配置 Mod</a></li>
-            <li class="sidebar-link"><a href="/help/faq" class="sidebar">常见问题解答</a></li>
-            EOF;
-                        break;
-                    case "help/role":
-                        echo <<<EOF
-            <li class="sidebar-link"><a href="/help" class="sidebar">介绍</a></li>
-            <li class="sidebar-active"><a href="/help/start" class="sidebar">快速上手</a></li>
-            <li class="sidebar-link active sidebar-h3"><a href="/help/role" class="sidebar">角色系统</a></li>
-            <li class="sidebar-h4 sidebar-h4-active" style="margin-top: 0.3rem"><a href="#what" class="sidebar-h4">这是啥？</a></li>
-            <li class="sidebar-h4 sidebar-h4-active"><a href="#how" class="sidebar-h4">如何创建角色？</a></li>
-            <li class="sidebar-link active"><a href="/help/skin" class="sidebar-h3">更改你的皮肤</a></li>
-            <li class="sidebar-link active"><a href="/help/mod" class="sidebar-h3">配置 Mod</a></li>
-            <li class="sidebar-link"><a href="/help/faq" class="sidebar">常见问题解答</a></li>
-            EOF;
-                        break;
-                    case "help/skin":
-                        echo <<<EOF
-            <li class="sidebar-link"><a href="/help" class="sidebar">介绍</a></li>
-            <li class="sidebar-active"><a href="/help/start" class="sidebar">快速上手</a></li>
-            <li class="sidebar-link active"><a href="/help/role" class="sidebar-h3">角色系统</a></li>
-            <li class="sidebar-link active sidebar-h3"><a href="/help/skin" class="sidebar">更改你的皮肤</a></li>
-                <li class="sidebar-h4 sidebar-h4-active" style="margin-top: 0.3rem;"><a href="#what" class="sidebar-h4">啥是皮肤库？衣柜又是啥？</a></li>
-                <li class="sidebar-h4 sidebar-h4-active"><a href="#upload" class="sidebar-h4">上传材质</a></li>
-                <li class="sidebar-h4 sidebar-h4-active"><a href="#add" class="sidebar-h4">从皮肤库中添加材质到衣柜</a></li>
-                <li class="sidebar-h4 sidebar-h4-active"><a href="#set" class="sidebar-h4">将材质设置到角色</a></li>
-                <li class="sidebar-h4 sidebar-h4-active"><a href="#change" class="sidebar-h4">更换头像</a></li>
-            <li class="sidebar-link active"><a href="/help/mod" class="sidebar-h3">配置 Mod</a></li>
-            <li class="sidebar-link"><a href="/help/faq" class="sidebar">常见问题解答</a></li>
-            EOF;
-                        break;
-                    case "help/mod":
-                        echo <<<EOF
-                <li class="sidebar-link"><a href="/help" class="sidebar">介绍</a></li>
-                <li class="sidebar-active"><a href="/help/start" class="sidebar">快速上手</a></li>
-                <li class="sidebar-link active"><a href="/help/role" class="sidebar-h3">角色系统</a></li>
-                <li class="sidebar-link active"><a href="/help/skin" class="sidebar-h3">更改你的皮肤</a></li>
-                <li class="sidebar-link active sidebar-h3"><a href="/help/mod" class="sidebar">配置 Mod</a></li>
-                <li class="sidebar-link"><a href="/help/faq" class="sidebar">常见问题解答</a></li>
-            EOF;
-                        break;
-                    case "help/faq":
-                        echo <<<EOF
-                <li class="sidebar-link"><a href="/help" class="sidebar">介绍</a></li>
-                <li class="sidebar-link"><a href="/help/start" class="sidebar">快速上手</a></li>
-                <li class="sidebar-active"><a href="/help/faq" class="sidebar">常见问题解答</a></li>
-            EOF;
-                        break;
-                    default:
-                        require '../app/404.php';
-                };
-            };  */
-            ?>
+            <li class="sidebar-link" id="welcome" onclick="sidebar('#help/welcome')"><a href="/help" class="sidebar">介绍</a></li>
+            <li class="sidebar-link" id="start" onclick="sidebar('#help/start')"><a href="/help/start" class="sidebar">快速上手</a></li>
+            <li class="sidebar-link active"><a href="/help/start#role" class="sidebar">角色系统</a></li>
+            <li class="sidebar-link active"><a href="/help/start#skin" class="sidebar">更改你的皮肤</a></li>
+            <li class="sidebar-link active"><a href="/help/start#mod" class="sidebar">配置 Mod</a></li>
+            <li class="sidebar-link" id="faq" onclick="sidebar('#help/faq')"><a href="/help/faq" class="sidebar">常见问题解答</a></li>
         </ul>
         </div>
     </aside>
@@ -136,12 +66,12 @@
             include '../app/parse/markdownextra.php';
 
             if ($url != '') {
-                $Dir = '../doc/' . $url . '.md';
+                $Dir = __DIR__ . '/../doc/' . $url . '.md';
                 $Extra = new ParsedownExtra();
                 echo $Extra->text(file_get_contents($Dir));
             } else {
                 $Extra = new ParsedownExtra();
-                echo $Extra->text(file_get_contents('../doc/welcome.md'));
+                echo $Extra->text(file_get_contents(__DIR__ . '/../doc/welcome.md'));
             }
             ?>
         </div>
@@ -157,6 +87,20 @@
         </div>
         <script src="/scripts/app.de1c.js"></script>
         <script src="/scripts/app.de2c.js"></script>
+        <script>
+            var url = <?php echo '"' . substr($_GET['url'], 5) . '";'; ?>
+            if (url != '') {
+                $('#' + url).attr('class', 'sidebar-active')
+            } else {
+                $('#welcome').attr('class', 'sidebar-active')
+            }
+        </script>
+        <script>
+            function sidebar(id) {
+                $(id).attr('class', 'sidebar active')
+            }
+        </script>
+
     </main>
 
 </body>
