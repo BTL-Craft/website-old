@@ -39,6 +39,6 @@ if (array_key_exists("email", $_POST) && array_key_exists("password", $_POST))
 } 
 else 
 {
-    end:
+    
     echo '用户不存在';
 }

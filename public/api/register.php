@@ -75,4 +75,3 @@ else
     echo 'Email格式错误'; //不通过则返回
 }
 
-end:
