@@ -22,25 +22,22 @@ ini_set('display_errors', true);
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/mysql.json.example', $envPath);
     }
+    
     $envPath = __DIR__ . '/../../conf/auth.json';
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/auth.json.example', $envPath);
     }
+
     $envPath = __DIR__ . '/../../conf/hole.json';
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/hole.json.example', $envPath);
     }
+
     $envPath = __DIR__ . '/../../conf/main.json';
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/main.json.example', $envPath);
     }
 
-
-    $envFile = file_get_contents($envPath);
-    if (preg_match('/APP_KEY\s*=\s*\n/', $envFile)) {
-        $key = 'base64:' . base64_encode(Encrypter::generateKey('AES-256-CBC'));
-        file_put_contents($envPath, preg_replace('/APP_KEY\s*=\s*/', 'APP_KEY=' . $key . "\n\n", $envFile));
-    }
 
     $requiredFunctions = ['symlink', 'readlink', 'putenv', 'realpath'];
     $disabledFunctions = preg_split('/,\s*/', ini_get('disable_functions'));
