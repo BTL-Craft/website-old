@@ -1,4 +1,4 @@
 /.vscode
 /vendor
-/conf/mysql.json
+/conf/*.json
 /log/*.log

@@ -18,8 +18,8 @@ require __DIR__.'/../vendor/autoload.php';
 |--------------------------------------------------------------------------
 */
 
-if (file_exists(__DIR__.'/../storage/install.lock')) {
-    require __DIR__.'/../app/chkenv.php';
+if (file_exists(__DIR__.'/../data/install')) {
+    require __DIR__.'/../app/setup/chkenv.php';
 }
 
 
