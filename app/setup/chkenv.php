@@ -22,7 +22,7 @@ ini_set('display_errors', true);
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/mysql.json.example', $envPath);
     }
-    
+
     $envPath = __DIR__ . '/../../conf/auth.json';
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/auth.json.example', $envPath);
@@ -32,7 +32,7 @@ ini_set('display_errors', true);
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/hole.json.example', $envPath);
     }
-
+ 
     $envPath = __DIR__ . '/../../conf/main.json';
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/main.json.example', $envPath);
