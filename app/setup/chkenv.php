@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Encryption\Encrypter;
 
 
@@ -21,21 +22,25 @@ ini_set('display_errors', true);
     $envPath = __DIR__ . '/../../conf/mysql.json';
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/mysql.json.example', $envPath);
+        unlink(__DIR__ . '/../../conf/mysql.json.example');
     }
 
     $envPath = __DIR__ . '/../../conf/auth.json';
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/auth.json.example', $envPath);
+        unlink(__DIR__ . '/../../conf/auth.json.example');
     }
 
     $envPath = __DIR__ . '/../../conf/hole.json';
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/hole.json.example', $envPath);
+        unlink(__DIR__ . '/../../conf/hole.json.example');
     }
- 
+
     $envPath = __DIR__ . '/../../conf/main.json';
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/main.json.example', $envPath);
+        unlink(__DIR__ . '/../../conf/main.json.example');
     }
 
 
@@ -65,7 +70,7 @@ ini_set('display_errors', true);
     if (version_compare($version, $requiredVersion, '<')) {
         die_with_utf8_encoding(
             '[Error] Blessing Skin requires PHP version >= ' . $requiredVersion . ', you are now using ' . $version . '<br>' .
-                '[错误] 你的 PHP 版本过低（' . $version . '），Blessing Skin 要求至少为 ' . $requiredVersion
+                '[错误] 你的 PHP 版本过低（' . $version . '），请升级至 ' . $requiredVersion
         );
     }
 
@@ -83,9 +88,7 @@ ini_set('display_errors', true);
             'zip',
         ],
         'write_permission' => [
-            'bootstrap/cache',
-            'storage',
-            'plugins',
+            'log',
             'public',
         ],
     ];
@@ -100,7 +103,7 @@ ini_set('display_errors', true);
     }
 
     foreach ($requirements['write_permission'] as $dir) {
-        $realPath = realpath(__DIR__ . "/../$dir");
+        $realPath = realpath(__DIR__ . "/../../$dir");
 
         if (!is_writable($realPath)) {
             die_with_utf8_encoding(
@@ -116,4 +119,6 @@ ini_set('display_errors', true);
             );
         }
     }
+    require_once __DIR__.'/setup.php';
+    exit;
 })();
