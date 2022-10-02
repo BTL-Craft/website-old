@@ -19,7 +19,7 @@ ini_set('display_errors', true);
         );
     }
 
-    $envPath = __DIR__ . '/../../conf/mysql.json';
+/*     $envPath = __DIR__ . '/../../conf/mysql.json';
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/mysql.json.example', $envPath);
         unlink(__DIR__ . '/../../conf/mysql.json.example');
@@ -41,7 +41,7 @@ ini_set('display_errors', true);
     if (!file_exists($envPath)) {
         copy(__DIR__ . '/../../conf/main.json.example', $envPath);
         unlink(__DIR__ . '/../../conf/main.json.example');
-    }
+    } */
 
 
     $requiredFunctions = ['symlink', 'readlink', 'putenv', 'realpath'];
