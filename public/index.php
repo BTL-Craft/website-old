@@ -18,7 +18,7 @@ require __DIR__.'/../vendor/autoload.php';
 |--------------------------------------------------------------------------
 */
 
-if (file_exists(__DIR__.'/../data/install')) {
+if (file_exists(__DIR__.'/..install')) {
     require __DIR__.'/../app/setup/chkenv.php';
 }
 
