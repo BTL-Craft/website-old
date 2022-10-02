@@ -5,6 +5,7 @@
 * {
     scroll-behavior: smooth;
 }
+
 *::selection {
     background: rgba(45, 170, 219, 0.3);
 }
@@ -143,7 +144,7 @@ div.page {
     display: block;
 }
 
-li.sidebar-link {
+.sidebar-link {
     font-size: 1.1em;
     font-weight: 500;
     line-height: 1.7;
@@ -221,4 +222,17 @@ li.sidebar-link:hover {
     width: 3em;
     text-align: center;
     margin-left: -.5em;
+}
+
+details {
+    /* opacity: 0; */
+    display: none;
+}
+
+details * {
+    opacity: 1;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
 }

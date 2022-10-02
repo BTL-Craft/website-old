@@ -40,10 +40,16 @@
     <aside class="sidebar">
         <ul class="sidebar-links">
             <li class="sidebar-link" id="welcome" onclick="sidebar('#help/welcome')"><a href="/help" class="sidebar">介绍</a></li>
-            <li class="sidebar-link" id="start" onclick="sidebar('#help/start')"><a href="/help/start" class="sidebar">快速上手</a></li>
+{#             <li class="sidebar-link" id="start" onclick="sidebar('#help/start')"><a href="/help/start" class="sidebar">快速上手</a></li>
             <li class="sidebar-link active"><a href="/help/start#role" class="sidebar">角色系统</a></li>
             <li class="sidebar-link active"><a href="/help/start#skin" class="sidebar">更改你的皮肤</a></li>
+            <li class="sidebar-link active"><a href="/help/start#mod" class="sidebar">配置 Mod</a></li> #}
+            <details  >
+                <summary class="sidebar-link" id="start" onclick="sidebar('#help/start')"><a href="/help/start" class="sidebar">快速上手</a></summary>
+                <li class="sidebar-link active"><a href="/help/start#role" class="sidebar">角色系统</a></li>
+            <li class="sidebar-link active"><a href="/help/start#skin" class="sidebar">更改你的皮肤</a></li>
             <li class="sidebar-link active"><a href="/help/start#mod" class="sidebar">配置 Mod</a></li>
+            </details>
             <li class="sidebar-link" id="faq" onclick="sidebar('#help/faq')"><a href="/help/faq" class="sidebar">常见问题解答</a></li>
         </ul>
         </div>
@@ -75,6 +81,7 @@
             var url = {{url}}
             if (url != '') {
                 $('#' + url).attr('class', 'sidebar-active')
+                $('#' + url).attr('open', '')
             } else {
                 $('#welcome').attr('class', 'sidebar-active')
             }
