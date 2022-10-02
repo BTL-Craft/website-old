@@ -44,7 +44,7 @@
             <li class="sidebar-link active"><a href="/help/start#role" class="sidebar">角色系统</a></li>
             <li class="sidebar-link active"><a href="/help/start#skin" class="sidebar">更改你的皮肤</a></li>
             <li class="sidebar-link active"><a href="/help/start#mod" class="sidebar">配置 Mod</a></li> #}
-            <details  >
+            <details id="startls">
                 <summary class="sidebar-link" id="start" onclick="sidebar('#help/start')"><a href="/help/start" class="sidebar">快速上手</a></summary>
                 <li class="sidebar-link active"><a href="/help/start#role" class="sidebar">角色系统</a></li>
             <li class="sidebar-link active"><a href="/help/start#skin" class="sidebar">更改你的皮肤</a></li>
@@ -81,7 +81,7 @@
             var url = {{url}}
             if (url != '') {
                 $('#' + url).attr('class', 'sidebar-active')
-                $('#' + url).attr('open', '')
+                $('#' + url + 'ls').attr('open', '')
             } else {
                 $('#welcome').attr('class', 'sidebar-active')
             }

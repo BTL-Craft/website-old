@@ -145,14 +145,14 @@ div.page {
 }
 
 .sidebar-link {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     font-weight: 500;
     line-height: 1.7;
     margin-top: 0.8em;
     margin-left: 40px;
 }
 
-li.sidebar-active {
+.sidebar-active {
     border-left: 5px solid #000000;
     color: #8f8f8f;
     font-size: 1.25em;
@@ -166,7 +166,6 @@ a.sidebar {
     margin-left: -0.5rem;
     opacity: 1 !important;
     border-bottom: 0 !important;
-
 }
 
 a.sidebar-h3 {
@@ -224,15 +223,7 @@ li.sidebar-link:hover {
     margin-left: -.5em;
 }
 
-details {
-    /* opacity: 0; */
-    display: none;
-}
 
-details * {
-    opacity: 1;
-}
-
-details summary::-webkit-details-marker {
-    display: none;
+details > summary {
+    list-style: none;
 }
