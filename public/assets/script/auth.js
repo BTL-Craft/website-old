@@ -1,10 +1,11 @@
 function reg_page() {
-    document.getElementById("main").setAttribute("style", "height: 402px");
     document.getElementById("log").setAttribute("style", "opacity: 0; z-index: -1; margin-left: 0;");
+    setTimeout(() => {
+        document.getElementById("main").setAttribute("style", "height: 402px");
+    }, 50);
     setTimeout(function () {
         document.getElementById("reg").setAttribute("style", "z-index: 1; opacity: 1; margin-left: 0;");
-    }
-        , 100)
+    }, 350)
 }
 
 function log_page() {
@@ -13,7 +14,7 @@ function log_page() {
     setTimeout(function () {
         document.getElementById("main").setAttribute("style", "");
         document.getElementById("log").setAttribute("style", "opacity: 1; z-index: 1; margin-left: 0;");
-    }, 100)
+    }, 300)
 }
 
 function login() {

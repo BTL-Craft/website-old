@@ -80,7 +80,7 @@ body {
     /* 这个属性可以使点击label穿透到输入框 */
     pointer-events: none;
     /* 现在动画有点生硬，在这里需要给动画加个过渡 */
-    transition: all .2s ease;
+    transition: all .5s cubic-bezier(0.85, 0, 0.05, 1);
 }
 
 .wrapper .input-data .underline {
@@ -93,7 +93,7 @@ body {
     transform: scaleX(0);
     opacity: 0;
     /* 这里同样给动画加个过渡 */
-    transition: all .2s ease;
+    transition: all .5s cubic-bezier(0.85, 0, 0.05, 1);
 
 }
 
@@ -128,7 +128,7 @@ p.little-title {
     margin-bottom: 30px;
     text-align: center;
     width: 100%;
-    transition: all;
+    transition: all ease;
 }
 
 
@@ -245,7 +245,6 @@ input {
     display: flex;
     height: 317px;
     overflow: hidden;
-    transition: all .3s ease;
 }
 
 div.login,
@@ -253,11 +252,23 @@ div.register,
 div.forget,
 div.register-2 {
     position: fixed;
-    transition: all .3s ease;
     width: 302px;
 }
 
-div.register, div.register-2, div.login {
+div.login,
+div.register,
+div.forget,
+div.register-2 {
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.wrapper {
+    transition: all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+div.register,
+div.register-2,
+div.login {
     margin-left: 40px;
     opacity: 0;
     z-index: -1;
@@ -378,6 +389,7 @@ a.tip:hover {
 p.little-title {
     display: none;
 }
+
 @media (max-width: 450px) {
     .wrapper {
         width: 100vw;
@@ -390,7 +402,8 @@ p.little-title {
     div.login,
     div.register,
     div.forget,
-    div.register-2,p.little-title {
+    div.register-2,
+    p.little-title {
         width: calc(100vw - 80px);
     }
 
