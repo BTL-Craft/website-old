@@ -121,6 +121,7 @@ ul.sidebar-links {
     list-style-type: none;
     line-height: 1.7;
     display: block;
+    height: 34px;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
@@ -153,13 +154,26 @@ div.page {
 }
 
 .sidebar-active {
-    border-left: 5px solid #000000;
-    color: #8f8f8f;
-    font-size: 1.25em;
+    border-left: 5px solid #1a73e8;
     font-weight: 700;
+    font-size: 1.1em;
     line-height: 1.7;
     margin-top: 0.8em;
-    padding-left: 1.5rem;
+    padding-left: 35px;
+}
+
+.sidebar-active a {
+    color: #1a73e8;
+}
+
+.sidebar-link a {
+    color: #232323;
+}
+
+.sidebar-link a,
+.sidebar-active a {
+    width: 100%;
+    display: block;
 }
 
 a.sidebar {
@@ -205,8 +219,8 @@ a.sidebar-h4 {
     border-bottom: 0 !important;
 }
 
-li.sidebar-link:hover {
-    font-weight: 600;
+.sidebar-link a:hover {
+    color: #114d9b;
 }
 
 #loading {
@@ -224,6 +238,6 @@ li.sidebar-link:hover {
 }
 
 
-details > summary {
+details>summary {
     list-style: none;
 }
