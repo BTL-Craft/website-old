@@ -1,26 +1,11 @@
-$('#about').animate({opacity:'0'})
-$('#pg2').animate({opacity:'0'})
-$('#pg3').animate({opacity:'0'})
-$('#pg4').animate({opacity:'0'})
-var a = 0
-var b = 0
-var c = 0
-var d = 0
+
+
 setInterval(() => {
-    if ($('.parent-container').scrollTop() >= 200 && a != 1) {
-        a = 1
-        $('#about').animate({opacity:'1'})
+    height = $('.pg0').height() + $('.pg1').height() + $('.pg2').height() + $('.pg3').height() + $('.pg4').height() - $(window).height() - 10
+    if ($(".parent-container").scrollTop() >= height) {
+        $('#pg5').attr('style', 'bottom: 0;')
     }
-    if ($('.parent-container').scrollTop() >= 500 && b != 1) {
-        b = 1
-        $('#pg2').animate({opacity:'1'})
+    else {
+        $('#pg5').attr('style', 'bottom: -55px;')
     }
-    if ($('.parent-container').scrollTop() >= 1000 && c != 1) {
-        c = 1
-        $('#pg3').animate({opacity:'1'})
-    }
-    if ($('.parent-container').scrollTop() >= 1500 && d != 1) {
-        d = 1
-        $('#pg4').animate({opacity:'1'})
-    }
-}, 100);
+}, 50);

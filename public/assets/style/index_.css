@@ -50,6 +50,7 @@ body {
     background-size: cover;
     /* 移除移动端点击链接时的蓝色方框 */
     -webkit-tap-highlight-color: #00000000;
+    overflow-y: hidden;
 }
 
 /* 
@@ -408,7 +409,7 @@ div.splash a:hover {
     /* 定位背景图像为正中间 */
     background-position: center;
     /* 过渡效果：时长 贝塞尔曲线 */
-    transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+    transition: 0.5s cubic-bezier(0, 0.68, 0.2, 1);
     overflow: hidden;
 }
 
@@ -1103,9 +1104,12 @@ div.b1 p {
 .pg5 {
     width: calc(100% - 30px) !important;
     height: 25px !important;
-    background-color: #545454;
+    background-color: #54545454;
     display: block;
     padding: 1rem;
+    position: absolute;
+    bottom: 0px;
+    transition: bottom .5s cubic-bezier(0, 0.55, 0.26, 1);
 }
 
 .pg5 p {
