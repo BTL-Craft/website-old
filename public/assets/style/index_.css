@@ -59,7 +59,7 @@ body {
 |-----------------------------------------------------
 */
 a {
-    color: #007bff;
+    color: #bad9fa;
     text-decoration: none;
 }
 
@@ -1103,8 +1103,9 @@ div.b1 p {
 */
 .pg5 {
     width: calc(100% - 30px) !important;
-    height: 25px !important;
-    background-color: #54545454;
+    height: 2.6rem !important;
+    line-height: 1.4;
+    background-color: #54545499;
     display: block;
     padding: 1rem;
     position: absolute;
@@ -1116,12 +1117,8 @@ div.b1 p {
     margin: 0;
 }
 
-.pg5 .p1 {
-    float: left;
-}
-
-.pg5 .p2 {
-    float: right;
+.pg5 p {
+    float: center;
 }
 
 /* 
