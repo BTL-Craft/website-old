@@ -1,6 +1,6 @@
 {
     "require": {
-        "twig/twig": "^3.0",
+        "twig/twig": "^3.4.3",
         "adbario/php-encrypter": "^1.0"
     }
 }
