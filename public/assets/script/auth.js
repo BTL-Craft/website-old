@@ -142,20 +142,25 @@ function captcha() {
 }
 
 function next_pg(id1, id2, height) {
+    document.getElementById("log").setAttribute("style", "opacity: 0; z-index: -1;");
     $(id1).attr('style', 'z-index: -1; margin-left: -20px')
-    setTimeout(() => {
-        $('#main').attr('style', 'height: 130px')
-        setTimeout(() => {
-            $('#loading').attr('style', 'opacity: 1;')
-        }, 100);
-    }, 500);
+/*     setTimeout(() => {
+        $('#loading').attr('style', 'opacity: 1;')
+    }, 600);
     setTimeout(() => {
         $('#loading').attr('style', 'opacity: 0;')
         $('#main').attr('style', 'height: ' + height)
         setTimeout(() => {
             $(id2).attr('style', 'z-index: 1; opacity: 1; margin-left: 0')
         }, 1000);
-    }, 2000);
+    }, 2000); */
+    setTimeout(() => {
+        $('#loading').attr('style', 'opacity: 0;')
+        $('#main').attr('style', 'height: ' + height)
+        setTimeout(() => {
+            $(id2).attr('style', 'z-index: 1; opacity: 1; margin-left: 0')
+        }, 400);
+    }, 400);
 }
 
 function animation(id) {
