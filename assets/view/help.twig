@@ -13,12 +13,12 @@
     <link rel="icon" type="img/png" href="/assets/image/icon.png" sizes="192x192" />
 
     <script>
-        window.onload = function() {
-            $('#loading').fadeOut(50)
+/*         window.onload = function() {
+            $('#loading').fadeOut(0)
             setTimeout(() => {
                 $('#page').fadeIn(100)
-            }, 60);
-        }
+            }, 0);
+        } */
     </script>
     <style>
 
@@ -55,15 +55,15 @@
         </div>
     </aside>
     <main class="page">
-        <div id="loading">
+{#         <div id="loading">
             <div class="Sf-Kd mspin-medium">
                 <div>
                     <div></div>
                 </div>
             </div>
             <p>请稍候</p>
-        </div>
-        <div class="page" id="page" style="display: none;">{{page}}
+        </div> #}
+        <div class="page" id="page" {# style="display: none;" #}>{{page}}
         </div>
         <hr>
         <div style="padding-left: 3rem; padding-top: 1rem;">
@@ -85,9 +85,7 @@
             }
         </script>
         <script>
-            function sidebar(id) {
-                $(id).attr('class', 'sidebar active')
-            }
+
         </script>
 
     </main>
