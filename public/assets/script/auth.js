@@ -1,11 +1,19 @@
+/* setInterval(() => {
+    reg_page('#captcha', '#log', '300px')
+}, 2000);
+setTimeout(() => {
+    setInterval(() => {
+        log_page('#reg', '#captcha', '255px')
+    }, 2000);
+}, 1000); */
 function reg_page() {
-    document.getElementById("log").setAttribute("style", "opacity: 0; z-index: -1; margin-left: 0;");
+    document.getElementById("log").setAttribute("style", "opacity: 0; z-index: -1; margin-left: -40px;");
     setTimeout(() => {
         document.getElementById("main").setAttribute("style", "height: 402px");
-    }, 50);
+    }, 200);
     setTimeout(function () {
         document.getElementById("reg").setAttribute("style", "z-index: 1; opacity: 1; margin-left: 0;");
-    }, 350)
+    }, 550)
 }
 
 function log_page() {
@@ -13,8 +21,10 @@ function log_page() {
 
     setTimeout(function () {
         document.getElementById("main").setAttribute("style", "");
+    }, 200)
+    setTimeout(() => {
         document.getElementById("log").setAttribute("style", "opacity: 1; z-index: 1; margin-left: 0;");
-    }, 300)
+    }, 550);
 }
 
 function login() {
@@ -123,14 +133,14 @@ function captcha() {
                     document.getElementById('c-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
                     document.getElementById('c-msg').innerHTML = '继续';
                     setTimeout(function () {
-                        next_pg('#captcha', '#log', '317px')
+                        next_pg('#captcha', '#log', '300px')
                     }, 800);
 
                 }
                 else if (data == '-1') {
                     show_alert('c-alert', 'c-msg', '你已经注册过了，请直接登录', '你已经注册过了，请直接登录', 'captcha()');
                     setTimeout(function () {
-                        next_pg('#captcha', '#log', '317px')
+                        next_pg('#captcha', '#log', '300px')
                     }, 800);
                 }
                 else {
@@ -143,7 +153,7 @@ function captcha() {
 
 function next_pg(id1, id2, height) {
     document.getElementById("log").setAttribute("style", "opacity: 0; z-index: -1;");
-    $(id1).attr('style', 'z-index: -1; margin-left: -20px')
+    $(id1).attr('style', 'z-index: -1; margin-left: -40px')
 /*     setTimeout(() => {
         $('#loading').attr('style', 'opacity: 1;')
     }, 600);
@@ -157,10 +167,10 @@ function next_pg(id1, id2, height) {
     setTimeout(() => {
         $('#loading').attr('style', 'opacity: 0;')
         $('#main').attr('style', 'height: ' + height)
-        setTimeout(() => {
-            $(id2).attr('style', 'z-index: 1; opacity: 1; margin-left: 0')
-        }, 400);
-    }, 400);
+    }, 200);
+    setTimeout(() => {
+        $(id2).attr('style', 'z-index: 1; opacity: 1; margin-left: 0')
+    }, 550);
 }
 
 function animation(id) {
@@ -190,15 +200,16 @@ function forget_page() {
         document.getElementById("main").setAttribute("style", "height: 220px");
         document.getElementById("forg").setAttribute("style", "z-index: 1; opacity: 1; margin-top: 0;");
     }
-        , 100)
+        , 300)
 }
 
 function login_page() {
     document.getElementById("forg").setAttribute("style", "z-index:-1;");
+    document.getElementById("main").setAttribute("style", "");
     setTimeout(function () {
-        document.getElementById("main").setAttribute("style", "");
+        
         document.getElementById("log").setAttribute("style", "opacity: 1; z-index: 1; margin-left: 0;");
-    }, 100)
+    }, 350)
 }
 
 function disable_reg() {/* 禁用注册 */
