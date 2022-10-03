@@ -6,6 +6,24 @@ setInterval(() => {
         $('#pg5').attr('style', 'bottom: 0;')
     }
     else {
-        $('#pg5').attr('style', 'bottom: -55px;')
+        $('#pg5').attr('style', 'bottom: -69px;')
     }
+    /* 滚动到底部后顶部透明 */
+    if ($(".parent-container").scrollTop() >= height) {
+        $('.top').attr('style', '')
+        $('.top ul.list .a').attr('style', '')
+    }
+    else {
+        $('.top').attr('style', 'background-color: #00000000;')
+        $('.top ul.list .a').attr('style', 'color: #fff;')
+    }
+/*  滚动超过一个页面顶部变透明
+    if ($(".parent-container").scrollTop() >= $(window).height()) {
+        $('.top').attr('style', '')
+        $('.top ul.list .a').attr('style', '')
+    }
+    else {
+        $('.top').attr('style', 'background-color: #00000000;')
+        $('.top ul.list .a').attr('style', 'color: #fff;')
+    } */
 }, 50);

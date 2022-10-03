@@ -113,6 +113,8 @@ a.link:visited {
     top: 0;
     z-index: 10;
     box-shadow: 0px -2px 15px rgb(0, 0, 0);
+    transition: background-color .5s ease;
+    backdrop-filter: blur(10px);
 }
 
 .top ul.list {
@@ -127,7 +129,6 @@ a.link:visited {
 .top ul.list .a {
     border-radius: 100px;
     display: block;
-    color: black;
     margin: 0px 0px auto 1px;
     padding-top: 5px;
     width: 80px;
@@ -381,6 +382,9 @@ div.splash a:hover {
     height: auto;
     max-width: 800px;
     float: right;
+    border-radius: 20px;
+    padding: 17px;
+    box-sizing: border-box;
 }
 
 .pg1 .box2 {
@@ -569,6 +573,10 @@ div.splash a:hover {
         max-width: none;
         width: 100%;
         padding: 0 10vw;
+        border-radius: 0;
+        backdrop-filter: none !important;
+        background-color: #00000066;
+        padding: 20px;
     }
 
     .pg1 .container {
@@ -627,7 +635,8 @@ div.splash a:hover {
 .pg3 .container,
 .pg4 .container {
     width: 100%;
-    margin-top: 80.6px;
+    /* margin-top: 80.6px; */
+    padding-top: 80.6px;
 }
 
 .pg3 .child-container * {
@@ -899,7 +908,7 @@ i.play:before {
     background-size: cover;
     overflow: hidden;
     align-items: unset !important;
-    height: 720px !important;
+    height: 800px !important;
     max-height: none !important;
 }
 
@@ -1011,6 +1020,7 @@ p,
 h1 {
     padding: 0;
     text-align: center;
+    display: block;
 }
 
 
@@ -1139,4 +1149,8 @@ div.b1 p {
 
 .mspin-medium {
     zoom: 200%;
+}
+
+.b1, .h2, .pg2 .container, .pg1 .box1 div.text {
+    backdrop-filter: blur(7px);
 }
