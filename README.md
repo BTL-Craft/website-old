@@ -53,7 +53,7 @@
 
 ## 手动构建（不推荐）
 
-确保你已经安装composer，然后运行build.bat
+确保你已经安装 composer 和 git ，然后将所有源代码拉取下来，运行built.bat
   
 ## 使用早期版本
 
