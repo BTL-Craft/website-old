@@ -23,12 +23,16 @@ if (!file_exists(__DIR__.'/../conf/install.lock')) {
 }
 
 
-if (array_key_exists('key', $_GET)) {
-    require __DIR__.'/../app/bootstrap.php';
-    exit();
-} else {
-    require __DIR__.'/../app/bootstrap.php';
-}
+/*
+|--------------------------------------------------------------------------
+| 载入引导程序。
+| 在伪静态配置里，已经转换了url，像下面这个例子一样
+| “http://localhost/auth -> http://localhost?url=auth”
+| bootstrap.php会根据不同的$_GET['url']显示不同的内容
+|--------------------------------------------------------------------------
+*/
+require __DIR__.'/../app/bootstrap.php';
+
 
 
 
