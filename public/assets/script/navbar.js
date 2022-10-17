@@ -1,22 +1,22 @@
-function show_menu() {
-    if ($('#btn').attr('class') == 'icon menu')
+function menu() {
+    if ($('#mnu-btn').attr('class') == 'icon menu')
     {
         $('#menu-li-1').attr('style', 'margin-left: -3rem; opacity: 0;')
         $('#menu-li-2').attr('style', 'margin-left: -3rem; opacity: 0;')
         $('#menu-li-3').attr('style', 'margin-left: -3rem; opacity: 0;')
         $('#menu-li-4').attr('style', 'margin-left: -3rem; opacity: 0;')
-        $('#menu').attr('style', 'top: 35px')
+        $('#menu').attr('style', '')
         $('.icon-icon').attr('style','pointer-events: none;')
-        $('#btn').fadeOut(100)
+        $('#mnu-btn').fadeOut(100)
         setTimeout(() => {
-            $('#btn').attr('class','icon xmark')
+            $('#mnu-btn').attr('class','icon xmark')
             
             $('.icon-icon').attr('style','pointer-events: auto;')
         }, 100); 
-        $('#menu').fadeIn(100)
-        $('#btn').fadeIn(100)
+        $('#menu').attr('style', 'display: block;opacity: 0;')
+        $('#mnu-btn').fadeIn(100)
         setTimeout(() => {
-            $('#menu').attr('style', 'top: 80px; display:block')
+            $('#menu').attr('style', 'opacity: 1; display:block')
         }, 100);
         setTimeout(() => {
             $('#menu-li-1').attr('style', '')
@@ -36,14 +36,17 @@ function show_menu() {
         $('#menu-li-2').attr('style', 'opacity: 0;')
         $('#menu-li-3').attr('style', 'opacity: 0;')
         $('#menu-li-4').attr('style', 'opacity: 0;')
-        $('#menu').attr('style', 'top: 35px;display: block')
+        $('#menu').attr('style', 'display: block')
         $('.icon-icon').attr('style','pointer-events: none;')
-        $('#btn').fadeOut(100)
+        $('#mnu-btn').fadeOut(100)
         setTimeout(() => {
-            $('#btn').attr('class','icon menu')
+            $('#mnu-btn').attr('class','icon menu')
             $('.icon-icon').attr('style','pointer-events: auto;')
         }, 100); 
-        $('#menu').fadeOut(200)
-        $('#btn').fadeIn(100)
+        setTimeout(() => {
+            $('#menu').attr('style', 'display: none')
+        }, 300); 
+        $('#menu').attr('style', 'opacity: 0;display: block')
+        $('#mnu-btn').fadeIn(100)
     }
 }

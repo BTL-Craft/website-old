@@ -1,0 +1,208 @@
+/* 
+|-----------------------------------------------------
+| 顶部菜单栏
+|-----------------------------------------------------
+*/
+.navbar {
+    display: flex;
+    margin-top: -15px;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    background: #383838;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0px -2px 15px rgb(0, 0, 0);
+    transition: background-color .5s ease;
+    backdrop-filter: blur(10px);
+    left: 0rem;
+    border-radius: 0px;
+}
+
+.navbar ul.list {
+    list-style-type: none;
+    color: black;
+    display: flex;
+    text-shadow: 2px 2px 25px;
+}
+
+.navbar ul.list .a {
+    border-radius: 100px;
+    display: block;
+    margin: 0px 0px auto 1px;
+    padding-top: 5px;
+    width: 80px;
+    height: 30px;
+    background-color: #00000000;
+    text-align: center;
+    color: #9D9D9D;
+    transition: color 0.3s;
+    text-decoration-color: #00000000;
+    font-size: 16px;
+    font-family: Harmony;
+}
+
+.navbar ul.list .a:hover {
+    color: #ffffff
+}
+
+.navbar a p {
+    font-family: minecraft_ten;
+    color: #fff;
+    /* margin: 0; */
+    /* display: flex; */
+    /* justify-items: center; */
+    /* align-items: center; */
+}
+
+.navbar i.icon {
+    font-weight: 900;
+    text-align: center;
+    width: 1.25em;
+    font-family: fa;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+.navbar i.icon:before {
+    content: "\f2f6";
+}
+
+.navbar div.icon {
+    display: none;
+    pointer-events: none;
+}
+
+.navbar div.menu {
+    display: none;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius: 10px;
+    max-height: 235px;
+}
+
+.navbar div.menu::-webkit-scrollbar {
+    width: 8px;
+}
+
+.navbar div.menu::-webkit-scrollbar-track {
+    background-color: #00000000;
+}
+
+.navbar div.menu::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.navbar div.menu ul.menu {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    box-sizing: border-box;
+    padding-inline-start: 0;
+}
+
+.navbar div.menu li {
+    display: block;
+    height: 50px;
+    list-style-type: none;
+    line-height: 3.2em;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0, 0, 0.02, 1);
+}
+
+.navbar div.menu li:hover {
+    background-color: #2b2e34;
+}
+
+.navbar div.menu li a {
+    display: block;
+    color: #fff;
+    padding: 0rem 1.8rem;
+}
+@media (min-width: 550px) {
+    .navbar div.menu{
+        display: none !important;
+    }
+}
+@media (max-width:550px) {
+    .navbar {
+        padding-left: 0;
+    }
+
+    .navbar ul.list {
+        display: none;
+    }
+
+    .navbar a p {
+        width: calc(100vw - 65.6px);
+    }
+
+    .navbar div.icon {
+        width: 45px;
+        height: 45px;
+        display: inline;
+        pointer-events: all;
+        z-index: 20;
+    }
+
+    .navbar div.icon div.icon-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 100px;
+        border: 1.5px solid #494d59;
+        background-color: #333740;
+        margin: 0px auto;
+        align-items: center;
+        text-align: center;
+        font-size: 19px;
+        line-height: 2.3;
+        cursor: pointer;
+    }
+
+    .navbar span.icon {
+        font-weight: 900;
+        font-family: fa;
+        -webkit-font-smoothing: antialiased;
+        color: #fff;
+    }
+
+    .navbar span.menu::after {
+        content: "\f0c9";
+    }
+
+    .navbar span.xmark::after {
+        content: "\f00d";
+    }
+
+    .navbar div.menu {
+        padding: 1rem;
+        position: absolute;
+        width: 90vw;
+        height: calc(90vh - 60px);
+        top: 80px;
+        left: 5vw;
+        border: 1.5px solid #494d59;
+        background-color: #333740;
+        box-shadow: 0px 0px 0px 500vh #00000069;
+        transition: top 0.3s cubic-bezier(0, 0, 0.02, 1);
+    }
+}
+.navbar > div {
+    width: 93%;
+    height: 100%;
+    display: flex;
+    max-width: 1000px;
+}
+@media (min-width: 1400px) {
+    .navbar {
+        width: 100vw;
+        left: 0;
+        top: 1rem;
+        border-radius: 0px 0px 10px 10px;
+    }
+}

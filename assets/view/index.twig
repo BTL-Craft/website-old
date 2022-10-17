@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh">
   <head>
-    <meta charset="utf-8" />
-    <title>{{ site_name }}</title>
+    {{ include('/shared/head.twig') }}
     <link href="/assets/style/index.css" rel="stylesheet" type="text/css" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-    <link rel="icon" type="img/png" href="/assets/image/icon.png" sizes="192x192" />
-    <script src="/assets/script/jquery.js"></script>
-    <link href="/assets/style/loading.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/style/index-navbar.css" rel="stylesheet" type="text/css" />
     <script src="/assets/script/index.js"></script>
     <script>
       window.onload = function () {
@@ -24,44 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="top">
-      <a href="." class="link"><p>{{ site_name }}</p></a>
-      <div class="icon">
-        <div class="icon-icon" onclick="show_menu()">
-          <span id="btn" class="icon menu"></span>
-        </div>
-      </div>
-      <ul class="list">
-        <li>
-          <a href="/join" class="a">加入我们</a>
-        </li>
-        <li>
-          <a href="/help" class="a">获取帮助</a>
-        </li>
-        <li>
-          <a href="https://btlcraft.top" class="a">皮肤站</a>
-        </li>
-        <li>
-          <a href="/auth" class="a"><i class="icon"></i> 登录</a>
-        </li>
-      </ul>
-      <div class="menu" id="menu">
-        <ul class="menu">
-          <li id="menu-li-1">
-            <a href="/join" class="a">加入我们</a>
-          </li>
-          <li id="menu-li-2">
-            <a href="/help" class="a">获取帮助</a>
-          </li>
-          <li id="menu-li-3">
-            <a href="https://btlcraft.top" class="a">皮肤站</a>
-          </li>
-          <li id="menu-li-4">
-            <a href="/auth" class="a"><i class="icon"></i> 登录</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    {{ include('/shared/navbar.twig') }}
     <div class="parent-container">
       <div class="pg pg0">
         <div class="splash">
@@ -274,7 +233,6 @@
         </p>
       </div>
     </div>
-    <script src="/assets/script/top.js"></script>
     <script src="/assets/script/anti-ie.js"></script>
     <script src="/assets/script/0cd1.js"></script>
     <script src="/assets/script/0cd2.js"></script>

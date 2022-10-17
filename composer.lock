@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d52fd9a24a4f0944d0e030c4674a356",
+    "content-hash": "9b4fa28dcea11bb110b9ab7d301b281a",
     "packages": [
         {
             "name": "adbario/php-encrypter",
@@ -53,6 +53,50 @@
                 "source": "https://github.com/adbario/php-encrypter/tree/1.0.0"
             },
             "time": "2017-03-26T12:33:07+00:00"
+        },
+        {
+            "name": "aternos/nbt",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aternosorg/php-nbt.git",
+                "reference": "859f4a66aab6a14877166d201d6462ce1061a22f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aternosorg/php-nbt/zipball/859f4a66aab6a14877166d201d6462ce1061a22f",
+                "reference": "859f4a66aab6a14877166d201d6462ce1061a22f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-zlib": "*",
+                "php": ">=8.0",
+                "php-64bit": "*",
+                "pocketmine/binaryutils": "^0.2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Aternos\\Nbt\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kurt Thiemann",
+                    "email": "kurt@aternos.org"
+                }
+            ],
+            "description": "PHP library to parse, modify, and create NBT objects",
+            "support": {
+                "issues": "https://github.com/aternosorg/php-nbt/issues",
+                "source": "https://github.com/aternosorg/php-nbt/tree/v1.5.0"
+            },
+            "time": "2022-05-10T13:10:57+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -107,6 +151,48 @@
                 "source": "https://github.com/paragonie/random_compat"
             },
             "time": "2022-02-16T17:07:03+00:00"
+        },
+        {
+            "name": "pocketmine/binaryutils",
+            "version": "0.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pmmp/BinaryUtils.git",
+                "reference": "5ac7eea91afbad8dc498f5ce34ce6297d5e6ea9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pmmp/BinaryUtils/zipball/5ac7eea91afbad8dc498f5ce34ce6297d5e6ea9a",
+                "reference": "5ac7eea91afbad8dc498f5ce34ce6297d5e6ea9a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0",
+                "php-64bit": "*"
+            },
+            "require-dev": {
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "1.3.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpstan/phpstan-strict-rules": "^1.0.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "pocketmine\\utils\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "description": "Classes and methods for conveniently handling binary data",
+            "support": {
+                "issues": "https://github.com/pmmp/BinaryUtils/issues",
+                "source": "https://github.com/pmmp/BinaryUtils/tree/0.2.4"
+            },
+            "time": "2022-01-12T18:06:33+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",

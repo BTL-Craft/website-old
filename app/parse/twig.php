@@ -1,14 +1,12 @@
 <?php
 class TwigFilesLoader
 {
-    function load_twig_file($dir, $context)
+    function load_twig_file($path, $filename, $context)
     {
-        $loader = new \Twig\Loader\ArrayLoader([
-            'index' => file_get_contents($dir),
-        ]);
-
+        $loader = new \Twig\Loader\FilesystemLoader($path);
         $twig = new \Twig\Environment($loader, ['autoescape' => false]);
+        /* $twig = new \Twig\Environment($loader, ['autoescape' => false]); */
 
-        echo $twig->render('index', $context);
+        echo $twig->render($filename, $context);
     }
 }

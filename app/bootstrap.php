@@ -21,13 +21,13 @@ if (!array_key_exists('url', $_GET)) {
     $second = strtotime($now_) - strtotime($startdate);
     $custom_texts['day'] = $second / 86400;
 
-    $view->load_twig_file(__DIR__ . '/../assets/view/index.twig', $custom_texts);
+    $view->load_twig_file(__DIR__ . '/../assets/view/', 'index.twig', $custom_texts);
     exit();
 }
 
 switch ($_GET['url']) {
     case 'auth':
-        $view->load_twig_file(__DIR__ . '/../assets/view/auth.twig', $custom_texts);
+        $view->load_twig_file(__DIR__ . '/../assets/view/', 'auth.twig', $custom_texts);
 
         if (array_key_exists('reg', $_COOKIE)) {
             echo '<script>document.getElementById("i").setAttribute("style", "color: #828282; pointer-events: none");</script>';
@@ -40,11 +40,11 @@ switch ($_GET['url']) {
         break;
 
     case 'anti-ie':
-        $view->load_twig_file(__DIR__ . '/../assets/view/anti-ie.twig', $custom_texts);
+        $view->load_twig_file(__DIR__ . '/../assets/view/', 'anti-ie.twig', $custom_texts);
         break;
 
     case 'join':
-        $view->load_twig_file(__DIR__ . '/../assets/view/join.twig', $custom_texts);
+        $view->load_twig_file(__DIR__ . '/../assets/view/', 'join.twig', $custom_texts);
         break;
 
     default:
@@ -61,15 +61,15 @@ switch ($_GET['url']) {
                 $custom_texts['page'] = $Extra->text(file_get_contents($Dir));
                 $custom_texts['url'] = '"' . substr($_GET['url'], 5) . '";';
 
-                $view->load_twig_file(__DIR__ . '/../assets/view/help.twig', $custom_texts);
+                $view->load_twig_file(__DIR__ . '/../assets/view/', 'help.twig', $custom_texts);
             } else {
                 $Extra = new ParsedownExtra();
                 $custom_texts['page'] = $Extra->text(file_get_contents(__DIR__ . '/../assets/doc/welcome.md'));
                 $custom_texts['url'] = '"' . substr($_GET['url'], 5) . '";';
 
-                $view->load_twig_file(__DIR__ . '/../assets/view/help.twig', $custom_texts);
+                $view->load_twig_file(__DIR__ . '/../assets/view/', 'help.twig', $custom_texts);
             }
         } else {
-            $view->load_twig_file(__DIR__ . '/../assets/view/404.twig', $custom_texts);
+            $view->load_twig_file(__DIR__ . '/../assets/view/', '404.twig', $custom_texts);
         }
 }
