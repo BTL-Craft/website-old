@@ -1,13 +1,13 @@
 <div class="navbar">
   <div>
-    <div class="icon">
-      <div class="icon-icon" onclick="sidebar()">
+    <div class="icon sdb">
+      <div class="icon-icon sdb" onclick="sidebar()">
         <span id="sdb-btn" class="icon sidebar"></span>
       </div>
     </div>
     <a href="/" class="link"><p>{{ site_name }}</p></a>
     <div class="icon">
-      <div class="icon-icon" onclick="menu()">
+      <div class="icon-icon mnu" onclick="menu()">
         <span id="mnu-btn" class="icon menu"></span>
       </div>
     </div>
@@ -41,6 +41,5 @@
         </li>
       </ul>
     </div>
-    <div class="sidebar" id="sdb">{{ include('/shared/sidebar.twig') }}</div>
   </div>
 </div>

@@ -93,9 +93,10 @@ aside.sidebar {
     box-sizing: border-box;
     overflow-y: auto;
     padding-top: 4rem;
+    transition: all .2s cubic-bezier(0, 0.83, 0.47, 1);
 }
 
-ul.sidebar-links {
+aside.sidebar ul.sidebar-links {
     padding: 1.5rem 0;
     margin: 0;
     list-style-type: none;
@@ -115,7 +116,8 @@ main.page {
     display: block;
     padding-left: clamp(180px, 24vw, 245px);
     height: 100vh;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 div.page {
@@ -219,4 +221,10 @@ aside.sidebar .sidebar-link a:hover {
 
 details>summary {
     list-style: none;
+}
+
+@media (max-width: 750px) {
+    div.page {
+        padding: 2rem 8vw;
+    }
 }

@@ -68,9 +68,9 @@ a.link {
     font-size: 27px;
     margin: -11px 0 0 0;
     color: #272727;
-    display: flex;
-    justify-items: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-items: center; */
+    /* align-items: center; */
 }
 
 a.link:visited {
