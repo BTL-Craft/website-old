@@ -3,9 +3,8 @@ $config = json_decode(
     file_get_contents(__DIR__."/../../conf/main.json"),
     true
 );
-session_name($config['session_name']);
 
-session_start();
+
 
 if (file_exists(__DIR__.'/../../app/database/Autoload.php')) {
     require __DIR__.'/../../app/database/Autoload.php';
@@ -26,12 +25,13 @@ if ($_POST['type'] == 'login') {
 
 
 if ($_POST['type'] == 'remember') {
-    if ($_POST['selected'] == 'true') {
+    /* if ($_POST['selected'] == 'true') {
         $_SESSION['remember'] = true;
         echo 1;
     }
     if ($_POST['selected'] == 'false') {
         $_SESSION['remember'] = false;
         echo 1;
-    }
+    } */
+    $app->remember($_POST['selected']);
 }

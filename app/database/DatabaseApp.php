@@ -21,7 +21,6 @@ class DatabaseApp
             echo '邮箱已被占用';
             return false;
         } else {
-            $token = sha1((string)time(). (string)rand(1000,9999));
             $result = $database->execute_command(
                 "INSERT INTO `usr` (`eml`, `passwd`, `usrname`, `ip`, `reg_time`, `qq`, `submit`, `remember_token`) 
                 VALUES (:eml, :passwd, :usrname, :ip, :reg_time, :qq, :submit, :remember_token);
@@ -34,7 +33,7 @@ class DatabaseApp
                     ':reg_time' => $reg_time,
                     ':qq'       => $qq,
                     ':submit'   => $submit,
-                    ':remember_token' => $token
+                    ':remember_token' => null
                 )
             );
             if (gettype($result) == 'integer') {
@@ -42,21 +41,26 @@ class DatabaseApp
                     return -1;
                 }
             }
-
-            /* 注册完成，保存会话 */
             $config = json_decode(
                 file_get_contents(__DIR__."/../../conf/main.json"),
                 true
             );
             session_name($config['session_name']);
             session_start();
-            $_SESSION['token'] = $token;
+            $_SESSION['eml'] = $eml;
             echo '注册完成';
         }
     }
 
     function login($eml, $passwd)
     {
+        $config = json_decode(
+            file_get_contents(__DIR__."/../../conf/main.json"),
+            true
+        );
+        session_name($config['session_name']);
+        session_start();
+        
         $database = new Execute;
 
         $result = $database->execute_command(
@@ -85,7 +89,7 @@ class DatabaseApp
                 return 2;
             } else {
                 $_SESSION['login'] = true;
-                $_SESSION['uid'] = $result['uid'];
+                $_SESSION['eml'] = $result['eml'];
                 echo '登录成功';
                 return 3;
             }
@@ -144,6 +148,44 @@ class DatabaseApp
         echo '1';
     }
 
+    function remember($remem)
+    {
+        $config = json_decode(
+            file_get_contents(__DIR__."/../../conf/main.json"),
+            true
+        );
+        session_name($config['session_name']);
+        session_start();
+
+        $token = md5((string)time(). (string)rand(1000,9999));
+        $database = new Execute;
+
+        $result = $database->execute_command(
+            "UPDATE usr SET `remember_token`=:remember_token WHERE eml=:eml",
+            array(
+                ':eml' => $_SESSION['eml'],
+                ':remember_token' => $token
+            )
+        );// token记入数据库
+
+        /* 检查返回值*/
+        if (gettype($result) == 'integer') {
+            if ($result == -1) {
+                return -1;
+            }
+        }
+
+        $_SESSION['token'] = $token;// token存入session
+        $options = $this->load_options();
+        $lifeTime = $options['session_lifetime'] * 24 * 3600;
+        if ($remem == true) {
+            setcookie(session_name(), session_id(), time() + $lifeTime, "/");
+        } else {
+            setcookie(session_name(), session_id(), "/");
+        }
+        echo '1';
+    }
+
     function clear()
     {
         $database = new Execute;
@@ -170,12 +212,12 @@ class DatabaseApp
         $database = new Execute;
         $options = $database->read_all('options');
         return [
-            'get_qid'        => $options[0]['value'],
-            'enable_reg'     => $options[1]['value'],
-            'enable_sign_in' => $options[2]['value'],
-            'nontbot_host'   => $options[3]['value'],
-            'site_url'       => $options[4]['value'],
-            'enable_sign_in' => $options[5]['value']
+            'sitename'         => $options[0]['value'],
+            'get_qid'          => $options[1]['value'],
+            'enable_reg'       => $options[2]['value'],
+            'enable_sign_in'   => $options[3]['value'],
+            'site_url'         => $options[4]['value'],
+            'session_lifetime' => $options[5]['value']
         ];
     }
 

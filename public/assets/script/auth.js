@@ -215,7 +215,7 @@ function remember(selected) {
                 window.location.replace("/")
             }
             else {
-                alert('[严重错误] 服务器内部错误，请报告此问题')
+                alert(data)
                 window.location.replace("/")
             }
         })
