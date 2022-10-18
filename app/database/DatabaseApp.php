@@ -77,7 +77,7 @@ class DatabaseApp
         }
 
         /* 检查用户是否存在（输入值与查询结果是否匹配） */
-        if ($eml != $result['eml']) {
+        if (!is_array($result)) {
             echo '用户不存在';
             return 0;
         }
