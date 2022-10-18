@@ -13,7 +13,7 @@
     left: 2.5vw;
     z-index: 11;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgb(0 0 0 / 30%);
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 20%);
     transition: all 0.3s cubic-bezier(0.98, 0.03, 0.36, 1);
     display: flex;
     justify-content: center;
@@ -136,7 +136,7 @@
     color: #000;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 750px) {
 
     .navbar div.menu,
     .navbar div.sidebar {
@@ -148,12 +148,13 @@
     main.page {
         padding-left: 0 !important;
     }
+
     aside {
         margin-left: -15rem !important;
         width: 15rem !important;
-        box-shadow: none !important;
     }
 }
+
 @media (max-width: 750px) {
     .navbar {
         left: 0.6rem;
@@ -247,5 +248,5 @@
 }
 
 * {
-    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

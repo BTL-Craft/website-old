@@ -80,7 +80,7 @@ p.title-top {
 
 
 aside.sidebar {
-    box-shadow: 0 0 20px #aeaeae;
+    /* box-shadow: 0 0 20px #aeaeae; */
     font-size: 16px;
     background-color: #FFFFFF;
     width: clamp(180px, 24vw, 245px);
@@ -94,6 +94,7 @@ aside.sidebar {
     overflow-y: auto;
     padding-top: 4rem;
     transition: all .2s cubic-bezier(0, 0.83, 0.47, 1);
+    border: 1px solid #aeaeae45;
 }
 
 aside.sidebar ul.sidebar-links {
@@ -226,5 +227,11 @@ details>summary {
 @media (max-width: 750px) {
     div.page {
         padding: 2rem 8vw;
+    }
+}
+
+@media (min-width: 750px){
+    aside.sidebar {
+        box-shadow: none !important;
     }
 }

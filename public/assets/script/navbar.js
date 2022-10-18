@@ -53,7 +53,7 @@ function sidebar() {
     if ($('#sdb-btn').attr('class') == 'icon sidebar') {
         $('#sdb-btn').fadeOut(100)
         $('.sdb').attr('style', 'pointer-events: none;')
-        $('aside').attr('style', 'box-shadow: 0 0 20px #aeaeae !important; margin-left: 0 !important')
+        $('aside').attr('style', 'box-shadow: 0 0 20px #aeaeae; margin-left: 0 !important')
         setTimeout(() => {
             $('#sdb-btn').attr('class', 'icon xmark')
 

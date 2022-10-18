@@ -13,7 +13,6 @@ class DatabaseApp
         /* 检查返回值*/
         if (gettype($result) == 'integer') {
             if ($result == -1) {
-                echo '登录失败，数据库错误，请报告此问题';
                 return -1;
             }
         }
@@ -38,10 +37,13 @@ class DatabaseApp
             );
             if (gettype($result) == 'integer') {
                 if ($result == -1) {
-                    echo '登录失败，数据库错误，请报告此问题';
                     return -1;
                 }
             }
+
+            /* 注册完成，保存会话 */
+            session_start();
+            $_SESSION['eml'] = $eml;
             echo '注册完成';
         }
     }
@@ -65,17 +67,21 @@ class DatabaseApp
 
         /* 检查用户是否存在（输入值与查询结果是否匹配） */
         if ($eml != $result['eml']) {
+            echo '用户不存在';
             return 0;
         }
 
         /* 检查密码 */
         if ($passwd == $result['passwd']) {
-            if ($result['qq'] == '0') {
+            if ($result['qq'] == '0') {//检查QQ
+                echo 'QQ未绑定';
                 return 2;
             } else {
+                echo '登录成功';
                 return 3;
             }
         } else {
+            echo '密码错误';
             return 1;
         }
     }
@@ -83,7 +89,6 @@ class DatabaseApp
     function save_qid($eml, $qid)
     {
         $database = new Execute;
-
         $result = $database->execute_command(
             "SELECT * FROM usr WHERE eml=:eml",
             array(
@@ -100,7 +105,7 @@ class DatabaseApp
         }
 
         /* 检查QQ是否已经占用 */
-        $result = $database->execute_command(
+/*         $result = $database->execute_command(
             "SELECT * FROM usr WHERE qq=:qq",
             array(
                 ':qq' => $qid
@@ -109,7 +114,7 @@ class DatabaseApp
         if ($qid == $result['qq']) {
             echo '-1';
             return false;
-        }
+        } */
 
         /* 保存QQ号到数据库 */
         $result = $database->execute_command(
@@ -127,7 +132,7 @@ class DatabaseApp
                 return -1;
             }
         }
-        echo 'done';
+        echo '1';
     }
 
     function clear()

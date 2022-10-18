@@ -1,30 +1,4 @@
 <?php
-function getip()
-{
-
-    if (getenv("HTTP_CLIENT_IP") && strcasecmp(getenv("HTTP_CLIENT_IP"), "unknown")) {
-        $ip = getenv("HTTP_CLIENT_IP");
-    } 
-    
-
-    else if (getenv("HTTP_X_FORWARDED_FOR") && strcasecmp(getenv("HTTP_X_FORWARDED_FOR"), "unknown")) {
-        $ip = getenv("HTTP_X_FORWARDED_FOR");
-
-        
-    } else if (getenv("REMOTE_ADDR") && strcasecmp(getenv("REMOTE_ADDR"), "unknown")) {
-        $ip = getenv("REMOTE_ADDR");
-
-    } else if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], "unknown")) {
-        $ip = $_SERVER['REMOTE_ADDR'];
-
-
-    } else {
-        $ip = "unknown";
-    }
-
-    return $ip;
-}
-
 if (file_exists( __DIR__.'/../../app/database/Autoload.php')) {
     require __DIR__.'/../../app/database/Autoload.php';
     $app = new DatabaseApp;
@@ -37,11 +11,12 @@ else
 }
 if ($_POST['type'] == 'captcha') 
 {
-    $eml = $_POST['eml'];
+    session_start();//启动会话
+    $eml = $_SESSION['eml'];
     $code = $_POST['code'];
     $conf = json_decode(file_get_contents('../../conf/auth.json'), true);
     $host = $conf['apihost']; //读配置文件，并提取出python程序的IP地址
-    $data = json_decode(file_get_contents($host));
+    $data = json_decode(@file_get_contents($host));
     $right = false;
     foreach ($data as $key => $value) 
     {
@@ -75,3 +50,28 @@ else
     echo 'Email格式错误'; //不通过则返回
 }
 
+function getip()
+{
+
+    if (getenv("HTTP_CLIENT_IP") && strcasecmp(getenv("HTTP_CLIENT_IP"), "unknown")) {
+        $ip = getenv("HTTP_CLIENT_IP");
+    } 
+    
+
+    else if (getenv("HTTP_X_FORWARDED_FOR") && strcasecmp(getenv("HTTP_X_FORWARDED_FOR"), "unknown")) {
+        $ip = getenv("HTTP_X_FORWARDED_FOR");
+
+        
+    } else if (getenv("REMOTE_ADDR") && strcasecmp(getenv("REMOTE_ADDR"), "unknown")) {
+        $ip = getenv("REMOTE_ADDR");
+
+    } else if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] && strcasecmp($_SERVER['REMOTE_ADDR'], "unknown")) {
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+
+    } else {
+        $ip = "unknown";
+    }
+
+    return $ip;
+}

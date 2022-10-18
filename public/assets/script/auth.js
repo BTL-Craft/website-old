@@ -38,10 +38,11 @@ function login() {
     document.getElementById("l-alert").setAttribute("onclick", "return false");
     document.getElementById("l-msg").innerHTML = '登录中';
     setTimeout(function () {
-        $.post("/api/login.php",
+        $.post("/app/login.php",
             {
                 'email': eml,
-                'password': passwd
+                'password': passwd,
+                'type': 'login'
             },
             function (data) {
                 if (data == '登录成功') {
@@ -85,7 +86,7 @@ function register() {
                 show_alert('r-alert', 'r-msg', '密码应当不少于八位', '下一步', 'register()');
             }
             else {
-                $.post("/api/register.php",
+                $.post("/app/register.php",
                     {
                         'type': 'reg',
                         'email': eml,
@@ -98,7 +99,6 @@ function register() {
                             document.getElementById('r-msg').innerHTML = '继续';
                             document.getElementById("i").setAttribute("style", "color: #828282; pointer-events: none");
                             document.cookie = "reg=false;expires=Thu, 18 Dec 2032 12:00:00 GMT";
-                            document.cookie = `eml=${eml}`;
                             setTimeout(function () {
                                 next_pg('#reg', '#captcha', '255px')
                             }, 800);
@@ -122,14 +122,14 @@ function captcha() {
         return false;
     }
     else {
-        $.post("/api/register.php",
+        $.post("/app/register.php",
             {
                 'type': 'captcha',
                 'code': code,
                 'eml': eml
             },
             function (data) {
-                if (data == 'done') {
+                if (data == '1') {
                     document.getElementById('c-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
                     document.getElementById('c-msg').innerHTML = '继续';
                     setTimeout(function () {
@@ -154,16 +154,6 @@ function captcha() {
 function next_pg(id1, id2, height) {
     document.getElementById("log").setAttribute("style", "opacity: 0; z-index: -1;");
     $(id1).attr('style', 'z-index: -1; margin-left: -40px')
-/*     setTimeout(() => {
-        $('#loading').attr('style', 'opacity: 1;')
-    }, 600);
-    setTimeout(() => {
-        $('#loading').attr('style', 'opacity: 0;')
-        $('#main').attr('style', 'height: ' + height)
-        setTimeout(() => {
-            $(id2).attr('style', 'z-index: 1; opacity: 1; margin-left: 0')
-        }, 1000);
-    }, 2000); */
     setTimeout(() => {
         $('#loading').attr('style', 'opacity: 0;')
         $('#main').attr('style', 'height: ' + height)
@@ -212,6 +202,10 @@ function login_page() {
     }, 350)
 }
 
-function disable_reg() {/* 禁用注册 */
-
+function remember(selected) {
+    $.post("/app/login.php",
+    {
+        'selected': selected,
+        'type': 'remember'
+    })
 }

@@ -64,6 +64,7 @@ class Execute
                 return $pdo->fetch(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 Logging($e->getMessage());
+                return -1;
             }
         } else {
             try {
@@ -77,6 +78,7 @@ class Execute
                 return $pdo->fetch(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 Logging($e->getMessage());
+                return -1;
             }
         }
     }

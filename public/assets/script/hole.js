@@ -10,7 +10,7 @@ function hole() {
     setTimeout(function(){  
         p = 100;
         document.getElementById('hole').setAttribute("style", "");
-        var str = $.get('/api/hole.php',{},function(data){str = data})
+        var str = $.get('/app/hole.php',{},function(data){str = data})
         var str_ = ''
         var i = 0
         var content = document.getElementById('hole')

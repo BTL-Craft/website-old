@@ -45,10 +45,10 @@ Total : 63 files,  9747 codes, 668 comments, 1162 blanks, all 11577 lines
 | [composer.lock](/composer.lock) | JSON | 362 | 0 | 1 | 363 |
 | [index.html](/index.html) | HTML | 35 | 0 | 3 | 38 |
 | [public/.htaccess](/public/.htaccess) | Properties | 15 | 8 | 7 | 30 |
-| [public/api/contribution.php](/public/api/contribution.php) | PHP | 36 | 0 | 2 | 38 |
-| [public/api/hole.php](/public/api/hole.php) | PHP | 9 | 0 | 0 | 9 |
-| [public/api/login.php](/public/api/login.php) | PHP | 43 | 0 | 1 | 44 |
-| [public/api/register.php](/public/api/register.php) | PHP | 66 | 0 | 12 | 78 |
+| [public/app/contribution.php](/public/app/contribution.php) | PHP | 36 | 0 | 2 | 38 |
+| [public/app/hole.php](/public/app/hole.php) | PHP | 9 | 0 | 0 | 9 |
+| [public/app/login.php](/public/app/login.php) | PHP | 43 | 0 | 1 | 44 |
+| [public/app/register.php](/public/app/register.php) | PHP | 66 | 0 | 12 | 78 |
 | [public/assets/image/loading.svg](/public/assets/image/loading.svg) | XML | 1 | 0 | 0 | 1 |
 | [public/assets/image/sign-in-alt.svg](/public/assets/image/sign-in-alt.svg) | XML | 0 | 0 | 1 | 1 |
 | [public/assets/image/sign-out-alt.svg](/public/assets/image/sign-out-alt.svg) | XML | 1 | 0 | 0 | 1 |

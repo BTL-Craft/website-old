@@ -82,7 +82,7 @@
             <button class="btn" id="r-alert" onclick="register()" type="submit"><span id="r-msg">下一步</span></button>
           </form>
         </div>
-        <div class="register-2" id="captcha">
+        <div class="captcha" id="captcha">
           <p class="tip">请在审核群中私信BTL bot，发送“验证码”三个字，它会回复一个验证码，把验证码填在下面就好了。</p>
           <form onsubmit="return false;">
             <div class="input-data">
@@ -93,6 +93,12 @@
             <button class="btn" id="c-alert" onclick="captcha()" type="submit"><span id="c-msg">下一步</span></button>
           </form>
           <a href="/help" class="tip">为什么需要验证码？</a>
+        </div>
+        <div class="remember" id="remember">
+          <p class="tip-title">保持登录状态？</p>
+          <p class="tip">保持登录状态，这样下次就不必重新登录了。</p>
+            <button class="btn y" onclick="remember(true)">是</button>
+            <button class="btn n" onclick="remember(false)">否</button>
         </div>
         <div class="forget" id="forg">
           <p class="tip">输入你注册时填写的电子邮箱并点击发送</p>
