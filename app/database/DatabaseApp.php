@@ -216,14 +216,23 @@ class DatabaseApp
         }
 
         /* 检查token是否合法（查询结果是否匹配，不匹配则表示不存在此token） */
-        if ($token == $result['remember_token']) {
-            return [
-                'eml'     => $result['eml'],
-                'usrname' => $result['usrname'],
-                'qq'      => $result['qq'],
-            ];
+        if (is_array($result)) {
+            if ($token == $result['remember_token']) {
+                return [
+                    'eml'     => $result['eml'],
+                    'usrname' => $result['usrname'],
+                    'qq'      => $result['qq'],
+                    'state'   => 'logon'
+                ];
+            } else {
+                return [
+                    'state' => 'logoff'
+                ];
+            }
         } else {
-            return 0;
+            return [
+                'state' => 'logoff'
+            ];
         }
     }
     function clear()

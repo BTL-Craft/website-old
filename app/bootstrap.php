@@ -17,7 +17,9 @@ $database_app = new DatabaseApp;
 $custom_texts = $database_app->load_custom_text();//读取自定义文本
 
 /* 使用session登录 */
-$data = $database_app->login_by_token($_SESSION['token']);
+if (array_key_exists('token', $_SESSION)) {
+    $sesslogin = $database_app->login_by_token($_SESSION['token']);
+}
 
 
 if (array_key_exists('key', $_GET)) {
@@ -46,7 +48,9 @@ switch ($_GET['url']) {
         if (array_key_exists('reg', $_COOKIE)) {
             echo '<script>document.getElementById("i").setAttribute("style", "color: #828282; pointer-events: none");</script>';
         }
-
+        if ($sesslogin['state'] == 'logon') {
+            header("Location: /user");
+        }
         break;
 
     case 'hole':
