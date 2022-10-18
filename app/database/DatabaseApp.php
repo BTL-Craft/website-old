@@ -118,7 +118,7 @@ class DatabaseApp
         }
 
         /* 检查QQ是否已经占用 */
-/*         $result = $database->execute_command(
+        $result = $database->execute_command(
             "SELECT * FROM usr WHERE qq=:qq",
             array(
                 ':qq' => $qid
@@ -127,7 +127,7 @@ class DatabaseApp
         if ($qid == $result['qq']) {
             echo '-1';
             return false;
-        } */
+        }
 
         /* 保存QQ号到数据库 */
         $result = $database->execute_command(
@@ -186,6 +186,46 @@ class DatabaseApp
         echo '1';
     }
 
+    function login_by_token($token)
+    {
+        /*
+        |--------------------------------------------------------------------------
+        | 使用token登录
+        |--------------------------------------------------------------------------
+        |
+        | $token：保存在session中的token
+        | 返回值说明：
+        | -1 内部错误
+        | 0  token不存在
+        | [数组] 登录成功，返回用户信息
+        |
+        */
+        $database = new Execute;
+
+        $result = $database->execute_command(
+            "SELECT * FROM usr WHERE remember_token=:remember_token;",
+            array(':remember_token' => $token)
+        );
+
+        /* 检查返回值 */
+        if (gettype($result) == 'integer') {
+            if ($result == -1) {
+                echo '登录失败，数据库错误，请报告此问题';
+                return -1;
+            }
+        }
+
+        /* 检查token是否合法（查询结果是否匹配，不匹配则表示不存在此token） */
+        if ($token == $result['remember_token']) {
+            return [
+                'eml'     => $result['eml'],
+                'usrname' => $result['usrname'],
+                'qq'      => $result['qq'],
+            ];
+        } else {
+            return 0;
+        }
+    }
     function clear()
     {
         $database = new Execute;

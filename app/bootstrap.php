@@ -1,10 +1,24 @@
 <?php
+
+/* 启动会话用以检查当前登录状态 */
+$config = json_decode(
+    file_get_contents(__DIR__."/../conf/main.json"),
+    true
+);
+session_name($config['session_name']);
+session_start();
+
+/* 数据库 */
 require __DIR__ . '/parse/twig.php';
 require_once __DIR__ . '/database/Autoload.php';
 
 $view = new TwigFilesLoader;
 $database_app = new DatabaseApp;
-$custom_texts = $database_app->load_custom_text();
+$custom_texts = $database_app->load_custom_text();//读取自定义文本
+
+/* 使用session登录 */
+$data = $database_app->login_by_token($_SESSION['token']);
+
 
 if (array_key_exists('key', $_GET)) {
     require __DIR__ . '/../app/debug/autoload.php';
