@@ -21,9 +21,10 @@ class DatabaseApp
             echo '邮箱已被占用';
             return false;
         } else {
+            $token = sha1((string)time(). (string)rand(1000,9999));
             $result = $database->execute_command(
-                "INSERT INTO `usr` (`eml`, `passwd`, `usrname`, `ip`, `reg_time`, `qq`, `submit`) 
-                VALUES (:eml, :passwd, :usrname, :ip, :reg_time, :qq, :submit);
+                "INSERT INTO `usr` (`eml`, `passwd`, `usrname`, `ip`, `reg_time`, `qq`, `submit`, `remember_token`) 
+                VALUES (:eml, :passwd, :usrname, :ip, :reg_time, :qq, :submit, :remember_token);
                 ",
                 array(
                     ':eml'      => $eml,
@@ -32,7 +33,8 @@ class DatabaseApp
                     ':ip'       => $ip,
                     ':reg_time' => $reg_time,
                     ':qq'       => $qq,
-                    ':submit'   => $submit
+                    ':submit'   => $submit,
+                    ':remember_token' => $token
                 )
             );
             if (gettype($result) == 'integer') {
@@ -42,8 +44,13 @@ class DatabaseApp
             }
 
             /* 注册完成，保存会话 */
+            $config = json_decode(
+                file_get_contents(__DIR__."/../../conf/main.json"),
+                true
+            );
+            session_name($config['session_name']);
             session_start();
-            $_SESSION['eml'] = $eml;
+            $_SESSION['token'] = $token;
             echo '注册完成';
         }
     }
@@ -77,6 +84,8 @@ class DatabaseApp
                 echo 'QQ未绑定';
                 return 2;
             } else {
+                $_SESSION['login'] = true;
+                $_SESSION['uid'] = $result['uid'];
                 echo '登录成功';
                 return 3;
             }

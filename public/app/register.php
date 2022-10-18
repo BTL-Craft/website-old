@@ -11,7 +11,13 @@ else
 }
 if ($_POST['type'] == 'captcha') 
 {
-    session_start();//启动会话
+    $config = json_decode(
+        file_get_contents(__DIR__."/../../conf/main.json"),
+        true
+    );
+    session_name($config['session_name']);
+        session_start();//启动会话
+
     $eml = $_SESSION['eml'];
     $code = $_POST['code'];
     $conf = json_decode(file_get_contents('../../conf/auth.json'), true);

@@ -47,7 +47,10 @@ function login() {
             function (data) {
                 if (data == '登录成功') {
                     document.getElementById('l-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
-                    document.getElementById('l-msg').innerHTML = data;
+                    document.getElementById('l-msg').innerHTML = '继续';
+                    setTimeout(() => {
+                        next_pg('#log', '#remember', '210px')
+                    }, 1000);
                 }
                 else if (data == 'QQ未绑定') {
                     document.getElementById('l-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
@@ -197,15 +200,23 @@ function login_page() {
     document.getElementById("forg").setAttribute("style", "z-index:-1;");
     document.getElementById("main").setAttribute("style", "");
     setTimeout(function () {
-        
+
         document.getElementById("log").setAttribute("style", "opacity: 1; z-index: 1; margin-left: 0;");
     }, 350)
 }
 
 function remember(selected) {
     $.post("/app/login.php",
-    {
-        'selected': selected,
-        'type': 'remember'
-    })
+        {
+            'selected': selected,
+            'type': 'remember'
+        }, function (data) {
+            if (data == '1') {
+                window.location.replace("/")
+            }
+            else {
+                alert('[严重错误] 服务器内部错误，请报告此问题')
+                window.location.replace("/")
+            }
+        })
 }

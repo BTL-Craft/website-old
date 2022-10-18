@@ -1,4 +1,12 @@
 <?php
+$config = json_decode(
+    file_get_contents(__DIR__."/../../conf/main.json"),
+    true
+);
+session_name($config['session_name']);
+
+session_start();
+
 if (file_exists(__DIR__.'/../../app/database/Autoload.php')) {
     require __DIR__.'/../../app/database/Autoload.php';
     $app = new DatabaseApp;
@@ -8,6 +16,22 @@ else {
     $errinfo = '[' . date("H:i:s") .'] [login/ERROR]: This file was not found: auth.php' . "\n";
     fwrite(fopen('../../log/'.date("Y-m-d").'.log', 'a'), $errinfo);
 }
-$eml = $_POST['email'];
-$passwd = $_POST['password'];
-$app->login($eml, $passwd);
+
+
+if ($_POST['type'] == 'login') {
+    $eml = $_POST['email'];
+    $passwd = $_POST['password'];
+    $app->login($eml, $passwd);
+}
+
+
+if ($_POST['type'] == 'remember') {
+    if ($_POST['selected'] == 'true') {
+        $_SESSION['remember'] = true;
+        echo 1;
+    }
+    if ($_POST['selected'] == 'false') {
+        $_SESSION['remember'] = false;
+        echo 1;
+    }
+}
