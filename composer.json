@@ -1,7 +1,0 @@
-{
-    "require": {
-        "twig/twig": "^3.4.3",
-        "adbario/php-encrypter": "^1.0",
-        "aternos/nbt": "^1.5"
-    }
-}
