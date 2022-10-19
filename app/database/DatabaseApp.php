@@ -1,8 +1,15 @@
 <?php
 class DatabaseApp
 {
-    function register($eml, $passwd, $usrname, $ip, $reg_time, $qq, $submit)
-    {
+    function register(
+        $eml,
+        $passwd,
+        $usrname,
+        $ip,
+        $reg_time,
+        $qq,
+        $submit
+    ) {
         $database = new Execute;
 
         $result = $database->execute_command(
@@ -41,12 +48,7 @@ class DatabaseApp
                     return -1;
                 }
             }
-            $config = json_decode(
-                file_get_contents(__DIR__."/../../conf/main.json"),
-                true
-            );
-            session_name($config['session_name']);
-            session_start();
+
             $_SESSION['eml'] = $eml;
             echo '注册完成';
         }
@@ -54,13 +56,6 @@ class DatabaseApp
 
     function login($eml, $passwd)
     {
-        $config = json_decode(
-            file_get_contents(__DIR__."/../../conf/main.json"),
-            true
-        );
-        session_name($config['session_name']);
-        session_start();
-        
         $database = new Execute;
 
         $result = $database->execute_command(
@@ -84,7 +79,7 @@ class DatabaseApp
 
         /* 检查密码 */
         if ($passwd == $result['passwd']) {
-            if ($result['qq'] == '0') {//检查QQ
+            if ($result['qq'] == '0') { //检查QQ
                 echo 'QQ未绑定';
                 return 2;
             } else {
@@ -150,14 +145,7 @@ class DatabaseApp
 
     function remember($remem)
     {
-        $config = json_decode(
-            file_get_contents(__DIR__."/../../conf/main.json"),
-            true
-        );
-        session_name($config['session_name']);
-        session_start();
-
-        $token = md5((string)time(). (string)rand(1000,9999));
+        $token = password_hash((string)time(), PASSWORD_DEFAULT);
         $database = new Execute;
 
         $result = $database->execute_command(
@@ -166,7 +154,7 @@ class DatabaseApp
                 ':eml' => $_SESSION['eml'],
                 ':remember_token' => $token
             )
-        );// token记入数据库
+        ); // token记入数据库
 
         /* 检查返回值*/
         if (gettype($result) == 'integer') {
@@ -175,7 +163,7 @@ class DatabaseApp
             }
         }
 
-        $_SESSION['token'] = $token;// token存入session
+        $_SESSION['token'] = $token; // token存入session
         $options = $this->load_options();
         $lifeTime = $options['session_lifetime'] * 24 * 3600;
         if ($remem == true) {

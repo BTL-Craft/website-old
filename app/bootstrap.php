@@ -1,6 +1,6 @@
 <?php
 
-/* 启动会话用以检查当前登录状态 */
+/* 启动会话 */
 $config = json_decode(
     file_get_contents(__DIR__."/../conf/main.json"),
     true
@@ -14,7 +14,7 @@ require_once __DIR__ . '/database/Autoload.php';
 
 $view = new TwigFilesLoader;
 $database_app = new DatabaseApp;
-$custom_texts = $database_app->load_custom_text();//读取自定义文本
+$custom_texts = $database_app->load_custom_text();//读取自定义文本配置
 
 /* 使用session登录 */
 if (array_key_exists('token', $_SESSION)) {
@@ -43,13 +43,13 @@ if (!array_key_exists('url', $_GET)) {
 
 switch ($_GET['url']) {
     case 'auth':
-        $view->load_twig_file(__DIR__ . '/../assets/view/', 'auth.twig', $custom_texts);
-
-        if (array_key_exists('reg', $_COOKIE)) {
-            echo '<script>document.getElementById("i").setAttribute("style", "color: #828282; pointer-events: none");</script>';
-        }
         if ($sesslogin['state'] == 'logon') {
             header("Location: /user");
+            exit;
+        }
+        $view->load_twig_file(__DIR__ . '/../assets/view/', 'auth.twig', $custom_texts);
+        if (array_key_exists('reg', $_COOKIE)) {
+            echo '<script>document.getElementById("i").setAttribute("style", "color: #828282; pointer-events: none");</script>';
         }
         break;
 
@@ -61,8 +61,8 @@ switch ($_GET['url']) {
         $view->load_twig_file(__DIR__ . '/../assets/view/', 'anti-ie.twig', $custom_texts);
         break;
 
-    case 'join':
-        $view->load_twig_file(__DIR__ . '/../assets/view/', 'join.twig', $custom_texts);
+    case 'user':
+        $view->load_twig_file(__DIR__ . '/../assets/view/', 'user.twig', $custom_texts);
         break;
 
     default:

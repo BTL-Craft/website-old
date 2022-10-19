@@ -1,4 +1,4 @@
 <?php
-require __DIR__.'/../../app/database/Logging.php';
-require __DIR__.'/Execute.php';
-require __DIR__.'/DatabaseApp.php';
+require_once __DIR__.'/../../app/database/Logging.php';
+require_once __DIR__.'/Execute.php';
+require_once __DIR__.'/DatabaseApp.php';
