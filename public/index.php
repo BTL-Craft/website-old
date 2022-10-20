@@ -1,55 +1,39 @@
+
 <?php
-
-use Illuminate\Contracts\Http\Kernel;
-use Illuminate\Http\Request;
-
-define('LARAVEL_START', microtime(true));
-
 /*
 |--------------------------------------------------------------------------
-| Check If The Application Is Under Maintenance
+| 注册自动加载程序
 |--------------------------------------------------------------------------
 |
-| If the application is in maintenance / demo mode via the "down" command
-| we will load this file so that any pre-rendered content can be shown
-| instead of starting the framework, which could cause an exception.
-|
-*/
-
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-    require $maintenance;
-}
-
-/*
-|--------------------------------------------------------------------------
-| Register The Auto Loader
-|--------------------------------------------------------------------------
-|
-| Composer provides a convenient, automatically generated class loader for
-| this application. We just need to utilize it! We'll simply require it
-| into the script here so we don't need to manually load our classes.
+| 引入 Composer 自动加载器和数据库类
 |
 */
 
 require __DIR__.'/../vendor/autoload.php';
 
+
 /*
 |--------------------------------------------------------------------------
-| Run The Application
+| 环境检查
 |--------------------------------------------------------------------------
-|
-| Once we have the application, we can handle the incoming request using
-| the application's HTTP kernel. Then, we will send the response back
-| to this client's browser, allowing them to enjoy our application.
-|
 */
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+if (!file_exists(__DIR__.'/../conf/install.lock')) {
+    require __DIR__.'/../app/setup/chkenv.php';
+}
 
-$kernel = $app->make(Kernel::class);
 
-$response = $kernel->handle(
-    $request = Request::capture()
-)->send();
+/*
+|--------------------------------------------------------------------------
+| 载入引导程序。
+| 在伪静态配置里，已经转换了url，像下面这个例子一样
+| S
+| bootstrap.php会根据不同的$_GET['url']显示不同的内容
+|--------------------------------------------------------------------------
+*/
+require __DIR__.'/../app/bootstrap.php';
 
-$kernel->terminate($request, $response);
+
+
+
+
