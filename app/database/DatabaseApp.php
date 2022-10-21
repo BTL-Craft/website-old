@@ -1,7 +1,12 @@
 <?php
+
+namespace App\Database;
+
+use \DateTime;
+
 class DatabaseApp
 {
-    function register(
+    public static function register(
         $eml,
         $passwd,
         $usrname,
@@ -56,7 +61,7 @@ class DatabaseApp
     /**
     * 普通登录，传入邮箱和密码
     **/
-    function login($eml, $passwd)
+    public static function login($eml, $passwd)
     {
         $database = new Execute;
 
@@ -96,7 +101,7 @@ class DatabaseApp
         }
     }
 
-    function save_qid($eml, $qid)
+    public static function save_qid($eml, $qid)
     {
         $database = new Execute;
         $result = $database->execute_command(
@@ -145,7 +150,7 @@ class DatabaseApp
         echo '1';
     }
 
-    function remember($remem)
+    public static function remember($remem)
     {
         $token = password_hash((string)time(), PASSWORD_DEFAULT);
         $database = new Execute;
@@ -166,7 +171,7 @@ class DatabaseApp
         }
 
         $_SESSION['token'] = $token; // token存入session
-        $options = $this->load_options();
+        $options = self::load_options();
         $lifeTime = $options['session_lifetime'] * 24 * 3600;
         if ($remem == true) {
             setcookie(session_name(), session_id(), time() + $lifeTime, "/");
@@ -179,7 +184,7 @@ class DatabaseApp
     /**
     * 使用token登录
     **/
-    function login_by_token($token)
+    public static function login_by_token($token)
     {
         /*
         |--------------------------------------------------------------------------
@@ -228,7 +233,7 @@ class DatabaseApp
             ];
         }
     }
-    function clear()
+    public static function clear()
     {
         $database = new Execute;
 
@@ -249,7 +254,7 @@ class DatabaseApp
         fwrite(fopen(__DIR__ . '/../../log/' . date("Y-m-d") . '.log', 'a'), $loginfo);
     }
 
-    function load_options()
+    public static function load_options()
     {
         $database = new Execute;
         $options = $database->read_all('options');
@@ -263,13 +268,19 @@ class DatabaseApp
         ];
     }
 
-    function load_custom_text()
+    public static function load_custom_text()
     {
         $database = new Execute;
         $data = $database->read_all('custom_texts');
         for ($i = 0; $i < count($data); $i++) {
             $return[$data[$i]['key']] = $data[$i]['value'];
         }
+        /* 计算开服日期 */
+        $startdate = "2022-03-01";
+        $now = new DateTime();
+        $now_ = $now->format("Y-m-d");
+        $return['day'] = (strtotime($now_) - strtotime($startdate)) / 86400;
+
         return $return;
     }
 }

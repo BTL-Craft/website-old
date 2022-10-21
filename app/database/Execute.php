@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Database;
+
+use \PDO,\PDOStatement,\PDOException;
+
 class Execute
 {
     /*
@@ -7,11 +11,7 @@ class Execute
     | 操作数据库
     |--------------------------------------------------------------------------
     */
-    const CONFIG = json_decode(
-        file_get_contents(__DIR__ . "/../../conf/mysql.json"),
-        true
-    );
-    function connect()
+    public static function connect()
     {
         /*
         |--------------------------------------------------------------------------
@@ -22,14 +22,15 @@ class Execute
         | 返回值$conn为PDO对象
         |
         */
-        $servername = self::CONFIG['servername'];
-        $dbname = self::CONFIG['dbname'];
+        $config = json_decode(file_get_contents(__DIR__ . "/../../conf/mysql.json"), true);
+        $servername = $config['servername'];
+        $dbname = $config['dbname'];
         try {
             /* 创建连接 */
             $conn = new PDO(
                 "mysql:host=$servername;dbname=$dbname",
-                self::CONFIG['username'],
-                self::CONFIG['password']
+                $config['username'],
+                $config['password']
             );
             /* 设置 PDO 错误模式为异常 */
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -40,7 +41,7 @@ class Execute
         return $conn;
     }
 
-    function execute_command($command, $data)
+    public static function execute_command($command, $data)
     {
         /*
         |--------------------------------------------------------------------------
@@ -55,7 +56,7 @@ class Execute
         | 结果只允许返回一次，所以你应该使用WHERE子句
         |
         */
-        $conn = $this->connect(); // 创建连接
+        $conn = self::connect(); // 创建连接
         $pdo = $conn->prepare($command); // 预编译SQL语句
         if ($data == null) {
             try {
@@ -85,7 +86,7 @@ class Execute
         }
     }
 
-    function read_all($tbname)
+    public static function read_all($tbname)
     {
         /*
         |--------------------------------------------------------------------------
@@ -98,9 +99,9 @@ class Execute
         |   $data[0]['a']表示第0条数据里的a字段
         |
         */
-        $conn = $this->connect();
+        $conn = self::connect();
         $pdo = $conn->prepare("SELECT * FROM {$tbname}"); // 预编译SQL语句
-        
+
         /* 绑定与执行 */
         $pdo->execute();
         $result = $pdo->fetchAll(PDO::FETCH_ASSOC);

@@ -9,7 +9,7 @@
 |
 */
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 
 /*
@@ -18,22 +18,16 @@ require __DIR__.'/../vendor/autoload.php';
 |--------------------------------------------------------------------------
 */
 
-if (!file_exists(__DIR__.'/../conf/install.lock')) {
-    require __DIR__.'/../app/setup/chkenv.php';
+if (!file_exists(__DIR__ . '/../conf/install.lock')) {
+    require __DIR__ . '/../app/setup/chkenv.php';
 }
 
 
 /*
 |--------------------------------------------------------------------------
-| 载入引导程序。
-| 在伪静态配置里，已经转换了url，像下面这个例子一样
-| S
-| bootstrap.php会根据不同的$_GET['url']显示不同的内容
+| 设置router并运行
 |--------------------------------------------------------------------------
 */
-require __DIR__.'/../app/bootstrap.php';
-
-
-
+require __DIR__ . '/../app/router/Router.php';
 
 
