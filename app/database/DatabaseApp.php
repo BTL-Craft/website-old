@@ -53,7 +53,9 @@ class DatabaseApp
             echo '注册完成';
         }
     }
-
+    /**
+    * 普通登录，传入邮箱和密码
+    **/
     function login($eml, $passwd)
     {
         $database = new Execute;
@@ -174,6 +176,9 @@ class DatabaseApp
         echo '1';
     }
 
+    /**
+    * 使用token登录
+    **/
     function login_by_token($token)
     {
         /*
@@ -182,10 +187,10 @@ class DatabaseApp
         |--------------------------------------------------------------------------
         |
         | $token：保存在session中的token
-        | 返回值说明：
+        | 返回值
         | -1 内部错误
-        | 0  token不存在
-        | [数组] 登录成功，返回用户信息
+        | [数组]，其中state == 'logoff' token不存在
+        | [数组] 其中state == 'logoon'登录成功，返回用户信息
         |
         */
         $database = new Execute;

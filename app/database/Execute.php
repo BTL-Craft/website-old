@@ -7,7 +7,10 @@ class Execute
     | 操作数据库
     |--------------------------------------------------------------------------
     */
-
+    const CONFIG = json_decode(
+        file_get_contents(__DIR__ . "/../../conf/mysql.json"),
+        true
+    );
     function connect()
     {
         /*
@@ -19,18 +22,15 @@ class Execute
         | 返回值$conn为PDO对象
         |
         */
-        $config = json_decode(
-            file_get_contents(__DIR__."/../../conf/mysql.json"),
-            true
-        );
-
-        $servername = $config['servername'];
-        $dbname = $config['dbname'];
-
+        $servername = self::CONFIG['servername'];
+        $dbname = self::CONFIG['dbname'];
         try {
             /* 创建连接 */
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $config['username'], $config['password']);
-
+            $conn = new PDO(
+                "mysql:host=$servername;dbname=$dbname",
+                self::CONFIG['username'],
+                self::CONFIG['password']
+            );
             /* 设置 PDO 错误模式为异常 */
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
@@ -64,6 +64,7 @@ class Execute
                 return $pdo->fetch(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 Logging($e->getMessage());
+
                 return -1;
             }
         } else {
@@ -78,6 +79,7 @@ class Execute
                 return $pdo->fetch(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 Logging($e->getMessage());
+
                 return -1;
             }
         }
@@ -96,11 +98,13 @@ class Execute
         |   $data[0]['a']表示第0条数据里的a字段
         |
         */
-        $conn = $this->connect(); 
+        $conn = $this->connect();
         $pdo = $conn->prepare("SELECT * FROM {$tbname}"); // 预编译SQL语句
+        
         /* 绑定与执行 */
         $pdo->execute();
         $result = $pdo->fetchAll(PDO::FETCH_ASSOC);
+
         return $result;
     }
 }
