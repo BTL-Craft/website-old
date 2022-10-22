@@ -13,7 +13,7 @@ if ($_POST['type'] == 'captcha')
 {
     $eml = $_SESSION['eml'];
     $code = $_POST['code'];
-    $conf = json_decode(file_get_contents('../../conf/auth.json'), true);
+    $conf = json_decode(file_get_contents('../../config/auth.json'), true);
     $host = $conf['apihost']; //读配置文件，并提取出python程序的IP地址
     $data = json_decode(@file_get_contents($host));
     $right = false;

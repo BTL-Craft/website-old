@@ -22,7 +22,7 @@ class Execute
         | 返回值$conn为PDO对象
         |
         */
-        $config = json_decode(file_get_contents(__DIR__ . "/../../conf/mysql.json"), true);
+        $config = json_decode(file_get_contents(__DIR__ . "/../../config/mysql.json"), true);
         $servername = $config['servername'];
         $dbname = $config['dbname'];
         try {

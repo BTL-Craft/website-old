@@ -7,11 +7,22 @@
 
     <title>帮助中心 - BTL Craft</title>
     <link rel="stylesheet" type="text/css" href="/assets/style/markdown.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/style/sidebar.css" />
     <link rel="stylesheet" type="text/css" href="/assets/style/help.css" />
     <link href="/assets/style/loading.css" rel="stylesheet" type="text/css" />
     <script>
+    var a = 0
+    setTimeout(() => {
+      if (a == 0){
+        $('#loading').fadeIn(50)
+      }
+    }, 1000);
+        setTimeout(() => {
+      if (a == 0){
+        $('#loading-text').text('你的网络环境似乎不太好，请耐心等待加载完成')
+      }
+    }, 8000);
       window.onload = function () {
+        a = 1
         $('#loading').fadeOut(50)
         setTimeout(() => {
           $('#page').fadeIn(50)
@@ -30,77 +41,77 @@
     {{ include('/shared/navbar.twig') }}
     <aside class="sidebar" id="sidebar">
       <ul class="sidebar-links">
-        <li class="sidebar-item" id="welcome" onclick="sidebar('#help/welcome')">
+        <li class="sidebar-link" id="welcome" onclick="sidebar('#help/welcome')">
           <a href="/help" class="sidebar">介绍</a>
         </li>
         <details id="startls">
-          <summary class="sidebar-item" id="start" onclick="sidebar('#help/start')">
+          <summary class="sidebar-link" id="start" onclick="sidebar('#help/start')">
             <a href="/help/start" class="sidebar">快速上手</a>
           </summary>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/start#角色系统" class="sidebar">角色系统</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/start#更改你的皮肤" class="sidebar">更改你的皮肤</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/start#配置Mod" class="sidebar">配置Mod</a>
           </li>
         </details>
         <details id="faqls">
-          <summary class="sidebar-item" id="faq" onclick="sidebar('#help/faq')">
+          <summary class="sidebar-link" id="faq" onclick="sidebar('#help/faq')">
             <a href="/help/faq" class="sidebar">常见问题解答</a>
           </summary>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/faq#收不到验证邮件？" class="sidebar">收不到验证邮件？</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/faq#我的角色被别人占用了，我可以要回来吗？" class="sidebar">我的角色被别人占用了，我可以要回来吗？</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/faq#无法正常显示某些页面、图片、图标？" class="sidebar">无法正常显示某些页面、图片、图标？</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/faq#发生严重错误！" class="sidebar">发生严重错误！</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/faq#我应该如何加入这个服务器？" class="sidebar">我应该如何加入这个服务器？</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/faq#封禁后换个号可以玩吗？" class="sidebar">封禁后换个号可以玩吗？</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/faq#为什么需要输入验证码？" class="sidebar">为什么需要输入验证码？</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/faq#进不去服务器怎么办？" class="sidebar">进不去服务器怎么办？</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/faq#BTL Craft 支持 Minecraft 中国版（国服）吗？" class="sidebar">BTL Craft 支持 Minecraft 中国版（国服）吗？</a>
           </li>
         </details>
         <details id="rulels">
-          <summary class="sidebar-item" id="rule" onclick="sidebar('#help/rule')">
+          <summary class="sidebar-link" id="rule" onclick="sidebar('#help/rule')">
             <a href="/help/rule" class="sidebar">条例</a>
           </summary>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/rule#绝对禁止的行为" class="sidebar">绝对禁止的行为</a>
           </li>
-          <li class="sidebar-item active">
+          <li class="sidebar-link active">
             <a href="/help/rule#服务的终止" class="sidebar">服务的终止</a>
           </li>
         </details>
       </ul>
     </aside>
-    <main class="page">
-      {#         <div id="loading">
+    <main class="page" onclick="close_menu_and_sidebar()">
+              <div id="loading" style="display: none;">
             <div class="Sf-Kd mspin-medium">
                 <div>
                     <div></div>
                 </div>
             </div>
-            <p>请稍候</p>
-        </div> #}
+            <p id="loading-text">请稍候</p>
+        </div>
       <div class="page" id="page" style="display: none;">{{ page }}</div>
       <hr />
       <div style="padding-left: 3rem; padding-top: 1rem; margin-bottom: 3rem">

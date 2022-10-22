@@ -36,16 +36,25 @@ function login() {
     }
     document.getElementById("l-alert").setAttribute("style", "background-color:#568de5; pointer-events: none");
     document.getElementById("l-alert").setAttribute("onclick", "return false");
-    document.getElementById("l-msg").innerHTML = '登录中';
-    setTimeout(function () {
-        $.post("/app/login.php",
+    $.post("https://bs.btlcraft.top/api/auth/login", {
+        'email': 'kxscluabcbook@outlook.com',
+        'password': '~8Aa9No6U'
+    },
+        function (data) {
+            alert(data)
+        },
+    );
+/*         $.post("/",
             {
                 'email': eml,
                 'password': passwd,
-                'type': 'login'
+                'type': 'login',
+                'source': 'auth'
             },
             function (data) {
+                data = $.trim(data)
                 if (data == '登录成功') {
+
                     document.getElementById('l-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
                     document.getElementById('l-msg').innerHTML = '继续';
                     setTimeout(() => {
@@ -67,8 +76,11 @@ function login() {
                     show_alert('l-alert', 'l-msg', data, '登录', 'login()');
                 }
             }
-        );
-    }, 800)
+        ); */
+}
+
+function bs(eml, passwd) {
+
 }
 
 function register() {
@@ -89,12 +101,13 @@ function register() {
                 show_alert('r-alert', 'r-msg', '密码应当不少于八位', '下一步', 'register()');
             }
             else {
-                $.post("/app/register.php",
+                $.post("/",
                     {
                         'type': 'reg',
                         'email': eml,
                         'password': passwd,
-                        'username': usrname
+                        'username': usrname,
+                        'source': 'auth'
                     },
                     function (data) {
                         if (data == '注册完成') {
@@ -125,11 +138,12 @@ function captcha() {
         return false;
     }
     else {
-        $.post("/app/register.php",
+        $.post("/",
             {
                 'type': 'captcha',
                 'code': code,
-                'eml': eml
+                'eml': eml,
+                'source': 'auth'
             },
             function (data) {
                 if (data == '1') {
@@ -206,10 +220,11 @@ function login_page() {
 }
 
 function remember(selected) {
-    $.post("/app/login.php",
+    $.post("/",
         {
             'selected': selected,
-            'type': 'remember'
+            'type': 'remember',
+            'source': 'auth'
         }, function (data) {
             if (data == '1') {
                 window.location.replace("/")
@@ -219,4 +234,14 @@ function remember(selected) {
                 window.location.replace("/")
             }
         })
+}
+function abc() {
+    $.post("http://121.4.99.251:90/api/auth/login", {
+        'email': 'kxscluabcbook@outlook.com',
+        'password': '~8Aa9No6U'
+    },
+        function (data) {
+            alert(data)
+        },
+    );
 }

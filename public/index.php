@@ -18,7 +18,7 @@ require __DIR__ . '/../vendor/autoload.php';
 |--------------------------------------------------------------------------
 */
 
-if (!file_exists(__DIR__ . '/../conf/install.lock')) {
+if (!file_exists(__DIR__ . '/../config/install.lock')) {
     require __DIR__ . '/../app/setup/chkenv.php';
 }
 

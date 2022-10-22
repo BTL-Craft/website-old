@@ -4,9 +4,7 @@
         "adbario/php-encrypter": "^1.0",
         "aternos/nbt": "^1.5",
         "bramus/router": "~1.6",
-        "vlucas/phpdotenv": "^5.5",
-        "erusev/parsedown-extra": "^0.8.1",
-        "erusev/parsedown": "^1.7"
+        "vlucas/phpdotenv": "^5.5"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12"

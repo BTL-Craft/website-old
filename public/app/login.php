@@ -1,6 +1,6 @@
 <?php
 $config = json_decode(
-    file_get_contents(__DIR__."/../../conf/main.json"),
+    file_get_contents(__DIR__."/../../config/main.json"),
     true
 );
 

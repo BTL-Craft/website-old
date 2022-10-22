@@ -5,7 +5,7 @@ window.onload = function () {
 function href(url) {
     if (url == null) {
         history.replaceState(1, 1, '/user')
-        $.post("/index.php", {
+        $.post("/", {
             'url': 'user'
         },
             function (data) {

@@ -19,28 +19,28 @@ ini_set('display_errors', true);
         );
     }
 
-/*     $envPath = __DIR__ . '/../../conf/mysql.json';
+/*     $envPath = __DIR__ . '/../../config/mysql.json';
     if (!file_exists($envPath)) {
-        copy(__DIR__ . '/../../conf/mysql.json.example', $envPath);
-        unlink(__DIR__ . '/../../conf/mysql.json.example');
+        copy(__DIR__ . '/../../config/mysql.json.example', $envPath);
+        unlink(__DIR__ . '/../../config/mysql.json.example');
     }
 
-    $envPath = __DIR__ . '/../../conf/auth.json';
+    $envPath = __DIR__ . '/../../config/auth.json';
     if (!file_exists($envPath)) {
-        copy(__DIR__ . '/../../conf/auth.json.example', $envPath);
-        unlink(__DIR__ . '/../../conf/auth.json.example');
+        copy(__DIR__ . '/../../config/auth.json.example', $envPath);
+        unlink(__DIR__ . '/../../config/auth.json.example');
     }
 
-    $envPath = __DIR__ . '/../../conf/hole.json';
+    $envPath = __DIR__ . '/../../config/hole.json';
     if (!file_exists($envPath)) {
-        copy(__DIR__ . '/../../conf/hole.json.example', $envPath);
-        unlink(__DIR__ . '/../../conf/hole.json.example');
+        copy(__DIR__ . '/../../config/hole.json.example', $envPath);
+        unlink(__DIR__ . '/../../config/hole.json.example');
     }
 
-    $envPath = __DIR__ . '/../../conf/main.json';
+    $envPath = __DIR__ . '/../../config/main.json';
     if (!file_exists($envPath)) {
-        copy(__DIR__ . '/../../conf/main.json.example', $envPath);
-        unlink(__DIR__ . '/../../conf/main.json.example');
+        copy(__DIR__ . '/../../config/main.json.example', $envPath);
+        unlink(__DIR__ . '/../../config/main.json.example');
     } */
 
 

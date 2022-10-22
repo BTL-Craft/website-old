@@ -1,6 +1,6 @@
 <?php
-if (file_exists('../../conf/hole.json')) {
-    $config = json_decode(file_get_contents('../../conf/hole.json'),true);
+if (file_exists('../../config/hole.json')) {
+    $config = json_decode(file_get_contents('../../config/hole.json'),true);
     $maximum = count($config['text']);
     echo $config['text'][mt_rand(0,$maximum-1)];
 }

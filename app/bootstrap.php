@@ -2,7 +2,7 @@
 
 /* 启动会话 */
 $config = json_decode(
-    file_get_contents(__DIR__ . "/../conf/main.json"),
+    file_get_contents(__DIR__ . "/../config/main.json"),
     true
 );
 session_name($config['session_name']);

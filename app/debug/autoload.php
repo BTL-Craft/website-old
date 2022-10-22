@@ -1,6 +1,6 @@
 <?php
 
-$config = json_decode(file_get_contents(__DIR__."/../../conf/main.json"), true); 
+$config = json_decode(file_get_contents(__DIR__."/../../config/main.json"), true); 
 
 if ($config['debug'] == true) {
     switch ($_GET['key']) {

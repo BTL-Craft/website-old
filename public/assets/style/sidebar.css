@@ -16,12 +16,12 @@ aside.sidebar {
     padding-top: 4rem;
     transition: all .2s cubic-bezier(0, 0.83, 0.47, 1);
     border: 1px solid #aeaeae45;
-    padding: 0 0.5rem;
+    padding: 7rem 0.5rem 0 0.5rem;
     /* width: calc(250px - 1rem) !important; */
 }
 
 aside.sidebar ul.sidebar-links {
-    padding: 7rem 0 0 0;
+    padding: 0;
     list-style-type: none;
     display: flex;
     /* margin-top: 6rem; */
