@@ -36,9 +36,23 @@ class Web
         echo self::render_view('help.twig', $filler);
     }
 
-    public static function user($rua=null)
+    public static function user($rua)
     {
-        echo self::render_view('user.twig', DatabaseApp::load_custom_text());
+        if (is_array($rua)) {
+            if (array_key_exists('rua', $rua)) {
+                echo self::render_view($rua['rua'] . '.twig', DatabaseApp::load_custom_text(), __DIR__ . '/../../assets/view/user');
+            } else {
+                self::throw_http_error('404');
+            };
+        } else {
+            $content = DatabaseApp::load_custom_text();
+            if ($rua == null) {
+                $content['page'] = self::render_view('index.twig', DatabaseApp::load_custom_text(), __DIR__ . '/../../assets/view/user');
+            } else {
+                $content['page'] = self::render_view($rua . '.twig', DatabaseApp::load_custom_text(), __DIR__ . '/../../assets/view/user');
+            }
+            echo self::render_view('user.twig', $content);
+        }
     }
 
     public static function anti_ie()
@@ -53,12 +67,13 @@ class Web
         $context['error_message'] = $config[$code]['message'];
         $context['error_description'] = $config[$code]['description'];
 
+        header('HTTP/1.1 404 Not Found');
         echo self::render_view('error.twig', $context);
     }
 
-    public static function render_view($filename, $context)
+    public static function render_view($filename, $context, $path = __DIR__ . '/../../assets/view/')
     {
-        $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../../assets/view/');
+        $loader = new \Twig\Loader\FilesystemLoader($path);
         $twig = new \Twig\Environment($loader, ['autoescape' => false]);
 
         return $twig->render($filename, $context);

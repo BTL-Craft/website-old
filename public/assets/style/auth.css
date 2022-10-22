@@ -17,7 +17,7 @@ body {
     /* 设置body最小高度为100%窗口高度 */
     min-height: 100vh;
     /* 浅蓝背景 */
-    background-color: #cbdcf7;
+    background-color: #eaf2ff;
     /* 溢出隐藏 */
     overflow: hidden;
     /* 移除移动端点击链接时的蓝色方框 */
@@ -131,7 +131,6 @@ p.little-title {
     transition: all ease;
 }
 
-
 a {
     color: #568de5;
     text-decoration: none;
@@ -214,7 +213,7 @@ button.back {
 
 input {
     max-width: 90%;
-    background-color: #00000000;
+    background-color: #f6f9ff !important;
 }
 
 .main {
@@ -234,7 +233,7 @@ input {
 }
 
 .input-data {
-    background-color: #00000000 !;
+    background-color: #00000000;
 }
 
 .wrapper {

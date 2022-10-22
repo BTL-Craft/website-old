@@ -149,7 +149,7 @@
         padding-left: 0 !important;
     }
 
-    aside {
+    div.sidebar {
         margin-left: -15rem !important;
         width: 15rem !important;
     }

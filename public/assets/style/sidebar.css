@@ -1,5 +1,5 @@
 
-aside.sidebar {
+div.sidebar {
     /* box-shadow: 0 0 20px #aeaeae; */
     font-size: 16px;
     background-color: #FFFFFF;
@@ -15,12 +15,12 @@ aside.sidebar {
     overflow-x: hidden;
     padding-top: 4rem;
     transition: all .2s cubic-bezier(0, 0.83, 0.47, 1);
-    border: 1px solid #aeaeae45;
-    padding: 7rem 0.5rem 0 0.5rem;
+    /* border: 1px solid #aeaeae45; */
+    padding: 6rem 0.5rem 0 0.5rem;
     /* width: calc(250px - 1rem) !important; */
 }
 
-aside.sidebar ul.sidebar-links {
+div.sidebar ul.sidebar-links {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -36,29 +36,30 @@ aside.sidebar ul.sidebar-links {
 main.page {
     box-sizing: border-box;
     padding-bottom: 2rem;
-    /* margin-bottom: 2rem; */
     display: block;
-    padding-left: clamp(180px, 24vw, 245px);
-    height: 100vh;
+    padding-left: 250px;
+    height: calc(100vh - 5rem);
     overflow-y: auto;
     overflow-x: hidden;
+    margin-top: 5rem;
+    background-color: #f4f6f973;
 }
 
 div.page {
     max-width: 75rem;
     margin: 0 auto;
-    padding: 2rem 4.5rem;
+    padding: 2rem 3vw;
     display: block;
 }
 
-aside.sidebar .sidebar-item {
+div.sidebar .sidebar-item {
     font-size: 1.1rem;
     font-weight: 500;
     line-height: 1.7;
     width: calc(250px - 1rem);
 }
 
-aside.sidebar .sidebar-active {
+div.sidebar .sidebar-active {
     border-left: 5px solid #1a73e8;
     font-weight: 700;
     font-size: 1.1em;
@@ -68,21 +69,21 @@ aside.sidebar .sidebar-active {
     margin-left: -0.5rem;
 }
 
-aside.sidebar .sidebar-active a {
+div.sidebar .sidebar-active a {
     color: #1a73e8;
 }
 
-aside.sidebar .sidebar-item a {
+div.sidebar .sidebar-item a {
     color: #232323;
 }
 
-aside.sidebar .sidebar-item a,
-aside.sidebar .sidebar-active a {
+div.sidebar .sidebar-item a,
+div.sidebar .sidebar-active a {
     width: 100%;
     display: block;
 }
 
-aside.sidebar a.sidebar {
+div.sidebar a.sidebar {
     opacity: 1 !important;
     border-bottom: 0 !important;
     /* height: 400%; */
@@ -94,44 +95,44 @@ aside.sidebar a.sidebar {
     font-size: 1rem;
 }
 
-aside.sidebar a.sidebar-h3 {
+div.sidebar a.sidebar-h3 {
     margin-left: -0.5rem;
     opacity: 0.7 !important;
     border-bottom: 0 !important;
     margin-bottom: 0.3rem;
 }
 
-aside.sidebar a.sidebar-h3:hover {
+div.sidebar a.sidebar-h3:hover {
     opacity: 1.0 !important;
 }
 
-aside.sidebar li.active {
+div.sidebar li.active {
     font-size: 0.85em;
     font-weight: 400;
     margin-left: 3.5rem;
 }
 
-aside.sidebar li.sidebar-h3 {
+div.sidebar li.sidebar-h3 {
     font-size: 1em;
     font-weight: 700;
 }
 
-aside.sidebar li.sidebar-h4 {
+div.sidebar li.sidebar-h4 {
     font-size: 0.8em;
     margin-left: 4rem;
 }
 
-aside.sidebar li.sidebar-h4-active {
+div.sidebar li.sidebar-h4-active {
     font-size: 0.8em;
     font-weight: 300;
 }
 
-aside.sidebar a.sidebar-h4 {
+div.sidebar a.sidebar-h4 {
     margin-left: -0.5rem;
     border-bottom: 0 !important;
 }
 
-aside.sidebar .sidebar-item a.sidebar:hover {
+div.sidebar .sidebar-item a.sidebar:hover {
     background-color: #aeaeae45;
     border-radius: 0.4rem;
 }

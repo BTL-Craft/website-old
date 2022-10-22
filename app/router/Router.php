@@ -32,7 +32,7 @@ $Router->get('/anti-ie', function () {
 $Router->post('', function () {
     switch ($_POST['source']) {
         case 'user_center':
-            Api::user();
+            Web::user($_POST);
             break;
         
         case 'auth':
@@ -45,7 +45,6 @@ $Router->post('', function () {
 });
 
 $Router->set404(function () {
-    header('HTTP/1.1 404 Not Found');
     Web::throw_http_error('404');
 });
 

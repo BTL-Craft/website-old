@@ -39,7 +39,7 @@
 
   <body style="margin: 0">
     {{ include('/shared/navbar.twig') }}
-    <aside class="sidebar" id="sidebar">
+    <div class="sidebar" id="sidebar">
       <ul class="sidebar-links">
         <li class="sidebar-link" id="welcome" onclick="sidebar('#help/welcome')">
           <a href="/help" class="sidebar">介绍</a>
@@ -102,7 +102,7 @@
           </li>
         </details>
       </ul>
-    </aside>
+    </div>
     <main class="page" onclick="close_menu_and_sidebar()">
               <div id="loading" style="display: none;">
             <div class="Sf-Kd mspin-medium">

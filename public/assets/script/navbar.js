@@ -53,7 +53,7 @@ function sidebar() {
     if ($('#sdb-btn').attr('class') == 'icon sidebar') {
         $('#sdb-btn').fadeOut(100)
         $('.sdb').attr('style', 'pointer-events: none;')
-        $('aside').attr('style', 'box-shadow: 0 0 20px #aeaeae; margin-left: 0 !important')
+        $('div.sidebar').attr('style', 'box-shadow: 0 0 20px #aeaeae; margin-left: 0 !important')
         setTimeout(() => {
             $('#sdb-btn').attr('class', 'icon xmark')
 
@@ -61,7 +61,7 @@ function sidebar() {
         }, 100);
         $('#sdb-btn').fadeIn(100)
     } else {
-        $('aside').attr('style', 'box-shadow: none')
+        $('div.sidebar').attr('style', 'box-shadow: none')
         $('#sdb-btn').fadeOut(100)
         $('.sdb').attr('style', 'pointer-events: none;')
         setTimeout(() => {
@@ -91,7 +91,7 @@ function close_menu_and_sidebar() {
         $('#mnu-btn').fadeIn(100)
     }
     if ($('#sdb-btn').attr('class') != 'icon sidebar') {
-        $('aside').attr('style', 'box-shadow: none')
+        $('div.sidebar').attr('style', 'box-shadow: none')
         $('#sdb-btn').fadeOut(100)
         $('.sdb').attr('style', 'pointer-events: none;')
         setTimeout(() => {
