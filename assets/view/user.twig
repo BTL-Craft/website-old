@@ -24,28 +24,28 @@
       <li class="nav-header">用户中心</li>
       <ul class="sidebar-links">
         <li class="sidebar-item" id="sidebar-1">
-          <a href="javascript:href();" class="sidebar">
+          <element onclick="href();" class="sidebar">
             <i class="fa-regular nav-icon" id="nav-1"></i>
             <p>仪表盘</p>
-          </a>
+          </element>
         </li>
         <li class="sidebar-item" id="sidebar-2">
-          <a href="javascript:href('application');" class="sidebar">
+          <element onclick="href('application');" class="sidebar">
             <i class="fa-regular nav-icon" id="nav-2"></i>
             <p>填写表单</p>
-          </a>
+          </element>
         </li>
         <li class="sidebar-item" id="sidebar-3">
-          <a href="javascript:href('invite');" class="sidebar">
+          <element onclick="href('invite');" class="sidebar">
             <i class="fa-regular nav-icon" id="nav-3"></i>
             <p>邀请好友</p>
-          </a>
+          </element>
         </li>
         <li class="sidebar-item" id="sidebar-4">
-          <a href="javascript:href('profile');" class="sidebar">
+          <element onclick="href('profile');" class="sidebar">
             <i class="fa-regular nav-icon" id="nav-4"></i>
             <p>个人资料</p>
-          </a>
+          </element>
         </li>
         <li class="nav-header">浏览</li>
         <li class="sidebar-item" id="sidebar-5">
@@ -64,8 +64,9 @@
     </div>
     <main class="page" onclick="close_menu_and_sidebar()">
       <div class="page" id="main">{{ page }}</div>
-      <div style="margin-top: 1rem;height: 3.3rem;position: fixed;width: 100vw;bottom: 0;background: #fff;border: 1px solid #aeaeae45;border-left: none;line-height: 3;">
-        <p style="text-align: center;">
+      <div class="copyright">
+        <p style="text-align: center;font-size: 0.9rem;
+    line-height: 3.6;">
           Copyright 2022 <a href="/">BTL Craft</a>. 保留所有权利 | <a href="beian.miit.gov.cn">赣ICP备2022008840号</a>
         </p>
       </div>

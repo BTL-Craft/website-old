@@ -17,11 +17,13 @@ body {
     /* 设置body最小高度为100%窗口高度 */
     min-height: 100vh;
     /* 浅蓝背景 */
-    background-color: #eaf2ff;
+    /* background-color: #eaf2ff; */
     /* 溢出隐藏 */
     overflow: hidden;
     /* 移除移动端点击链接时的蓝色方框 */
     -webkit-tap-highlight-color: #00000000;
+    background: url("/assets/image/auth-bg.jpg") no-repeat center;
+    background-size: 100% 100%;
 }
 
 /**************************
@@ -30,7 +32,7 @@ body {
 .wrapper {
     margin: 0 auto;
     width: 382px;
-    background-color: #ffffff90;
+    background-color: #f6f9ff;
     /* 内边距（上下左右） */
     padding: 40px 40px;
     /* 盒子阴影 */
@@ -137,7 +139,7 @@ a {
 }
 
 a:visited {
-    color: #568de5;
+    color: #fff;
 }
 
 .btn {
