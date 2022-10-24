@@ -55,6 +55,7 @@
         /* justify-items: center; */
         /* align-items: center; */
     }
+
     .navbar p:hover {
         color: #babbbd;
     }
@@ -63,18 +64,22 @@
         font-weight: 900;
         text-align: center;
         width: 1.25em;
-        font-family: fa;
+        font-family: fa-pro;
         -webkit-font-smoothing: antialiased;
         display: inline-block;
         font-style: normal;
         font-variant: normal;
         text-rendering: auto;
         line-height: 1;
-        color: #f0f6fc;
+        /* color: #f0f6fc; */
     }
 
-    .navbar i.icon:before {
-        content: "\f2f6";
+    .navbar i.login:before {
+        content: "\f090";
+    }
+
+    .navbar i.logout:before {
+        content: "\f08b";
     }
 
     .navbar div.icon {
@@ -217,7 +222,7 @@
         }
 
         .navbar div.menu {
-            height: calc(90vh - 80px);
+            /* height: calc(90vh - 80px); */
         }
 
         .navbar div.sidebar {
@@ -310,7 +315,7 @@
         font-weight: 900;
         text-align: center;
         width: 1.25em;
-        font-family: fa;
+        font-family: fa-pro;
         -webkit-font-smoothing: antialiased;
         display: inline-block;
         font-style: normal;
@@ -319,8 +324,12 @@
         line-height: 1;
     }
 
-    .navbar i.icon:before {
-        content: "\f2f6";
+    .navbar i.login:before {
+        content: "\f090";
+    }
+
+    .navbar i.logout:before {
+        content: "\f08b";
     }
 
     .navbar div.icon {
@@ -561,3 +570,14 @@
     line-height: 1.6;
     font-size: 2rem;
 } */
+a.avater img {
+    width: 2.1rem;
+    height: 2.1rem;
+    box-shadow: 0px 0px 14px #000000ab;
+}
+a.avater {
+    display: flex !important;
+    width: 2.1rem !important;
+    align-items: center;
+    margin-left: 1rem !important;
+}

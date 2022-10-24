@@ -7,19 +7,33 @@ require_once __DIR__ . '/../parse/markdown.php';
 require_once __DIR__ . '/../parse/markdownextra.php';
 
 use App\Database\DatabaseApp;
+use Barryvdh\Reflection\DocBlock\Location;
 
 class Web
 {
     public static function index()
     {
         $value = DatabaseApp::load_custom_text();
-        $value['uid'] = null;
+        $value['uid'] = 1;
+        $value['blessing_skin_url'] = 'https://bs.btlcraft.top';
         echo self::render_view('index.twig', $value);
     }
 
-    public static function auth()
+    public static function auth($rua = null)
     {
-        echo self::render_view('auth.twig', DatabaseApp::load_custom_text());
+        switch ($rua) {
+            case null:
+                echo self::render_view('auth.twig', DatabaseApp::load_custom_text());
+                break;
+            case 'logout':
+                if (DatabaseApp::logout()) {
+                    header('Location: /');
+                }
+                break;
+            default:
+                self::throw_http_error('404');
+                break;
+        }
     }
 
     public static function help($filename)

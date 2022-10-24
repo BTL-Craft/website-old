@@ -15,9 +15,11 @@
       <div onclick="openDark(this)" class="mode-btn">
         <div></div>
       </div>
-      <li>
-        <a href="/user" class="a">用户中心</a>
-      </li>
+      {% if uid != null %}
+        <li>
+          <a href="/user" class="a">用户中心</a>
+        </li>
+      {% endif %}
       <li>
         <a href="/help" class="a">获取帮助</a>
       </li>
@@ -25,29 +27,42 @@
         <a href="https://bs.btlcraft.top" class="a">皮肤站</a>
       </li>
       {% if uid == null %}
-      <li>
-        <a href="/auth" class="a"><i class="icon"></i> 登录</a>
-      </li>
+        <li>
+          <a href="/auth" class="a"><i class="icon login"></i> 登录</a>
+        </li>
       {% else %}
-      <li>
-        <a href="/auth" class="a"><i class="icon"></i> 登录</a>
-      </li>
+        <li>
+          <a href="/auth/logout" class="a"><i class="icon logout"></i> 登出</a>
+        </li>
+      {% endif %}
+      {% if uid != null %}
+        <li>
+          <a href="/user" class="a avater"><img src="{{ blessing_skin_url }}/avatar/user/{{ uid }}" alt=""></a>
+        </li>
       {% endif %}
     </ul>
     <div class="menu" id="menu">
       <ul class="menu">
-        <li id="menu-li-1">
-          <a href="/user" class="a">用户中心</a>
-        </li>
+        {% if uid != null %}
+          <li id="menu-li-1">
+            <a href="/user" class="a">用户中心</a>
+          </li>
+        {% endif %}
         <li id="menu-li-2">
           <a href="/help" class="a">获取帮助</a>
         </li>
         <li id="menu-li-3">
           <a href="https://bs.btlcraft.top" class="a">皮肤站</a>
         </li>
-        <li id="menu-li-4">
-          <a href="/auth" class="a"><i class="icon"></i> 登录</a>
-        </li>
+        {% if uid == null %}
+          <li id="menu-li-4">
+            <a href="/auth" class="a"><i class="icon login"></i> 登录</a>
+          </li>
+        {% else %}
+          <li id="menu-li-4">
+            <a href="/auth" class="a"><i class="icon logout"></i> 登录</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </div>

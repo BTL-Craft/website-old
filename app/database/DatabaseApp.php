@@ -59,8 +59,8 @@ class DatabaseApp
         }
     }
     /**
-    * 普通登录，传入邮箱和密码
-    **/
+     * 普通登录，传入邮箱和密码
+     **/
     public static function login($eml, $passwd)
     {
         $database = new Execute;
@@ -182,8 +182,8 @@ class DatabaseApp
     }
 
     /**
-    * 使用token登录
-    **/
+     * 使用token登录
+     **/
     public static function login_by_token($token)
     {
         /*
@@ -233,6 +233,17 @@ class DatabaseApp
             ];
         }
     }
+
+    public static function logout()
+    {
+        if (array_key_exists('token', $_SESSION)) {
+            unset($_SESSION['token']);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function clear()
     {
         $database = new Execute;

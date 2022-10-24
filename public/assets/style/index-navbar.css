@@ -58,17 +58,14 @@
     font-weight: 900;
     text-align: center;
     width: 1.25em;
-    font-family: fa;
+    font-family: fa-pro;
     -webkit-font-smoothing: antialiased;
     display: inline-block;
     font-style: normal;
     font-variant: normal;
     text-rendering: auto;
     line-height: 1;
-}
-
-.navbar i.icon:before {
-    content: "\f2f6";
+    font-size: 0.9rem;
 }
 
 .navbar div.icon {
@@ -81,7 +78,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     border-radius: 10px;
-    max-height: 235px;
+    /* max-height: 235px; */
 }
 
 .navbar div.menu::-webkit-scrollbar {
@@ -193,7 +190,7 @@
         padding: 1rem;
         position: absolute;
         width: 90vw;
-        height: calc(90vh - 60px);
+        max-height: calc(90vh - 60px);
         top: 80px;
         left: 5vw;
         border: 1.5px solid #494d59;

@@ -24,8 +24,11 @@ $Router->get('', function () {
 $Router->get('/auth', function () {
     Web::auth();
 });
-$Router->get('/help/{rua}', function ($rua) {
-    Web::help($rua);
+$Router->get('/auth', function () {
+    Web::auth();
+});
+$Router->get('/auth/{rua}', function ($rua) {
+    Web::auth($rua);
 });
 $Router->get('/help', function () {
     Web::help(null);
