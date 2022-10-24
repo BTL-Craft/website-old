@@ -49,7 +49,7 @@ class Execute
         |--------------------------------------------------------------------------
         |
         | $command：要执行的SQL语句或模板，
-        | 示例：INSERT INTO `usr` (`eml`, `passwd`) VALUES (:eml, :passwd);")
+        | 示例：INSERT INTO ``users`` (`eml`, `passwd`) VALUES (:eml, :passwd);")
         | $data：要向模板中填入的信息，$data可以是数组或null，
         | 如果传入null则直接执行$command指定的SQL语句
         | 返回值为执行结果，如果是查询语句可以返回查询结果
@@ -100,7 +100,7 @@ class Execute
         |
         */
         $conn = self::connect();
-        $pdo = $conn->prepare("SELECT * FROM {$tbname}"); // 预编译SQL语句
+        $pdo = $conn->prepare("SELECT * FROM `{$tbname}`"); // 预编译SQL语句
 
         /* 绑定与执行 */
         $pdo->execute();

@@ -18,7 +18,7 @@ class DatabaseApp
         $database = new Execute;
 
         $result = $database->execute_command(
-            "SELECT * FROM usr WHERE eml=:eml",
+            "SELECT * FROM `users` WHERE eml=:eml",
             array(':eml' => $eml)
         );
 
@@ -34,7 +34,7 @@ class DatabaseApp
             return false;
         } else {
             $result = $database->execute_command(
-                "INSERT INTO `usr` (`eml`, `passwd`, `usrname`, `ip`, `reg_time`, `qq`, `submit`, `remember_token`) 
+                "INSERT INTO ``users`` (`eml`, `passwd`, `usrname`, `ip`, `reg_time`, `qq`, `submit`, `remember_token`) 
                 VALUES (:eml, :passwd, :usrname, :ip, :reg_time, :qq, :submit, :remember_token);
                 ",
                 array(
@@ -66,7 +66,7 @@ class DatabaseApp
         $database = new Execute;
 
         $result = $database->execute_command(
-            "SELECT * FROM usr WHERE eml=:eml;",
+            "SELECT * FROM `users` WHERE eml=:eml;",
             array(':eml' => $eml)
         );
 
@@ -105,7 +105,7 @@ class DatabaseApp
     {
         $database = new Execute;
         $result = $database->execute_command(
-            "SELECT * FROM usr WHERE eml=:eml",
+            "SELECT * FROM `users` WHERE eml=:eml",
             array(
                 ':eml' => $eml
             )
@@ -121,7 +121,7 @@ class DatabaseApp
 
         /* 检查QQ是否已经占用 */
         $result = $database->execute_command(
-            "SELECT * FROM usr WHERE qq=:qq",
+            "SELECT * FROM `users` WHERE qq=:qq",
             array(
                 ':qq' => $qid
             )
@@ -133,7 +133,7 @@ class DatabaseApp
 
         /* 保存QQ号到数据库 */
         $result = $database->execute_command(
-            "UPDATE usr SET qq=:qid WHERE eml=:eml",
+            "UPDATE `users` SET qq=:qid WHERE eml=:eml",
             array(
                 ':eml' => $eml,
                 ':qid' => $qid
@@ -156,7 +156,7 @@ class DatabaseApp
         $database = new Execute;
 
         $result = $database->execute_command(
-            "UPDATE usr SET `remember_token`=:remember_token WHERE eml=:eml",
+            "UPDATE `users` SET `remember_token`=:remember_token WHERE eml=:eml",
             array(
                 ':eml' => $_SESSION['eml'],
                 ':remember_token' => $token
@@ -201,7 +201,7 @@ class DatabaseApp
         $database = new Execute;
 
         $result = $database->execute_command(
-            "SELECT * FROM usr WHERE remember_token=:remember_token;",
+            "SELECT * FROM `users` WHERE remember_token=:remember_token;",
             array(':remember_token' => $token)
         );
 
@@ -249,7 +249,7 @@ class DatabaseApp
         $database = new Execute;
 
         $result = $database->execute_command(
-            "TRUNCATE TABLE usr",
+            "TRUNCATE TABLE `users`",
             null
         );
 
@@ -261,7 +261,7 @@ class DatabaseApp
             }
         }
 
-        $loginfo = '[' . date("H:i:s") . '] [MySQL/INFO]: Cleared table: usr' . "\n";
+        $loginfo = '[' . date("H:i:s") . '] [MySQL/INFO]: Cleared table: `users`' . "\n";
         fwrite(fopen(__DIR__ . '/../../log/' . date("Y-m-d") . '.log', 'a'), $loginfo);
     }
 
@@ -270,21 +270,21 @@ class DatabaseApp
         $database = new Execute;
         $options = $database->read_all('options');
         return [
-            'sitename'         => $options[0]['value'],
-            'get_qid'          => $options[1]['value'],
-            'enable_reg'       => $options[2]['value'],
-            'enable_sign_in'   => $options[3]['value'],
-            'site_url'         => $options[4]['value'],
-            'session_lifetime' => $options[5]['value']
+            'sitename'         => $options[0]['option_value'],
+            'get_qid'          => $options[1]['option_value'],
+            'enable_reg'       => $options[2]['option_value'],
+            'enable_sign_in'   => $options[3]['option_value'],
+            'site_url'         => $options[4]['option_value'],
+            'session_lifetime' => $options[5]['option_value']
         ];
     }
 
     public static function load_custom_text()
     {
         $database = new Execute;
-        $data = $database->read_all('custom_texts');
+        $data = $database->read_all('options');
         for ($i = 0; $i < count($data); $i++) {
-            $return[$data[$i]['key']] = $data[$i]['value'];
+            $return[$data[$i]['option_name']] = $data[$i]['option_value'];
         }
         /* 计算开服日期 */
         $startdate = "2022-03-01";

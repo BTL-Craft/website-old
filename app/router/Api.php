@@ -4,7 +4,7 @@ namespace App;
 
 use App\Database\DatabaseApp;
 
-/* error_reporting(0); */
+error_reporting(0);
 
 class Api
 {
@@ -44,14 +44,17 @@ class Api
         }
     }
 
-    public static function throw_http_error($code)
+    public static function get_user_info()
     {
-        $config = include __DIR__ . '/../../config/error.php';
-        $context = DatabaseApp::load_custom_text();
-        $context['error_message'] = $config[$code]['message'];
-        $context['error_description'] = $config[$code]['description'];
-
-        header('HTTP/1.1 ' . $context['error_message']);
+        if (!(array_key_exists('uid', $_SESSION) || array_key_exists('uid', $_SESSION)))
+        {
+            return false;
+        } else {
+            return [
+                'uid' => $_SESSION['uid'],
+                'username' => $_SESSION['username'],
+            ];
+        }
     }
 
     public static function recaptcha($token)
@@ -74,5 +77,15 @@ class Api
         } else {
             return true;
         }
+    }
+
+    public static function throw_http_error($code)
+    {
+        $config = include __DIR__ . '/../../config/error.php';
+        $context = DatabaseApp::load_custom_text();
+        $context['error_message'] = $config[$code]['message'];
+        $context['error_description'] = $config[$code]['description'];
+
+        header('HTTP/1.1 ' . $context['error_message']);
     }
 }

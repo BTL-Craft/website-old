@@ -350,11 +350,15 @@ a.tip:hover {
 }
 
 .remember>.n:hover {
-    background-color: #b2b2b2 !important;
+    background-color: #8e8e8e !important;
 }
 
 .remember>.y {
     background-color: #007bff;
+}
+
+.remember>.y:hover {
+    background-color: #0062cc;
 }
 
 /* ::-webkit-scrollbar {

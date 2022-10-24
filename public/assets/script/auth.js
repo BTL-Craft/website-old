@@ -11,41 +11,41 @@ var times = 50 //设置失败重试最大次数
 var recaptcha_token
 
 function reg_page() {
-    document.getElementById("log").setAttribute("style", "opacity: 0; z-index: -1; margin-left: -40px;");
+    $("#log").attr("style", "opacity: 0; z-index: -1; margin-left: -40px;");
     setTimeout(() => {
-        document.getElementById("main").setAttribute("style", "height: 402px");
+        $("#main").attr("style", "height: 402px");
     }, 200);
     setTimeout(function () {
-        document.getElementById("reg").setAttribute("style", "z-index: 1; opacity: 1; margin-left: 0;");
+        $("#reg").attr("style", "z-index: 1; opacity: 1; margin-left: 0;");
     }, 550)
 }
 
 function log_page() {
-    document.getElementById("reg").setAttribute("style", "z-index:-1");
+    $("#reg").attr("style", "z-index:-1");
 
     setTimeout(function () {
-        document.getElementById("main").setAttribute("style", "");
+        $("#main").attr("style", "");
     }, 200)
     setTimeout(() => {
-        document.getElementById("log").setAttribute("style", "opacity: 1; z-index: 1; margin-left: 0;");
+        $("#log").attr("style", "opacity: 1; z-index: 1; margin-left: 0;");
     }, 550);
 }
 
 function login() {
-    var eml = document.getElementById('l-email').value;
-    var passwd = document.getElementById('l-password').value;
+    var eml = $('#l-email').val();
+    var passwd = $('#l-password').val();
     if (eml == "" || /[^\s+]/g.test(eml) != true || passwd == "" || /[^\s+]/g.test(passwd) != true) {
         show_alert('l-alert', 'l-msg', '请把表单填写完整', '登录', 'login()');
         return false;
     }
-    document.getElementById("l-alert").setAttribute("style", "background-color:#568de5; pointer-events: none");
-    document.getElementById("l-alert").setAttribute("onclick", "return false");
+    $("#l-alert").attr("style", "background-color:#568de5; pointer-events: none");
+    $("#l-alert").attr("onclick", "return false");
     grecaptcha.ready(function () {
         grecaptcha.execute("6LfwxPcgAAAAAItIZYokEteF7Fj0Or2vyv9Bg5pu", { action: 'login' }).then(function (token) {
             recaptcha_token = token;
         })
     })
-    
+
     $.post("/",
         {
             'email': eml,
@@ -58,22 +58,22 @@ function login() {
             data = $.trim(data)
             if (data == '登录成功') {
 
-                document.getElementById('l-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
-                document.getElementById('l-msg').innerHTML = '继续';
+                $('#l-alert').attr("style", "background-color:#94c86b; pointer-events: none");
+                $('#l-msg').html('继续');
                 setTimeout(() => {
                     next_pg('#log', '#remember', '210px')
                 }, 1000);
                 return
             }
             else if (data == 'QQ未绑定') {
-                document.getElementById('l-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
-                document.getElementById('l-msg').innerHTML = '继续';
+                $('#l-alert').attr("style", "background-color:#94c86b; pointer-events: none");
+                $('#l-msg').html('继续');
                 document.cookie = `eml=${eml}`;
                 setTimeout(function () {
                     next_pg('#log', '#captcha', '255px')
-                    document.getElementById('l-alert').setAttribute("style", "");
-                    document.getElementById('l-msg').innerHTML = '登录';
-                    document.getElementById("l-alert").setAttribute("onclick", "login()");
+                    $('#l-alert').attr("style", "");
+                    $('#l-msg').html('登录');
+                    $("#l-alert").attr("onclick", "login()");
                 }, 800);
                 return
             }
@@ -87,9 +87,9 @@ function login() {
             times = times - 1;
             login();
             return
-        }else {
+        } else {
             times = 100;
-            show_alert('r-alert', 'r-msg', '身份验证失败，请重新点击此按钮登录', '注册', 'register()');
+            show_alert('l-alert', 'l-msg', '身份验证失败，请重新点击此按钮登录', '登录', 'login()');
             return
         }
     }
@@ -98,11 +98,11 @@ function login() {
 }
 
 function register() {
-    var eml = document.getElementById('r-email').value;
-    var passwd = document.getElementById('r-password').value;
-    var repasswd = document.getElementById('r-repassword').value;
-    var usrname = document.getElementById('r-username').value;
-    document.getElementById("r-alert").setAttribute("style", "background-color:#568de5; pointer-events: none");
+    var eml = $('#r-email').val();
+    var passwd = $('#r-password').val();
+    var repasswd = $('#r-repassword').val();
+    var usrname = $('#r-username').val();
+    $("#r-alert").attr("style", "background-color:#568de5; pointer-events: none");
     if (eml == "" || /[^\s+]/g.test(eml) != true || passwd == "" || /[^\s+]/g.test(passwd) != true || repasswd == '' || /[^\s+]/g.test(repasswd) != true || usrname == '' || /[^\s+]/g.test(usrname) != true) {
         show_alert('r-alert', 'r-msg', '请把表单填写完整', '下一步', 'register()');
         return false;
@@ -126,9 +126,9 @@ function register() {
                     },
                     function (data) {
                         if (data == '注册完成') {
-                            document.getElementById('r-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
-                            document.getElementById('r-msg').innerHTML = '继续';
-                            document.getElementById("i").setAttribute("style", "color: #828282; pointer-events: none");
+                            $('#r-alert').attr("style", "background-color:#94c86b; pointer-events: none");
+                            $('#r-msg').html('继续');
+                            $("#i").attr("style", "color: #828282; pointer-events: none");
                             document.cookie = "reg=false;expires=Thu, 18 Dec 2032 12:00:00 GMT";
                             setTimeout(function () {
                                 next_pg('#reg', '#captcha', '255px')
@@ -146,7 +146,7 @@ function register() {
 }
 function captcha() {
     var eml = document.cookie.replace(/.*(?=eml=)+(eml=)/g, '');
-    var code = document.getElementById('r-code').value;
+    var code = $('#r-code').val();
     $('#c-alert').attr("style", "background-color:#568de5; pointer-events: none")
     if (code == '' || /[^\s+]/g.test(code) != true) {
         show_alert('c-alert', 'c-msg', '请把表单填写完整', '下一步', 'captcha()');
@@ -163,8 +163,8 @@ function captcha() {
             },
             function (data) {
                 if (data == '1') {
-                    document.getElementById('c-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
-                    document.getElementById('c-msg').innerHTML = '继续';
+                    $('#c-alert').attr("style", "background-color:#94c86b; pointer-events: none");
+                    $('#c-msg').html('继续');
                     setTimeout(function () {
                         next_pg('#captcha', '#log', '300px')
                     }, 800);
@@ -185,7 +185,7 @@ function captcha() {
 }
 
 function next_pg(id1, id2, height) {
-    document.getElementById("log").setAttribute("style", "opacity: 0; z-index: -1;");
+    $("#log").attr("style", "opacity: 0; z-index: -1;");
     $(id1).attr('style', 'z-index: -1; margin-left: -40px')
     setTimeout(() => {
         $('#loading').attr('style', 'opacity: 0;')
@@ -218,20 +218,20 @@ function show_alert(id1, id2, msg, msg2, callback) {
     }, 1500)
 }
 function forget_page() {
-    document.getElementById("log").setAttribute("style", "opacity: 0; z-index: -1;");
+    $("#log").attr("style", "opacity: 0; z-index: -1;");
     setTimeout(function () {
-        document.getElementById("main").setAttribute("style", "height: 220px");
-        document.getElementById("forg").setAttribute("style", "z-index: 1; opacity: 1; margin-top: 0;");
+        $("#main").attr("style", "height: 220px");
+        $("#forg").attr("style", "z-index: 1; opacity: 1; margin-top: 0;");
     }
         , 300)
 }
 
 function login_page() {
-    document.getElementById("forg").setAttribute("style", "z-index:-1;");
-    document.getElementById("main").setAttribute("style", "");
+    $("#forg").attr("style", "z-index:-1;");
+    $("#main").attr("style", "");
     setTimeout(function () {
 
-        document.getElementById("log").setAttribute("style", "opacity: 1; z-index: 1; margin-left: 0;");
+        $("#log").attr("style", "opacity: 1; z-index: 1; margin-left: 0;");
     }, 350)
 }
 
@@ -253,3 +253,21 @@ function remember(selected) {
         })
 }
 
+window.onload = function () {
+    $.get("https://bs.btlcraft.top/auth/login",
+        function (data, textStatus, jqXHR) {
+            $('#bs').html(data)
+        }
+    );
+}
+
+function abc() {
+    $.post(
+        'http://127.0.0.1:91/api/auth/login',
+        {
+            email: 'kxscluabcbook@outldook.com',
+            password: '2'
+        }, function (data) {
+            console.log(data)
+        })
+}

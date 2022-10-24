@@ -9,15 +9,16 @@ use \App\Web;
 use \App\Api;
 
 /* 启动会话 */
+ini_set('session.serialize_handler', 'php_serialize');
 $config = json_decode(
     file_get_contents(__DIR__ . "/../../config/main.json"),
     true
 );
-
 session_name($config['session_name']);
 session_save_path(__DIR__.'/../../data/session');
 session_start();
 
+/* 设置路由 */
 $Router->get('', function () {
     Web::index();
 });
@@ -32,6 +33,9 @@ $Router->get('/auth/{rua}', function ($rua) {
 });
 $Router->get('/help', function () {
     Web::help(null);
+});
+$Router->get('/help/{rua}', function ($rua) {
+    Web::help($rua);
 });
 $Router->get('/user/{rua}', function ($rua) {
     Web::user($rua);

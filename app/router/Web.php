@@ -8,13 +8,14 @@ require_once __DIR__ . '/../parse/markdownextra.php';
 
 use App\Database\DatabaseApp;
 use Barryvdh\Reflection\DocBlock\Location;
+use App\Api;
 
 class Web
 {
     public static function index()
     {
         $value = DatabaseApp::load_custom_text();
-        $value['uid'] = 1;
+        $value['user'] = Api::get_user_info();
         $value['blessing_skin_url'] = 'https://bs.btlcraft.top';
         echo self::render_view('index.twig', $value);
     }
@@ -28,6 +29,8 @@ class Web
             case 'logout':
                 if (DatabaseApp::logout()) {
                     header('Location: /');
+                } else {
+                    self::throw_http_error('404');
                 }
                 break;
             default:
