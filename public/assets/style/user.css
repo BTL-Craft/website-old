@@ -161,14 +161,6 @@
         width: 250px !important;
     }
 
-    div#sidebar-overlay {
-        background-color: #000000;
-        width: 100vw;
-        height: 100vh;
-        opacity: 0;
-        transition: all .2s ease;
-    }
-
     @media (max-width: 750px) {
         div.sidebar {
             margin-left: -16.7rem !important;
@@ -455,7 +447,7 @@
     body>div {
         max-width: 1280px;
         margin: 0 auto;
-        padding-left: 2vw;
+        padding-left: 3vw;
     }
 
     ::-webkit-scrollbar {
@@ -522,9 +514,9 @@
     }
 
     div.page {
-        max-width: 75rem;
+        /* max-width: 75rem; */
         margin: 0 auto;
-        padding: 2rem 0vw 4rem 1vw;
+        padding: 2.3rem 0vw 4rem 2.8vw;
         display: block;
     }
 
@@ -739,7 +731,7 @@
     .card {
         border-radius: 0.5rem;
         /* box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%); */
-        /* background-color: #000; */
+        background-color: #0d1117;
         margin: 15px 0 0 0;
         border: 1px solid #343c47;
     }
@@ -753,17 +745,17 @@
 
     .card-header {
         /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
-        background-color: #0d1117;
+        /* background-color: #0d1117; */
     }
 
     .card-body {
         padding: 1.3rem 1.45rem;
-        background-color: #0d1117;
+        /* background-color: #0d1117; */
     }
 
     .card-footer {
         border-top: 1px solid rgba(0, 0, 0, 0.1);
-        background-color: #0d1117;
+        /* background-color: #0d1117; */
         border-radius: 0 0 0.5rem 0.5rem;
     }
 
@@ -821,7 +813,7 @@
             height: 75px;
             width: 95vw;
             position: fixed;
-            background: rgb(255, 255, 255);
+            background: #161b22;
             top: 29px;
             left: calc((100vw - 1240px)/2);
             z-index: 11;
@@ -876,5 +868,10 @@
         border: 1px solid #aeaeae45;
         border-left: none;
         line-height: 3;
+    }
+    .page li a:hover {
+        text-decoration: none;
+        background-color: #4d4d4d;
+        border: 1px solid #c3c3c3;
     }
 }

@@ -1,11 +1,22 @@
 <?php
 require __DIR__ . '/Web.php';
 require __DIR__ . '/Api.php';
+require_once __DIR__ . '/../database/Autoload.php';
 
 $Router = new \Bramus\Router\Router;
 
 use \App\Web;
 use \App\Api;
+
+/* 启动会话 */
+$config = json_decode(
+    file_get_contents(__DIR__ . "/../../config/main.json"),
+    true
+);
+
+session_name($config['session_name']);
+session_save_path(__DIR__.'/../../data/session');
+session_start();
 
 $Router->get('', function () {
     Web::index();
@@ -36,7 +47,7 @@ $Router->post('', function () {
             break;
         
         case 'auth':
-            Api::auth();
+            Api::auth($_POST);
             break;
         default:
             Web::throw_http_error('404');

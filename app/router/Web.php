@@ -12,7 +12,9 @@ class Web
 {
     public static function index()
     {
-        echo self::render_view('index.twig', DatabaseApp::load_custom_text());
+        $value = DatabaseApp::load_custom_text();
+        $value['uid'] = null;
+        echo self::render_view('index.twig', $value);
     }
 
     public static function auth()
@@ -67,7 +69,7 @@ class Web
         $context['error_message'] = $config[$code]['message'];
         $context['error_description'] = $config[$code]['description'];
 
-        header('HTTP/1.1 404 Not Found');
+        header('HTTP/1.1 ' . $context['error_message']);
         echo self::render_view('error.twig', $context);
     }
 

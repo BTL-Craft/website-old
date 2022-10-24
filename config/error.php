@@ -9,6 +9,11 @@ return [
     | 这里定义了不同种类的错误的显示信息
     |
     */
+    '400'=> [
+        'message'     => '400 Bad Request',
+        'description' => '客户端请求的语法错误',
+    ],
+
     '403'=> [
         'message'     => '403 Forbidden',
         'description' => '你没有权限访问此内容',

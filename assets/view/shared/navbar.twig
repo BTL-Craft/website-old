@@ -24,9 +24,15 @@
       <li>
         <a href="https://bs.btlcraft.top" class="a">皮肤站</a>
       </li>
+      {% if uid == null %}
       <li>
         <a href="/auth" class="a"><i class="icon"></i> 登录</a>
       </li>
+      {% else %}
+      <li>
+        <a href="/auth" class="a"><i class="icon"></i> 登录</a>
+      </li>
+      {% endif %}
     </ul>
     <div class="menu" id="menu">
       <ul class="menu">

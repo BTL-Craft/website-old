@@ -1,5 +1,5 @@
 * {
-    caret-color: #007bff;
+    caret-color: #ffffff;
     margin: 0;
     padding: 0;
     outline: none;
@@ -9,30 +9,50 @@
     user-select: none;
 }
 
+.in-wrapper {
+    color: #568de5;
+}
+
+.in-wrapper:visited {
+    color: #fff;
+}
+
 body {
     /* 弹性布局 水平垂直居中 */
+    height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
     /* 设置body最小高度为100%窗口高度 */
     min-height: 100vh;
     /* 浅蓝背景 */
     /* background-color: #eaf2ff; */
     /* 溢出隐藏 */
-    overflow: hidden;
+    overflow-y: auto;
     /* 移除移动端点击链接时的蓝色方框 */
+    overflow-x: hidden;
     -webkit-tap-highlight-color: #00000000;
     background: url("/assets/image/auth-bg.jpg") no-repeat center;
-    background-size: 100% 100%;
+    background-size: cover;
+    /* background-color: #f00; */
+    transition: backdrop-filter .3s ease;
+    justify-content: space-around;
 }
 
+body::before {
+    content: "";
+    background-color: #0000003d;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
 /**************************
 输入框动画 By 艾恩小灰灰
 **************************/
 .wrapper {
     margin: 0 auto;
     width: 382px;
-    background-color: #f6f9ff;
+    background-color: #f6f9ff3b;
     /* 内边距（上下左右） */
     padding: 40px 40px;
     /* 盒子阴影 */
@@ -49,7 +69,7 @@ body {
 }
 
 .input-data {
-    border-bottom: 2px solid #c0c0c0;
+    border-bottom: 2px solid #ffffff5c;
 }
 
 .wrapper .input-data input {
@@ -57,13 +77,14 @@ body {
     height: 100%;
     border: none;
     font-size: 17px;
+    color: #fff;
 }
 
 /* 输入框获得焦点时 */
 .wrapper .input-data input:focus~label {
     transform: translateY(-25px);
     font-size: 12px;
-    color: #2c6fdb;
+    color: #ffffff;
 }
 
 /* 输入框的值为合法时 */
@@ -78,7 +99,7 @@ body {
     position: absolute;
     bottom: 10px;
     left: 0px;
-    color: #808080;
+    color: #ffffff99;
     /* 这个属性可以使点击label穿透到输入框 */
     pointer-events: none;
     /* 现在动画有点生硬，在这里需要给动画加个过渡 */
@@ -90,20 +111,18 @@ body {
     bottom: -2px;
     height: 2px;
     width: 100%;
-    background-color: #2c6fdb;
+    background-color: #ffffff;
     /* 沿X轴缩小 */
     transform: scaleX(0);
     opacity: 0;
     /* 这里同样给动画加个过渡 */
     transition: all .5s cubic-bezier(0.85, 0, 0.05, 1);
-
 }
 
 .wrapper .input-data input:focus~.underline {
     /* 沿X轴放大 */
     transform: scaleX(1);
     opacity: 1;
-    transition: transform 0;
 }
 
 
@@ -158,7 +177,7 @@ a:visited {
     margin: 1rem 0 0 0;
     width: auto;
     background-color: #00000000;
-    color: #000000;
+    color: #ffffff;
     float: right;
     border-color: #00000000;
     transition: all .2s ease;
@@ -167,7 +186,7 @@ a:visited {
 button.bt:hover,
 input.bt:hover {
     background-color: #00000000;
-    color: #2c6fdb;
+    color: #ffffff;
 }
 
 button.forget {
@@ -204,23 +223,18 @@ i.info::before {
 }
 
 button.back:hover {
-    color: #007bff;
 }
 
 button.back {
     background-color: #00000000;
     border: none;
     transition: all .2s ease;
+    color: #fff;
 }
 
 input {
     max-width: 90%;
-    background-color: #f6f9ff !important;
-}
-
-.main {
-    margin: 0 auto;
-    position: relative;
+    background-color: #f6f9ff00 !important;
 }
 
 #l-alert,
@@ -242,6 +256,7 @@ input {
     display: flex;
     height: 299px;
     overflow: hidden;
+    backdrop-filter: blur(5px);
 }
 
 div.login,
@@ -264,7 +279,10 @@ div.remember {
 .wrapper {
     transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
-
+.wrapper {
+    background: #5e5e5e30;
+    border: 1px solid #034a8729;
+}
 div.register,
 div.captcha,
 div.login,
@@ -282,7 +300,7 @@ div.forget {
 }
 
 p.tip {
-    color: hsl(0, 0%, 50%);
+    color: hsl(0deg 0% 90%);
     font-size: 15px;
     text-align: center;
     margin-top: -10px;
@@ -306,7 +324,7 @@ a.tip:hover {
 
 .remember>.tip-title,
 .remember>.tip {
-    color: #000000;
+    color: #fff;
     text-align: left;
 }
 
@@ -332,7 +350,7 @@ a.tip:hover {
 }
 
 .remember>.n:hover {
-    background-color: rgba(0, 0, 0, .3) !important;
+    background-color: #b2b2b2 !important;
 }
 
 .remember>.y {
@@ -385,5 +403,16 @@ p.little-title {
         display: block;
         z-index: 10;
         margin-bottom: 10px;
+    }
+}
+body>div {
+    display: none;
+}
+.main {
+    display: block;
+}
+@media (prefers-color-scheme: dark) {
+    .wrapper {
+        
     }
 }

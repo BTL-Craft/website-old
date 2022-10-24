@@ -79,27 +79,6 @@ a.link:visited {
 
 /* 
 |-----------------------------------------------------
-| 滚动贴合（已弃用）
-|-----------------------------------------------------
-*/
-/* .parent-container {
-    width: 100vw;
-    height: 100vh;
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-.parent-container div.pg {
-    width: 100vw;
-    height: 100vh;
-    align-items: center;
-    scroll-snap-align: start;
-} */
-
-
-/* 
-|-----------------------------------------------------
 | 大标题
 |-----------------------------------------------------
 */
@@ -116,7 +95,8 @@ div.splash {
     background-color: rgba(73, 73, 73, 0.164);
 }
 
-div.splash p {
+div.splash h1 {
+    font-style: normal;
     font-family: minecraft_ten;
     font-size: 55px;
     color: white;
@@ -401,7 +381,7 @@ div.splash a:hover {
     background-color: rgba(73, 73, 73, 0.164);
 }
 
-.pg2 h1 {
+.pg2 h2 {
     font-size: 3rem;
 }
 
@@ -450,7 +430,7 @@ div.splash a:hover {
     padding: 0;
 }
 
-.pg3 h1 {
+.pg3 h2 {
     margin: 20px auto;
 }
 
@@ -743,7 +723,7 @@ svg.blessing-skin:hover {
     fill: hsl(55, 90%, 49%)
 }
 
-div.h1 {
+div.h2 {
     width: 1014px;
     height: 300px;
     margin: 0 auto;
@@ -772,16 +752,16 @@ div.h2 {
         padding: 20px;
     }
 
-    div.h1 {
+    div.h2 {
         width: 635px;
         height: 190px;
     }
 
-    p.h1-text {
+    p.h2-text {
         font-size: 12px;
     }
 
-    p.h1-title {
+    p.h2-title {
         font-size: 15px;
         margin: 2px 0;
     }
@@ -806,7 +786,7 @@ div.h2 {
         margin: 20px 0;
     }
 
-    div.h1 {
+    div.h2 {
         width: auto;
         height: 610px;
         margin: 0
@@ -823,7 +803,7 @@ div.h2 {
 |-----------------------------------------------------
 */
 p,
-h1 {
+h2 {
     padding: 0;
     text-align: center;
     display: block;
@@ -835,7 +815,7 @@ h1 {
         font-size: 20px;
     }
 
-    .pg1 h1 {
+    .pg1 h2 {
         font-size: 2.3em;
     }
 }
@@ -845,7 +825,7 @@ h1 {
         font-size: 24px;
     }
 
-    .pg1 h1 {
+    .pg1 h2 {
         font-size: 2.5em;
     }
 }
@@ -855,7 +835,7 @@ h1 {
         font-size: 27px;
     }
 
-    .pg1 h1 {
+    .pg1 h2 {
         font-size: 3em;
     }
 }
@@ -865,7 +845,7 @@ h1 {
         font-size: 30px;
     }
 
-    .pg1 h1 {
+    .pg1 h2 {
         font-size: 3.5em;
     }
 }
@@ -875,7 +855,7 @@ h1 {
         font-size: 33px;
     }
 
-    .pg1 h1 {
+    .pg1 h2 {
         font-size: 4em;
     }
 }

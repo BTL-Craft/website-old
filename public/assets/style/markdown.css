@@ -167,8 +167,8 @@ li>ul {
 }
 
 hr {
-    background-color: var(--light-trait-100);
-    height: 1.5px;
+    background-color: #ecedec42;
+    height: 1px;
     width: 90%;
     border: none
 }

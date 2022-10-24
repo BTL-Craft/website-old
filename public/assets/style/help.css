@@ -43,7 +43,7 @@ html {
     }
 
     h2 {
-        border-bottom: 1px solid #d8d8d8;
+        border-bottom: 1px solid #d8d8d878;
     }
 
     div.yellow-box {
@@ -83,8 +83,7 @@ html {
         background-color: #37373785;
     }
 
-    body,
-    div.sidebar {
+    body {
         background-color: #010409 !important;
     }
 
@@ -133,7 +132,7 @@ html {
     div.sidebar {
         /* box-shadow: 0 0 20px #aeaeae; */
         font-size: 16px;
-        background-color: #FFFFFF;
+        /* background-color: #FFFFFF; */
         width: clamp(180px, 24vw, 245px);
         position: fixed;
         z-index: 10;
@@ -146,6 +145,7 @@ html {
         padding-top: 4rem;
         transition: all .2s cubic-bezier(0, 0.83, 0.47, 1);
         border: 1px solid #aeaeae45;
+        background-color: #0d1117;
     }
 
     div.sidebar ul.sidebar-links {
@@ -289,6 +289,7 @@ html {
     @media (min-width: 750px) {
         div.sidebar {
             box-shadow: none !important;
+            /* background: #0d1117; */
         }
     }
 
@@ -296,7 +297,7 @@ html {
         margin-top: 1rem;
         height: 3.3rem;
         position: fixed;
-        width: calc(100vw - 250px);
+        width: 80%;
         bottom: 0;
         background: #000;
         border: 1px solid #aeaeae45;

@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="/assets/style/auth.css" />
     <link rel="stylesheet" href="/assets/style/loading.css" />
     <meta name="csrf-token" content="Y3UbpOn3Zpouw4U6zKOooV4ZVjHI5DHlbXGThkux" />
-    <!--      <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
-  -->
+    <!--        <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
+    -->
     <script src="/assets/script/jquery.js"></script>
+    <script src="https://recaptcha.net/recaptcha/api.js?render=6LfwxPcgAAAAAItIZYokEteF7Fj0Or2vyv9Bg5pu"></script>
     <link rel="icon" type="img/png" href="/assets/image/icon.png" sizes="192x192" />
     <style>
       .Sf-Kd {
@@ -26,8 +27,9 @@
         <a href="/" class="title">{{ site_name }}</a>
       </p>
       <div class="wrapper" id="main">
+        <div class="blur"></div>
         <p class="little-title">
-          <a href="/" class="title">{{ site_name }}</a>
+          <a href="/" class="title in-wrapper">{{ site_name }}</a>
         </p>
         <!-- 加载动画 -->
         <div style="margin: auto auto; width: 36px; height:36px">
@@ -40,12 +42,12 @@
         <div class="login" id="log" style="z-index: 1;opacity: 1;margin-left: 0;">
           <form onsubmit="return false;">
             <div class="input-data">
-              <input type="text" id="l-email" required />
+              <input type="text" id="l-email" title="输入电子邮箱地址" required />
               <div class="underline"></div>
               <label>Email</label>
             </div>
             <div class="input-data" style="margin: 25px 0">
-              <input type="password" id="l-password" required />
+              <input type="password" id="l-password" title="设置密码" required />
               <div class="underline"></div>
               <label>密码</label>
             </div>
@@ -61,22 +63,22 @@
           </p>
           <form onsubmit="return false;">
             <div class="input-data">
-              <input type="text" id="r-email" required />
+              <input type="text" id="r-email" title="输入电子邮箱地址" required />
               <div class="underline"></div>
               <label>电子邮箱</label>
             </div>
             <div class="input-data" style="margin-top: 25px">
-              <input type="password" id="r-password" required />
+              <input type="password" id="r-password" title="设置密码" required />
               <div class="underline"></div>
               <label>密码</label>
             </div>
             <div class="input-data" style="margin: 25px 0">
-              <input type="password" id="r-repassword" required />
+              <input type="password" id="r-repassword" title="重复密码" required />
               <div class="underline"></div>
               <label>重复密码</label>
             </div>
             <div class="input-data" style="margin:0">
-              <input type="text" id="r-username" required />
+              <input type="text" id="r-username" title="只允许字母、数字、下划线" required />
               <div class="underline"></div>
               <label>进服后要使用的玩家名</label>
             </div>
@@ -98,8 +100,8 @@
         <div class="remember" id="remember">
           <p class="tip-title">保持登录状态？</p>
           <p class="tip">保持登录状态，这样下次就不必重新登录了。</p>
-            <button class="btn y" onclick="remember(true)">是</button>
-            <button class="btn n" onclick="remember(false)">否</button>
+          <button class="btn y" onclick="remember(true)">是</button>
+          <button class="btn n" onclick="remember(false)">否</button>
         </div>
         <div class="forget" id="forg">
           <p class="tip">输入你注册时填写的电子邮箱并点击发送</p>

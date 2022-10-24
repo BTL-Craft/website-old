@@ -6,6 +6,10 @@ setTimeout(() => {
         log_page('#reg', '#captcha', '255px')
     }, 2000);
 }, 1000); */
+
+var times = 50 //设置失败重试最大次数
+var recaptcha_token
+
 function reg_page() {
     document.getElementById("log").setAttribute("style", "opacity: 0; z-index: -1; margin-left: -40px;");
     setTimeout(() => {
@@ -31,56 +35,66 @@ function login() {
     var eml = document.getElementById('l-email').value;
     var passwd = document.getElementById('l-password').value;
     if (eml == "" || /[^\s+]/g.test(eml) != true || passwd == "" || /[^\s+]/g.test(passwd) != true) {
-        show_alert('l-alert', 'l-msg', '请把上面的所有内容填写完整', '登录', 'login()');
+        show_alert('l-alert', 'l-msg', '请把表单填写完整', '登录', 'login()');
         return false;
     }
     document.getElementById("l-alert").setAttribute("style", "background-color:#568de5; pointer-events: none");
     document.getElementById("l-alert").setAttribute("onclick", "return false");
-    $.post("https://bs.btlcraft.top/api/auth/login", {
-        'email': 'kxscluabcbook@outlook.com',
-        'password': '~8Aa9No6U'
-    },
-        function (data) {
-            alert(data)
+    grecaptcha.ready(function () {
+        grecaptcha.execute("6LfwxPcgAAAAAItIZYokEteF7Fj0Or2vyv9Bg5pu", { action: 'login' }).then(function (token) {
+            recaptcha_token = token;
+        })
+    })
+    
+    $.post("/",
+        {
+            'email': eml,
+            'password': passwd,
+            'token': recaptcha_token,
+            'type': 'login',
+            'source': 'auth'
         },
-    );
-/*         $.post("/",
-            {
-                'email': eml,
-                'password': passwd,
-                'type': 'login',
-                'source': 'auth'
-            },
-            function (data) {
-                data = $.trim(data)
-                if (data == '登录成功') {
+        function (data, status) {
+            data = $.trim(data)
+            if (data == '登录成功') {
 
-                    document.getElementById('l-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
-                    document.getElementById('l-msg').innerHTML = '继续';
-                    setTimeout(() => {
-                        next_pg('#log', '#remember', '210px')
-                    }, 1000);
-                }
-                else if (data == 'QQ未绑定') {
-                    document.getElementById('l-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
-                    document.getElementById('l-msg').innerHTML = '继续';
-                    document.cookie = `eml=${eml}`;
-                    setTimeout(function () {
-                        next_pg('#log', '#captcha', '255px')
-                        document.getElementById('l-alert').setAttribute("style", "");
-                        document.getElementById('l-msg').innerHTML = '登录';
-                        document.getElementById("l-alert").setAttribute("onclick", "login()");
-                    }, 800);
-                }
-                else {
-                    show_alert('l-alert', 'l-msg', data, '登录', 'login()');
-                }
+                document.getElementById('l-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
+                document.getElementById('l-msg').innerHTML = '继续';
+                setTimeout(() => {
+                    next_pg('#log', '#remember', '210px')
+                }, 1000);
+                return
             }
-        ); */
-}
-
-function bs(eml, passwd) {
-
+            else if (data == 'QQ未绑定') {
+                document.getElementById('l-alert').setAttribute("style", "background-color:#94c86b; pointer-events: none");
+                document.getElementById('l-msg').innerHTML = '继续';
+                document.cookie = `eml=${eml}`;
+                setTimeout(function () {
+                    next_pg('#log', '#captcha', '255px')
+                    document.getElementById('l-alert').setAttribute("style", "");
+                    document.getElementById('l-msg').innerHTML = '登录';
+                    document.getElementById("l-alert").setAttribute("onclick", "login()");
+                }, 800);
+                return
+            }
+            else {
+                show_alert('l-alert', 'l-msg', data, '登录', 'login()');
+                return
+            }
+        }
+    ).fail(function () {
+        if (times >= 0) {
+            times = times - 1;
+            login();
+            return
+        }else {
+            times = 100;
+            show_alert('r-alert', 'r-msg', '身份验证失败，请重新点击此按钮登录', '注册', 'register()');
+            return
+        }
+    }
+    );
+    return;
 }
 
 function register() {
@@ -90,7 +104,7 @@ function register() {
     var usrname = document.getElementById('r-username').value;
     document.getElementById("r-alert").setAttribute("style", "background-color:#568de5; pointer-events: none");
     if (eml == "" || /[^\s+]/g.test(eml) != true || passwd == "" || /[^\s+]/g.test(passwd) != true || repasswd == '' || /[^\s+]/g.test(repasswd) != true || usrname == '' || /[^\s+]/g.test(usrname) != true) {
-        show_alert('r-alert', 'r-msg', '请把上面的所有内容填写完整', '下一步', 'register()');
+        show_alert('r-alert', 'r-msg', '请把表单填写完整', '下一步', 'register()');
         return false;
     }
     else {
@@ -107,6 +121,7 @@ function register() {
                         'email': eml,
                         'password': passwd,
                         'username': usrname,
+                        'token': recaptcha_token,
                         'source': 'auth'
                     },
                     function (data) {
@@ -134,7 +149,7 @@ function captcha() {
     var code = document.getElementById('r-code').value;
     $('#c-alert').attr("style", "background-color:#568de5; pointer-events: none")
     if (code == '' || /[^\s+]/g.test(code) != true) {
-        show_alert('c-alert', 'c-msg', '请把上面的所有内容填写完整', '下一步', 'captcha()');
+        show_alert('c-alert', 'c-msg', '请把表单填写完整', '下一步', 'captcha()');
         return false;
     }
     else {
@@ -143,6 +158,7 @@ function captcha() {
                 'type': 'captcha',
                 'code': code,
                 'eml': eml,
+                'token': recaptcha_token,
                 'source': 'auth'
             },
             function (data) {
@@ -223,8 +239,9 @@ function remember(selected) {
     $.post("/",
         {
             'selected': selected,
+            'token': recaptcha_token,
             'type': 'remember',
-            'source': 'auth'
+            'source': 'auth',
         }, function (data) {
             if (data == '1') {
                 window.location.replace("/")
@@ -235,13 +252,4 @@ function remember(selected) {
             }
         })
 }
-function abc() {
-    $.post("http://121.4.99.251:90/api/auth/login", {
-        'email': 'kxscluabcbook@outlook.com',
-        'password': '~8Aa9No6U'
-    },
-        function (data) {
-            alert(data)
-        },
-    );
-}
+
