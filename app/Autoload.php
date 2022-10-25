@@ -12,7 +12,7 @@ function requireDir($dir)
             if (filetype($filepath) == 'dir') {
                 requireDir($filepath);
             } else {
-                require_once $filepath;
+                require $filepath;
             }
         }
     }

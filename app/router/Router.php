@@ -5,8 +5,8 @@ require_once __DIR__ . '/../database/Autoload.php';
 
 $Router = new \Bramus\Router\Router;
 
-use \App\Web;
-use \App\Api;
+use \App\Router\Web;
+use \App\Router\Api;
 
 /* 启动会话 */
 ini_set('session.serialize_handler', 'php_serialize');

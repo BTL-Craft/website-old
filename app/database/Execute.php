@@ -2,6 +2,7 @@
 
 namespace App\Database;
 
+use env;
 use \PDO, \PDOException;
 
 class Execute
@@ -22,22 +23,20 @@ class Execute
         | 返回值$conn为PDO对象
         |
         */
-        $config = json_decode(file_get_contents(__DIR__ . "/../../.env.json"), true);
-        $servername = $config['database']['servername'];
-        $type = $config['database']['type'];
+        $servername = env::load('database', 'servername');
+        $type = env::load('database', 'type');
         if ($bs) {
-            $dbname = $config['blessing_skin']['dbname'];
+            $dbname = env::load('blessing_skin', 'dbname');
         } else {
-            $dbname = $config['database']['dbname'];
+            $dbname = env::load('database', 'dbname');
         }
-
 
         try {
             /* 创建连接 */
             $conn = new PDO(
                 "$type:host=$servername;dbname=$dbname",
-                $config['database']['username'],
-                $config['database']['password']
+                env::load('database', 'username'),
+                env::load('database', 'password')
             );
             /* 设置 PDO 错误模式为异常 */
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

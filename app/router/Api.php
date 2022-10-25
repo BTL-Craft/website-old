@@ -1,9 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Router;
+
+require_once __DIR__ . '/../auth/Auth.php';
 
 use App\Database\DatabaseApp;
-
+use App\Auth\Auth;
 /* error_reporting(0); */
 
 class Api
@@ -30,14 +32,36 @@ class Api
                         $parameter['password']
                     );
                 } else {
-                    self::throw_http_error('400');
+                    self::throw_http_error('403');
                 }
                 break;
 
             case 'remember':
-                Auth::remember($_POST['selected']);
+                if (self::recaptcha($parameter['token'])) {
+                } else {
+                    self::throw_http_error('403');
+                }
                 break;
 
+            case 'reg':
+                if (self::recaptcha($parameter['token'])) {
+                    Auth::register(
+                        $parameter['email'],
+                        $parameter['password'],
+                        $parameter['username']
+                    );
+                } else {
+                    self::throw_http_error('403');
+                }
+                break;
+
+            case 'qid':
+                if (self::recaptcha($parameter['token'])) {
+                    Auth::save_qid($parameter['code']);
+                } else {
+                    self::throw_http_error('403');
+                }
+                break;
             default:
                 self::throw_http_error('400');
                 break;
@@ -46,8 +70,7 @@ class Api
 
     public static function get_user_info()
     {
-        if (!(array_key_exists('uid', $_SESSION) || array_key_exists('uid', $_SESSION)))
-        {
+        if (!(array_key_exists('uid', $_SESSION) || array_key_exists('uid', $_SESSION))) {
             return false;
         } else {
             return [

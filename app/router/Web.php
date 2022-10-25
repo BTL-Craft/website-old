@@ -1,14 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Router;
 
 require_once __DIR__ . '/../database/Autoload.php';
 require_once __DIR__ . '/../parse/markdown.php';
 require_once __DIR__ . '/../parse/markdownextra.php';
 
 use App\Database\DatabaseApp;
-use Barryvdh\Reflection\DocBlock\Location;
-use App\Api;
+use App\Router\Api;
 
 class Web
 {
@@ -27,7 +26,7 @@ class Web
                 echo self::render_view('auth.twig', DatabaseApp::load_custom_text());
                 break;
             case 'logout':
-                if (DatabaseApp::logout()) {
+                if (Auth::logout()) {
                     header('Location: /');
                 } else {
                     self::throw_http_error('404');

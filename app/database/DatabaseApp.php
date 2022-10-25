@@ -6,16 +6,39 @@ use \DateTime;
 
 class DatabaseApp
 {
-    public static function clear()
+    public static function where($table, $key, $value)
     {
         $database = new Execute;
-
         $result = $database->execute_command(
-            "TRUNCATE TABLE `users`",
-            null
+            "SELECT * FROM `$table` WHERE $key=:b;",
+            array(
+                ':b' => $value
+            )
         );
 
-        /* 检查返回值*/
+        if (gettype($result) == 'integer') {
+            if ($result == -1) {
+                echo '数据库错误！请查看日志文件';
+                return -1;
+            }
+        }
+        
+        return $result;
+    }
+
+    public static function update($table, $data, $condition)
+    {
+        $database = new Execute;
+        $key = $data['key'];
+        $condition_key = $condition['key'];
+        $result = $database->execute_command(
+            "UPDATE `$table` SET $key=:value WHERE $condition_key=:condition_value;",
+            array(
+                ':value' => $data['value'],
+                ':condition_value' => $condition['value']
+            )
+        );
+
         if (gettype($result) == 'integer') {
             if ($result == -1) {
                 echo '数据库错误！请查看日志文件';
@@ -23,8 +46,7 @@ class DatabaseApp
             }
         }
 
-        $loginfo = '[' . date("H:i:s") . '] [MySQL/INFO]: Cleared table: `users`' . "\n";
-        fwrite(fopen(__DIR__ . '/../../log/' . date("Y-m-d") . '.log', 'a'), $loginfo);
+        return $result;
     }
 
     public static function load_options()

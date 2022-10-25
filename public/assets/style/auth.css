@@ -262,7 +262,7 @@ input {
 div.login,
 div.register,
 div.forget,
-div.captcha,
+div.qid,
 div.remember {
     position: fixed;
     width: 302px;
@@ -271,7 +271,7 @@ div.remember {
 div.login,
 div.register,
 div.forget,
-div.captcha,
+div.qid,
 div.remember {
     transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
@@ -284,7 +284,7 @@ div.remember {
     border: 1px solid #034a8729;
 }
 div.register,
-div.captcha,
+div.qid,
 div.login,
 div.remember {
     margin-left: 40px;
@@ -361,7 +361,7 @@ a.tip:hover {
     background-color: #0062cc;
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 8px;
 }
 
@@ -373,7 +373,7 @@ a.tip:hover {
     background-color: #568de5;
     border-radius: 10px;
 }
- */
+
 
 
 /* 小窗口 */
@@ -393,7 +393,7 @@ p.little-title {
     div.login,
     div.register,
     div.forget,
-    div.captcha,
+    div.qid,
     div.remember,
     p.little-title {
         width: calc(100vw - 80px);

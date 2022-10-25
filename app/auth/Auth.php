@@ -1,68 +1,54 @@
 <?php
 
-namespace App;
+namespace App\Auth;
 
 use App\Database\DatabaseApp;
-
-class Auth {
-    public static function register(
-        $eml,
-        $passwd,
-        $usrname,
-        $ip,
-        $reg_time,
-        $qq,
-        $submit
-    ) {
+use App\Database\Execute;
+use Vectorface\Whip\Whip;
+use \env;
+class Auth
+{
+    public static function register($eml, $passwd, $usrname)
+    {
+        // 如果IP已经注册账户，拒绝此注册请求。
+        $whip = new Whip();
+        $ip = $whip->getValidIpAddress();
         $database = new Execute;
 
-        $result = $database->execute_command(
-            "SELECT * FROM `users` WHERE eml=:eml",
-            array(':eml' => $eml)
-        );
+        if (DatabaseApp::where('users', 'ip', $ip) != false) {
+            echo '请不要重复注册账号';
+            return false;
+        }
 
-        /* 检查返回值*/
+        if (DatabaseApp::where('users', 'eml', $eml) != false) {
+            echo '邮箱已被占用';
+            return false;
+        }
+
+        $result = $database->execute_command(
+            "INSERT INTO `users` (`eml`, `passwd`, `usrname`, `ip`, `reg_time`) 
+                VALUES (:eml, :passwd, :usrname, :ip, :reg_time);
+                ",
+            array(
+                ':eml'      => $eml,
+                ':passwd'   => $passwd,
+                ':usrname'  => $usrname,
+                ':ip'       => $ip,
+                ':reg_time' => date("Y-m-d h:i:s"),
+            )
+        );
         if (gettype($result) == 'integer') {
             if ($result == -1) {
                 return -1;
             }
         }
 
-        if (@$result['eml'] == $eml) {
-            echo '邮箱已被占用';
-            return false;
-        } else {
-            $result = $database->execute_command(
-                "INSERT INTO ``users`` (`eml`, `passwd`, `usrname`, `ip`, `reg_time`, `qq`, `submit`, `remember_token`) 
-                VALUES (:eml, :passwd, :usrname, :ip, :reg_time, :qq, :submit, :remember_token);
-                ",
-                array(
-                    ':eml'      => $eml,
-                    ':passwd'   => $passwd,
-                    ':usrname'  => $usrname,
-                    ':ip'       => $ip,
-                    ':reg_time' => $reg_time,
-                    ':qq'       => $qq,
-                    ':submit'   => $submit,
-                    ':remember_token' => null
-                )
-            );
-            if (gettype($result) == 'integer') {
-                if ($result == -1) {
-                    return -1;
-                }
-            }
-
-            $_SESSION['eml'] = $eml;
-            echo '注册完成';
-        }
+        $_SESSION['eml'] = $eml;
+        echo '注册完成';
     }
-    /**
-     * 普通登录，传入邮箱和密码
-     **/
+
     public static function login($eml, $passwd)
     {
-        $config = json_decode(file_get_contents(__DIR__ . '/../../.env.json'), true);
         $database = new Execute;
 
         $result = $database->execute_command(
@@ -70,7 +56,7 @@ class Auth {
             array(':eml' => $eml)
         );
 
-        /* 检查返回值 */
+
         if (gettype($result) == 'integer') {
             if ($result == -1) {
                 echo '登录失败，数据库错误，请报告此问题';
@@ -78,20 +64,21 @@ class Auth {
             }
         }
 
-        /* 检查用户是否存在（输入值与查询结果是否匹配） */
+
         if (!is_array($result)) {
             echo '用户不存在';
             return 0;
         }
 
-        /* 检查密码 */
+
         if ($passwd == $result['passwd']) {
-            if ($result['qq'] == '0') { //检查QQ
+            if ($result['qq'] == null) {
                 echo 'QQ未绑定';
+                $_SESSION['eml'] = $eml;
                 return 2;
             } else {
-                /* 将通过后的email发送到皮肤站插件 */
-                $f = fopen($config['blessing_skin']['api_plugin_path'].'/email.txt', 'w');
+
+                $f = fopen(env::load('blessing_skin', 'api_plugin_path') . '/email.txt', 'w');
                 fwrite($f, $eml);
                 fclose($f);
 
@@ -104,61 +91,59 @@ class Auth {
         }
     }
 
-    public static function save_qid($eml, $qid)
+    public static function save_qid($code)
     {
-        $database = new Execute;
-        $result = $database->execute_command(
-            "SELECT * FROM `users` WHERE eml=:eml",
-            array(
-                ':eml' => $eml
-            )
-        );
+        if (!array_key_exists('eml', $_SESSION)) {
+            echo '请重新登录';
+            return;
+        }
 
-        /* 检查返回值*/
-        if (gettype($result) == 'integer') {
-            if ($result == -1) {
-                echo '验证失败，数据库错误，请报告此问题';
-                return -1;
+        $data = json_decode(file_get_contents(env::load('auth', 'nonebot')));
+
+        foreach ($data as $qid => $value) {
+
+            if ($value[0] == $code && $value[1] > time()) {
+
+                if (DatabaseApp::where('users', 'eml', $_SESSION['eml']) == false) {
+                    echo '请重新登录';
+                    return false;
+                }
+
+                if (DatabaseApp::where('users', 'qq', $qid) != false) {
+                    echo '-1';
+                    return false;
+                }
+
+                DatabaseApp::update(
+                    'users',
+                    array(
+                        'key' => 'qq',
+                        'value' => $qid
+                    ),
+                    array(
+                        'key' => 'eml',
+                        'value' => $_SESSION['eml']
+                    )
+                );
+                echo '1';
+                return true;
             }
         }
-
-        /* 检查QQ是否已经占用 */
-        $result = $database->execute_command(
-            "SELECT * FROM `users` WHERE qq=:qq",
-            array(
-                ':qq' => $qid
-            )
-        );
-        if ($qid == $result['qq']) {
-            echo '-1';
-            return false;
-        }
-
-        /* 保存QQ号到数据库 */
-        $result = $database->execute_command(
-            "UPDATE `users` SET qq=:qid WHERE eml=:eml",
-            array(
-                ':eml' => $eml,
-                ':qid' => $qid
-            )
-        );
-
-        /* 检查返回值*/
-        if (gettype($result) == 'integer') {
-            if ($result == -1) {
-                echo '验证失败，数据库错误，请报告此问题';
-                return -1;
-            }
-        }
-        echo '1';
+        echo '无效的验证码';
+        return false;
     }
 
     public static function remember($remem)
     {
-        $token = password_hash((string)time(), PASSWORD_DEFAULT);
-        $database = new Execute;
-
-        $_SESSION['token'] = $token; // token存入session
+        $token = substr(str_shuffle(strtoupper(sha1(time())) . sha1(time() + 201)), 0, 40);
+        $encryptMethod = env::load('session', 'encryptMethod');
+        $ivLength = openssl_cipher_iv_length($encryptMethod);
+        $iv = openssl_random_pseudo_bytes($ivLength, $isStrong);
+        if (false === $iv && false === $isStrong) {
+            die('服务器内部错误：错误代码：02。请报告此问题');
+        }
+        $encrypted = openssl_encrypt($token, $encryptMethod, 'secret', 0, $iv);
+        $_SESSION['token'] = $token;
         $options = DatabaseApp::load_options();
         $lifeTime = $options['session_lifetime'] * 24 * 3600;
         if ($remem == true) {
@@ -169,23 +154,9 @@ class Auth {
         echo '1';
     }
 
-    /**
-     * 使用token登录
-     **/
+
     public static function login_by_token($token)
     {
-        /*
-        |--------------------------------------------------------------------------
-        | 使用token登录
-        |--------------------------------------------------------------------------
-        |
-        | $token：保存在session中的token
-        | 返回值
-        | -1 内部错误
-        | [数组]，其中state == 'logoff' token不存在
-        | [数组] 其中state == 'logoon'登录成功，返回用户信息
-        |
-        */
         $database = new Execute;
 
         $result = $database->execute_command(
@@ -193,7 +164,7 @@ class Auth {
             array(':remember_token' => $token)
         );
 
-        /* 检查返回值 */
+
         if (gettype($result) == 'integer') {
             if ($result == -1) {
                 echo '登录失败，数据库错误，请报告此问题';
@@ -201,7 +172,7 @@ class Auth {
             }
         }
 
-        /* 检查token是否合法（查询结果是否匹配，不匹配则表示不存在此token） */
+
         if (is_array($result)) {
             if ($token == $result['remember_token']) {
                 return [
