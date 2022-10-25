@@ -32,6 +32,7 @@ function log_page() {
 }
 
 function login() {
+    document.cookie = "username=John Doe";
     var eml = $('#l-email').val();
     var passwd = $('#l-password').val();
     if (eml == "" || /[^\s+]/g.test(eml) != true || passwd == "" || /[^\s+]/g.test(passwd) != true) {
@@ -45,19 +46,24 @@ function login() {
             recaptcha_token = token;
         })
     })
-
     $.post("/",
         {
             'email': eml,
             'password': passwd,
             'token': recaptcha_token,
             'type': 'login',
-            'source': 'auth'
+            'source': 'auth',
         },
         function (data, status) {
             data = $.trim(data)
             if (data == '登录成功') {
-
+                $.ajax({ // 向皮肤站发送一次请求来触发登录并设置cookie
+                    'type': 'get',
+                    'url': 'http://127.0.0.1:91/api/btl',
+                    crossDomain: true,
+                    withCredential: true,
+                    'error': function () { login(); times = times--; return }
+                })
                 $('#l-alert').attr("style", "background-color:#94c86b; pointer-events: none");
                 $('#l-msg').html('继续');
                 setTimeout(() => {
@@ -84,11 +90,11 @@ function login() {
         }
     ).fail(function () {
         if (times >= 0) {
-            times = times - 1;
+            times = times--;
             login();
             return
         } else {
-            times = 100;
+            times = 50;
             show_alert('l-alert', 'l-msg', '身份验证失败，请重新点击此按钮登录', '登录', 'login()');
             return
         }
@@ -271,3 +277,15 @@ function abc() {
             console.log(data)
         })
 }
+
+/* function getCookie(cname)
+{
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i<ca.length; i++) 
+  {
+    var c = ca[i].trim();
+    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+  return "";
+} */

@@ -1,10 +1,10 @@
 <?php
-if (file_exists('../../config/hole.json')) {
-    $config = json_decode(file_get_contents('../../config/hole.json'),true);
+if (file_exists('../../data/hole.json')) {
+    $config = json_decode(file_get_contents('../../data/hole.json'),true);
     $id = count($config['text']);
     $config['text'][$id] = $_POST['text'];
     $config['ip'][$id] = getip();
-    file_put_contents('../../config/hole.json',json_encode($config, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+    file_put_contents('../../data/hole.json',json_encode($config, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
     header('Location: /hole');
 }
 else {

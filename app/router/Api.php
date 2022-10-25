@@ -4,7 +4,7 @@ namespace App;
 
 use App\Database\DatabaseApp;
 
-error_reporting(0);
+/* error_reporting(0); */
 
 class Api
 {
@@ -25,7 +25,7 @@ class Api
         switch ($parameter['type']) {
             case 'login':
                 if (self::recaptcha($parameter['token'])) {
-                    DatabaseApp::login(
+                    Auth::login(
                         $parameter['email'],
                         $parameter['password']
                     );
@@ -35,11 +35,11 @@ class Api
                 break;
 
             case 'remember':
-                DatabaseApp::remember($_POST['selected']);
+                Auth::remember($_POST['selected']);
                 break;
 
             default:
-                echo "未知错误";
+                self::throw_http_error('400');
                 break;
         }
     }

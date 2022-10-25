@@ -11,10 +11,10 @@ use \App\Api;
 /* 启动会话 */
 ini_set('session.serialize_handler', 'php_serialize');
 $config = json_decode(
-    file_get_contents(__DIR__ . "/../../config/main.json"),
+    file_get_contents(__DIR__ . "/../../.env.json"),
     true
 );
-session_name($config['session_name']);
+session_name($config['session']['session_name']);
 session_save_path(__DIR__.'/../../data/session');
 session_start();
 
@@ -57,7 +57,7 @@ $Router->post('', function () {
             Api::auth($_POST);
             break;
         default:
-            Web::throw_http_error('404');
+            Api::throw_http_error('404');
             break;
     }
 });
