@@ -282,6 +282,7 @@ div.remember {
 .wrapper {
     background: #5e5e5e30;
     border: 1px solid #034a8729;
+    box-shadow: 0px 0px 30px #00000066;
 }
 div.register,
 div.qid,

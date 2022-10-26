@@ -9,7 +9,7 @@ setInterval(() => {
         $('#pg5').attr('style', 'bottom: -69px;')
     }
     /* 滚动到底部后顶部透明 */
-    if ($(".parent-container").scrollTop() >= height) {
+    if ($("body").scrollTop() >= 0) {
         $('.top').attr('style', '')
         $('.top ul.list .a').attr('style', '')
     }

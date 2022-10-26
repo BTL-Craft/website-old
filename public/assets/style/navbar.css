@@ -221,10 +221,6 @@
             transition: all 0.3s cubic-bezier(0, 0, 0.02, 1);
         }
 
-        .navbar div.menu {
-            /* height: calc(90vh - 80px); */
-        }
-
         .navbar div.sidebar {
             height: auto;
         }
