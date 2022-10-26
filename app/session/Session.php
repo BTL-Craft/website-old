@@ -2,9 +2,12 @@
 
 namespace App\session;
 
-class Session {
+use Illuminate\Session;
+
+class Sessions extends SessionManager {
     public static function session_start()
     {
-        $_COOKIE[];
+        $session = new Session
+        return createFileDriver();
     }
 }

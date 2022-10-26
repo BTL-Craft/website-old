@@ -3,9 +3,10 @@
 namespace App\Router;
 
 require_once __DIR__ . '/../auth/Auth.php';
-
+require_once __DIR__ . '/../config/LoadConfigs.php';
 use App\Database\DatabaseApp;
 use App\Auth\Auth;
+
 /* error_reporting(0); */
 
 class Api

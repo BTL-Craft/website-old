@@ -2,21 +2,25 @@
 require __DIR__ . '/Web.php';
 require __DIR__ . '/Api.php';
 require_once __DIR__ . '/../database/Autoload.php';
+require_once __DIR__ . '/../config/LoadConfigs.php';
 
 $Router = new \Bramus\Router\Router;
 
 use \App\Router\Web;
 use \App\Router\Api;
 
+
 /* 启动会话 */
+
 ini_set('session.serialize_handler', 'php_serialize');
 $config = json_decode(
     file_get_contents(__DIR__ . "/../../.env.json"),
     true
 );
-session_name($config['session']['session_name']);
-session_save_path(__DIR__.'/../../data/session');
+session_name(env::load('session', 'session_name'));
+session_save_path(__DIR__ . '/../../data/session');
 session_start();
+
 
 /* 设置路由 */
 $Router->get('', function () {
@@ -52,7 +56,7 @@ $Router->post('', function () {
         case 'user_center':
             Web::user($_POST);
             break;
-        
+
         case 'auth':
             Api::auth($_POST);
             break;

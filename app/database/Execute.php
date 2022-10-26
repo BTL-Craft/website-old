@@ -2,7 +2,7 @@
 
 namespace App\Database;
 
-use env;
+use \env;
 use \PDO, \PDOException;
 
 class Execute
