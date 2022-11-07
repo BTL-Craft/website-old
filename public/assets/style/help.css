@@ -170,6 +170,9 @@ html {
         height: 100vh;
         overflow-y: auto;
         overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     div.page {
@@ -189,7 +192,7 @@ html {
     }
 
     div.sidebar .sidebar-active {
-        border-left: 5px solid #1a73e8;
+        border-left: 5px solid #58a6ff;
         font-weight: 700;
         font-size: 1.1em;
         line-height: 1.7;
@@ -198,7 +201,7 @@ html {
     }
 
     div.sidebar .sidebar-active a {
-        color: #4495ff;
+        color: #58a6ff;
     }
 
     div.sidebar .sidebar-link a {
@@ -262,16 +265,16 @@ html {
         margin: auto;
         margin-top: 150px;
         margin-bottom: 70px;
-        width: -7%;
         display: flex;
-        flex-wrap: nowrap;
-        align-content: center;
+        width: 400px;
+        /* align-content: center; */
+        /* justify-content: center; */
         flex-direction: column;
     }
 
     #loading p {
         color: #8e8e8e;
-        width: 101%;
+        width: 370px;
         text-align: center;
         margin-left: -.5em;
     }
@@ -297,12 +300,13 @@ html {
         margin-top: 1rem;
         height: 3.3rem;
         position: fixed;
-        width: 80%;
+        width: 100%;
         bottom: 0;
         background: #000;
         border: 1px solid #aeaeae45;
         border-left: none;
         line-height: 3;
+        /* padding-right: 50px; */
     }
 }
 
@@ -388,7 +392,7 @@ html {
     }
 
     div.page {
-        max-width: 75rem;
+        max-width: 55rem;
         margin: 0 auto;
         padding: 2rem 4.5rem;
         display: block;
@@ -510,11 +514,17 @@ html {
         margin-top: 1rem;
         height: 3.3rem;
         position: fixed;
-        width: calc(100vw - 250px);
+        width: 100vw;
         bottom: 0;
         background: #fff;
         border: 1px solid #aeaeae45;
         border-left: none;
         line-height: 3;
+    }
+}
+
+@media (min-width: 1380px) and (max-width: 1420px) {
+    .navbar {
+        transition: all 0.3s cubic-bezier(0.98, 0.03, 0.36, 1);
     }
 }

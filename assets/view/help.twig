@@ -18,7 +18,7 @@
     }, 1000);
         setTimeout(() => {
       if (a == 0){
-        $('#loading-text').text('你的网络环境似乎不太好，请耐心等待加载完成')
+        $('#loading-text').text('你的网络环境似乎不太好，请耐心等待页面加载完成')
       }
     }, 8000);
       window.onload = function () {
@@ -113,7 +113,7 @@
             <p id="loading-text">请稍候</p>
         </div>
       <div class="page" id="page" style="display: none;">{{ page }}</div>
-      <hr />
+{#       <hr>
       <div style="padding-left: 3rem; padding-top: 1rem; margin-bottom: 3rem">
         <a href="mailto:old_driver__@outlook.com" style="border-bottom: none; ">
           <span style="color: #007bff;">发送反馈</span>
@@ -122,7 +122,7 @@
             <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
           </svg>
         </a>
-      </div>
+      </div> #}
       <div class="copyright">
         <p style="text-align: center;">Copyright 2022 <a href="/">BTL Craft</a>. 保留所有权利 | <a href="beian.miit.gov.cn">赣ICP备2022008840号</a></p>
       </div>
@@ -131,7 +131,7 @@
         var url = {{url}}
         if (url != '') {
           $('#' + url).attr('class', 'sidebar-active')
-          $('#' + url + 'ls').attr('opzen', '')
+          $('#' + url + 'ls').attr('open', '')
         } else {
           $('#welcome').attr('class', 'sidebar-active')
         }

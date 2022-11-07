@@ -6,7 +6,7 @@
     -moz-animation: mspin-rotate 1568.63ms infinite linear;
     animation: mspin-rotate 1568.63ms infinite linear;
     transition: opacity .3s ease;
-    margin: auto;
+    margin: 0px 159px;
 }
 
 .mspin-medium>div {

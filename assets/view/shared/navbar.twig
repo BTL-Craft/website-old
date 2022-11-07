@@ -15,6 +15,9 @@
       <div onclick="openDark(this)" class="mode-btn">
         <div></div>
       </div>
+      <li class="feedback">
+        <a href="/help" class="a">反馈</a>
+      </li>
       {% if user.uid != null %}
         <li>
           <a href="/user" class="a">用户中心</a>
@@ -26,21 +29,15 @@
       <li>
         <a href="https://bs.btlcraft.top" class="a">皮肤站</a>
       </li>
-      {% if user.uid == null %}
-        <li>
-          <a href="/auth" class="a"><i class="icon login"></i> 登录</a>
-        </li>
-      {% else %}
-        <li>
-          <a href="/auth/logout" class="a"><i class="icon logout"></i> 登出</a>
-        </li>
-      {% endif %}
-      {% if user.uid != null %}
-        <li>
-          <a href="/user" class="a avater"><img src="{{ blessing_skin_url }}/avatar/user/{{ uid }}" alt=""></a>
-        </li>
-      {% endif %}
     </ul>
+    {% if user.uid == null %}
+      <a href="/auth" class="a"><i class="icon login"></i> 登录</a>
+    {% else %}
+      <a href="/auth/logout" class="a"><i class="icon logout"></i> 登出</a>
+    {% endif %}
+    {% if user.uid != null %}
+      <a href="/user" class="a avater"><img src="{{ blessing_skin_url }}/avatar/user/{{ uid }}" alt="" /></a>
+    {% endif %}
     <div class="menu" id="menu">
       <ul class="menu">
         {% if user.uid != null %}

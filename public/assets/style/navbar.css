@@ -9,7 +9,6 @@
         left: 2.5vw;
         z-index: 11;
         border-radius: 10px;
-        transition: all 0.3s cubic-bezier(0.98, 0.03, 0.36, 1);
         display: flex;
         justify-content: center;
         border: 1px solid #ffffff45;
@@ -21,7 +20,8 @@
         display: flex;
     }
 
-    .navbar ul.list .a {
+    .navbar ul.list .a,
+    .navbar>div>.a, .navbar>div>.a:visited  {
         display: block;
         width: 80px;
         text-align: center;
@@ -32,14 +32,16 @@
         font-family: Harmony;
     }
 
-    .navbar ul.list .a:hover {
+    .navbar ul.list .a:hover,
+    .navbar>div>.a:hover,
+    .navbar>div>.a:hover:visited {
         color: #babbbd;
     }
 
     .navbar a.link {
         text-decoration: none;
         font-size: 27px;
-        margin: -7px auto 0 0;
+        margin: -7px 0 0 0;
         color: #f0f6fc;
         opacity: 1 !important;
         border-bottom: 0 !important;
@@ -164,7 +166,8 @@
             left: 0.6rem;
         }
 
-        .navbar ul.list {
+        .navbar ul.list,
+        .navbar>div>.a {
             display: none;
         }
 
@@ -260,7 +263,6 @@
         z-index: 11;
         border-radius: 10px;
         box-shadow: 0px 0px 10px rgb(0 0 0 / 20%);
-        transition: all 0.3s cubic-bezier(0.98, 0.03, 0.36, 1);
         display: flex;
         justify-content: center;
     }
@@ -271,7 +273,9 @@
         display: flex;
     }
 
-    .navbar ul.list .a {
+    .navbar ul.list .a,
+    .navbar>div>.a,
+    .navbar>div>.a:visited {
         display: block;
         width: 80px;
         background-color: #00000000;
@@ -283,7 +287,9 @@
         font-family: Harmony;
     }
 
-    .navbar ul.list .a:hover {
+    .navbar ul.list .a:hover,
+    .navbar>div>.a:hover,
+    .navbar>div>.a:hover:visited {
         color: #0e0e0e
     }
 
@@ -410,7 +416,8 @@
             left: 0.6rem;
         }
 
-        .navbar ul.list {
+        .navbar ul.list,
+        .navbar>div>.a {
             display: none;
         }
 
@@ -468,7 +475,7 @@
         }
 
         .navbar div.menu {
-            height: calc(90vh - 80px);
+            /* height: calc(90vh - 80px); */
         }
 
         .navbar div.sidebar {
@@ -571,9 +578,14 @@ a.avater img {
     height: 2.1rem;
     box-shadow: 0px 0px 14px #000000ab;
 }
+
 a.avater {
     display: flex !important;
     width: 2.1rem !important;
     align-items: center;
     margin-left: 1rem !important;
+}
+
+.navbar>div>.a {
+    margin-left: auto;
 }

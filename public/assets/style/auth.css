@@ -27,9 +27,9 @@ body {
     /* 浅蓝背景 */
     /* background-color: #eaf2ff; */
     /* 溢出隐藏 */
-    overflow-y: auto;
+    
     /* 移除移动端点击链接时的蓝色方框 */
-    overflow-x: hidden;
+    overflow: hidden;
     -webkit-tap-highlight-color: #00000000;
     background: url("/assets/image/auth-bg.jpg") no-repeat center;
     background-size: cover;
@@ -40,7 +40,7 @@ body {
 
 body::before {
     content: "";
-    background-color: #0000003d;
+    /* background-color: #0000003d; */
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -152,6 +152,7 @@ p.little-title {
     text-align: center;
     width: 100%;
     transition: all ease;
+    text-shadow: 0px 0px 30px #0000008c;
 }
 
 a {
@@ -259,7 +260,7 @@ input {
     display: flex;
     height: 299px;
     overflow: hidden;
-    backdrop-filter: blur(5px);
+    /* backdrop-filter: blur(0px); */
 }
 
 div.login,
@@ -283,9 +284,9 @@ div.remember {
     transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 .wrapper {
-    background: #5e5e5e30;
-    border: 1px solid #034a8729;
-    box-shadow: 0px 0px 30px #00000066;
+    background: #2f2f2f45;
+    border: 1px solid #00000026;
+    /* box-shadow: 0px 0px 30px #00000038; */
 }
 div.register,
 div.qid,
@@ -308,7 +309,7 @@ p.tip {
     font-size: 15px;
     text-align: center;
     margin-top: -10px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 a.tip {
@@ -326,18 +327,19 @@ a.tip:hover {
     color: #007bff;
 }
 
-.remember>.tip-title,
-.remember>.tip {
+p.tip-title,
+p.tip {
     color: #fff;
     text-align: left;
 }
 
-.remember>.tip-title {
+p.tip-title {
     font-size: 1.5rem;
-    margin-bottom: 32px;
+    margin-bottom: 17px;
+    /* margin-left: -10px; */
 }
 
-.remember>.tip {
+p.tip {
     font-size: .9375rem;
 }
 
@@ -391,7 +393,7 @@ p.little-title {
         height: 100vh !important;
         border-radius: 0;
         display: block;
-        /* transition: width .3s ease; */
+        transition: none;
     }
 
     div.login,

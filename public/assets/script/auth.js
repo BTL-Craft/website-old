@@ -68,7 +68,7 @@ function login() {
                     withCredential: true,
                     'error': function () { login(); times = times--; return }
                 })
-                $('#l-alert').attr("style", "background-color:#94c86b; pointer-events: none");
+                $('#l-alert').attr("style", "background-color:#2da44e; pointer-events: none");
                 $('#l-msg').html('继续');
                 setTimeout(() => {
                     next_pg('#log', '#remember', '210px')
@@ -77,7 +77,7 @@ function login() {
                 return
             }
             else if (data == 'QQ未绑定') {
-                $('#l-alert').attr("style", "background-color:#94c86b; pointer-events: none");
+                $('#l-alert').attr("style", "background-color:#2da44e; pointer-events: none");
                 $('#l-msg').html('继续');
                 document.cookie = `eml=${eml}`;
                 setTimeout(function () {
@@ -143,7 +143,7 @@ function register() {
                     function (data) {
                         data = $.trim(data)
                         if (data == '注册完成') {
-                            $('#r-alert').attr("style", "background-color:#94c86b; pointer-events: none");
+                            $('#r-alert').attr("style", "background-color:#2da44e; pointer-events: none");
                             $('#r-msg').html('继续');
                             $("#i").attr("style", "color: #828282; pointer-events: none");
                             document.cookie = "reg=false;expires=Thu, 18 Dec 2032 12:00:00 GMT";
@@ -195,7 +195,7 @@ function qid() {
             function (data) {
                 data = $.trim(data)
                 if (data == '1') {
-                    $('#c-alert').attr("style", "background-color:#94c86b; pointer-events: none");
+                    $('#c-alert').attr("style", "background-color:#2da44e; pointer-events: none");
                     $('#c-msg').html('继续');
                     setTimeout(function () {
                         next_pg('#qid', '#log', '300px')
@@ -265,10 +265,9 @@ function show_alert(id1, id2, msg, msg2, callback) {
     }, 1500)
 }
 function forget_page() {
-    data = $.trim(data)
     $("#log").attr("style", "opacity: 0; z-index: -1;");
     setTimeout(function () {
-        $("#main").attr("style", "height: 220px");
+        $("#main").attr("style", "height: 280px");
         $("#forg").attr("style", "z-index: 1; opacity: 1; margin-top: 0;");
     }
         , 300)
