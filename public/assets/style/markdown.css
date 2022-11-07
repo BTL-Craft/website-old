@@ -206,9 +206,6 @@ ol:first-child {
     margin-top: 0.35%;
 }
 
-ul:last-child,
-ol:last-child {}
-
 mark,
 .ty-file-search-match-text,
 .md-search-hit {
@@ -769,17 +766,31 @@ img {
     border: #00000000;
 }
 div.yellow-box {
-    background-color: rgba(255, 229, 100, .3);
-    border-left: 0.3rem solid #e7c000;
-    padding: 20px;
-    color: #6b5900;
     margin: 0.8em 0;
+    color: #6b5900;
+    margin-left: 1.75px;
+    margin-right: 0px;
+    border: 1px solid #e7c000;
+    padding: 20px 16px 10px 22px;
+    background-color: rgba(255, 229, 100, .3);
+    border-radius: 8px;
 }
 
 div.red-box {
     background-color: #ffe6e6;
-    border-left: 0.3rem solid #c00;
-    padding: 20px;
     color: #4d0000;
     margin: 0.8em 0;
+    margin-left: 1.75px;
+    margin-right: 0px;
+    border: 1px solid #c00;
+    padding: 20px 16px 10px 22px;
+    border-radius: 8px;
+}
+
+blockquote {
+    border-radius: 10px;
+    margin-left: 1.75px;
+    margin-right: 0px;
+    border: 1px solid #686868;
+    padding: 10px 16px 10px 22px;
 }

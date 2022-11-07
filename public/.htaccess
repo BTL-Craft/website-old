@@ -2,14 +2,14 @@
 
     RewriteEngine On
 
-    # You may need to uncomment the following line for some hosting environments,
-    # if you have installed to a subdirectory, enter the name here also.
+    # 对于某些托管环境，您可能需要取消注释以下行，
+    # 如果已安装到子目录，请在此处输入名称。
     #
     # RewriteBase /
 
     # 保护关键文件
     RewriteRule (^\.|/\.) - [F]
-    RewriteRule ^storage/.* - [F]
+    RewriteRule ^data/.* - [F]
     # 去除末尾斜杠
     RewriteCond %{HTTP:X-Forwarded-Proto} ^https$
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -21,7 +21,7 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
-    # 转换URL以支持router
+    # 路由器支持
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule . index.php [L]

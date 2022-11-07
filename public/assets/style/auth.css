@@ -237,7 +237,7 @@ button.back {
 }
 
 input {
-    max-width: 90%;
+    /* max-width: 90%; */
     background-color: #f6f9ff00 !important;
 }
 

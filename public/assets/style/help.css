@@ -47,19 +47,10 @@ html {
     }
 
     div.yellow-box {
-        background-color: rgba(255, 229, 100, .3);
-        border-left: 0.3rem solid #e7c000;
-        padding: 20px;
-        color: #6b5900;
-        margin: 0.8em 0;
     }
 
     div.red-box {
         background-color: #ff00004a;
-        border-left: 0.3rem solid #c00;
-        padding: 20px;
-        color: #4d0000;
-        margin: 0.8em 0;
     }
 
     .md-fences,
@@ -78,8 +69,8 @@ html {
     blockquote {
         margin-left: 1.75px;
         margin-right: 0px;
-        border-left: 0.3rem solid #686868;
-        padding: 10px 14px 7px 22px;
+        border: 1px solid #686868;
+        padding: 10px 16px 10px 22px;
         background-color: #37373785;
     }
 
