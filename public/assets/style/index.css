@@ -19,13 +19,13 @@ section.a {
 
 }
 
-.navbar {
+.navbar, .navbar>div {
     width: 100vw;
     height: 4.6rem;
     margin-left: -0.6rem;
     position: fixed;
     z-index: 100;
-    background-color: #fff;
+    /* background-color: #fff; */
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -139,6 +139,22 @@ section.a {
     content: "\f00d";
 }
 
+.navbar i.icon {
+    font-weight: 900;
+    text-align: center;
+    width: 1.25em;
+    font-family: fa-pro;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+.navbar i.login:before {
+    content: "\f090";
+}
 @media (min-width:751px) {
 
     .navbar div.menu,
@@ -176,18 +192,14 @@ section.a {
     .navbar ul.list {
         display: none;
     }
-
-    .navbar a.link {
-        /* margin: auto; */
-    }
 }
 
 section.a {
     height: 100vh;
-    background: url(/assets/image/2022-10-26_09.25.14.png) no-repeat fixed center;
+    background: url(/assets/image/2022-10-26_09.25.14.webp) no-repeat fixed center;
     background-size: cover;
     overflow: hidden;
-    min-height: 420px;
+    min-height: 300px;
 }
 
 section.a .splash {
@@ -215,7 +227,7 @@ section.a .splash>div {
 
 section.a .splash a,
 section.a .splash p {
-    border-radius: 5px;
+    border-radius: 7px;
     color: #fff;
     padding: .6em 2em;
     pointer-events: all;
@@ -225,7 +237,7 @@ section.a .splash p {
 
 section.a .splash p {
     border: none;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 section.a .splash a:hover {

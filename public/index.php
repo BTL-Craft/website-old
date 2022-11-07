@@ -18,5 +18,3 @@ if (!file_exists(__DIR__ . '/../data/install.lock')) {
 */
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../app/router/Router.php';
-
-

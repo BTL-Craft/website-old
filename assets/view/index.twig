@@ -16,6 +16,7 @@
         $('#loading').fadeOut(150)
       }
     </script>
+    <title>{{ site_name }}</title>
   </head>
   <body>
     {{ include('/shared/navbar.twig') }}
@@ -28,34 +29,6 @@
         <a href="#about">了解更多</a>
       </div>
     </section>
-{#     <section class="b">
-      <div class="row">
-        <div class="col-md-1">
-          <hr />
-          <p>Survival Server</p>
-        </div>
-        <div class="col-md-2">
-          <div class="image"></div>
-        </div>
-        <div class="col-md-3">
-          <h2>生存服</h2>
-          <p>{{ site_name }}生存服，这是{{ site_name }}的第一个服务器，今天是开服的第{{ day }}天</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <hr />
-          <p>Creative Server</p>
-        </div>
-        <div class="col-md-5">
-          <div></div>
-        </div>
-        <div class="col-md-6">
-          <h2>创造服</h2>
-          <p>在这里设计出你想象中</p>
-        </div>
-      </div>
-    </section> #}
     <script src="/assets/script/copyright.js"></script>
     <script>
       setInterval(() => {

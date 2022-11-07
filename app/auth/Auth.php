@@ -6,19 +6,22 @@ use App\Database\DatabaseApp;
 use App\Database\Execute;
 use Vectorface\Whip\Whip;
 use \env;
+
 class Auth
 {
     public static function register($eml, $passwd, $usrname)
     {
-        // 如果IP已经注册账户，拒绝此注册请求。
         $whip = new Whip();
         $ip = $whip->getValidIpAddress();
         $database = new Execute;
 
-        if (DatabaseApp::where('users', 'ip', $ip) != false) {
-            echo '请不要重复注册账号';
-            return false;
+        if (env::load('auth', 'single_ip_restrictions') == true) {
+            if (DatabaseApp::where('users', 'ip', $ip) != false) {
+                echo '请不要重复注册账号';
+                return false;
+            }
         }
+
 
         if (DatabaseApp::where('users', 'eml', $eml) != false) {
             echo '邮箱已被占用';

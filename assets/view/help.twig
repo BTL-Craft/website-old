@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
-    <title>帮助中心 - BTL Craft</title>
+    <title>帮助中心 - {{ site_name }}</title>
     <link rel="stylesheet" type="text/css" href="/assets/style/markdown.css" />
     <link rel="stylesheet" type="text/css" href="/assets/style/help.css" />
     <link href="/assets/style/loading.css" rel="stylesheet" type="text/css" />
@@ -131,7 +131,7 @@
         var url = {{url}}
         if (url != '') {
           $('#' + url).attr('class', 'sidebar-active')
-          $('#' + url + 'ls').attr('open', '')
+          $('#' + url + 'ls').attr('opzen', '')
         } else {
           $('#welcome').attr('class', 'sidebar-active')
         }
