@@ -14,7 +14,7 @@ use \App\Router\Api;
 
 ini_set('session.serialize_handler', 'php_serialize');
 $config = json_decode(
-    file_get_contents(__DIR__ . "/../../.env.json"),
+    file_get_contents(__DIR__ . "/../../env.json"),
     true
 );
 session_name(env::load('session', 'session_name'));
