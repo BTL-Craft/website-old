@@ -118,20 +118,7 @@ html {
 
 
     div.sidebar {
-        font-size: 16px;
-        width: clamp(180px, 24vw, 245px);
-        position: fixed;
-        z-index: 10;
-        margin: 0;
-        top: 0px;
-        left: 0;
-        bottom: 0;
-        box-sizing: border-box;
-        overflow-y: auto;
-        padding-top: 4rem;
-        transition: all .2s cubic-bezier(0, 0.83, 0.47, 1);
-        border: 1px solid #aeaeae45;
-        background-color: #0d1117;
+        background-color: #0d1117 !important;
     }
 
     div.sidebar ul.sidebar-links {
@@ -313,19 +300,6 @@ html {
 
 
     div.sidebar {
-        font-size: 16px;
-        width: clamp(180px, 24vw, 245px);
-        position: fixed;
-        z-index: 10;
-        margin: 0;
-        top: 0px;
-        left: 0;
-        bottom: 0;
-        box-sizing: border-box;
-        overflow-y: auto;
-        padding-top: 4rem;
-        transition: left .2s cubic-bezier(0, 0.83, 0.47, 1);
-        border: 1px solid #aeaeae45;
     }
 
     div.sidebar ul.sidebar-links {
@@ -506,5 +480,5 @@ div.sidebar {
     padding-top: 4rem;
     transition: all .2s cubic-bezier(0, 0.83, 0.47, 1);
     border: 1px solid #aeaeae45;
-    background-color: #0d1117;
+    background: #ffffff;
 }

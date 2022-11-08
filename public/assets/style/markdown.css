@@ -89,9 +89,6 @@ h6 {
     font-weight: 700;
     line-height: 1.25;
     cursor: text;
-    /* margin-top: -3.4rem; */
-    /* padding-top: 4.8rem; */
-    margin-left: -0.8rem;
 }
 
 h1:hover a.anchor,
