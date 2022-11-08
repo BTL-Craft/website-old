@@ -46,9 +46,6 @@ html {
         border-bottom: 1px solid #d8d8d878;
     }
 
-    div.yellow-box {
-    }
-
     div.red-box {
         background-color: #ff00004a;
     }
@@ -121,9 +118,7 @@ html {
 
 
     div.sidebar {
-        /* box-shadow: 0 0 20px #aeaeae; */
         font-size: 16px;
-        /* background-color: #FFFFFF; */
         width: clamp(180px, 24vw, 245px);
         position: fixed;
         z-index: 10;
@@ -150,28 +145,6 @@ html {
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
-    }
-
-    main.page {
-        box-sizing: border-box;
-        padding-bottom: 2rem;
-        /* margin-bottom: 2rem; */
-        display: block;
-        padding-left: clamp(180px, 24vw, 245px);
-        height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    div.page {
-        max-width: 75rem;
-        margin: 0 auto;
-        padding: 2rem 4.5rem;
-        display: block;
-        /* background-color: rgb(0 0 0 / 0%); */
     }
 
     div.sidebar .sidebar-link {
@@ -283,7 +256,6 @@ html {
     @media (min-width: 750px) {
         div.sidebar {
             box-shadow: none !important;
-            /* background: #0d1117; */
         }
     }
 
@@ -341,9 +313,7 @@ html {
 
 
     div.sidebar {
-        /* box-shadow: 0 0 20px #aeaeae; */
         font-size: 16px;
-        background-color: #FFFFFF;
         width: clamp(180px, 24vw, 245px);
         position: fixed;
         z-index: 10;
@@ -354,7 +324,7 @@ html {
         box-sizing: border-box;
         overflow-y: auto;
         padding-top: 4rem;
-        transition: all .2s cubic-bezier(0, 0.83, 0.47, 1);
+        transition: left .2s cubic-bezier(0, 0.83, 0.47, 1);
         border: 1px solid #aeaeae45;
     }
 
@@ -369,24 +339,6 @@ html {
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
-    }
-
-    main.page {
-        box-sizing: border-box;
-        padding-bottom: 2rem;
-        /* margin-bottom: 2rem; */
-        display: block;
-        padding-left: clamp(180px, 24vw, 245px);
-        height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    div.page {
-        max-width: 55rem;
-        margin: 0 auto;
-        padding: 2rem 4.5rem;
-        display: block;
     }
 
     div.sidebar .sidebar-link {
@@ -518,4 +470,41 @@ html {
     .navbar {
         transition: all 0.3s cubic-bezier(0.98, 0.03, 0.36, 1);
     }
+}
+
+main.page {
+    box-sizing: border-box;
+    padding-bottom: 2rem;
+    display: block;
+    padding-left: clamp(180px, 24vw, 245px);
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.page {
+    max-width: 55rem;
+    margin: 0 auto;
+    padding: 2rem 3.5rem;
+    display: block;
+}
+
+div.sidebar {
+    font-size: 16px;
+    width: clamp(180px, 24vw, 245px);
+    position: fixed;
+    z-index: 10;
+    margin: 0;
+    top: 0px;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    padding-top: 4rem;
+    transition: all .2s cubic-bezier(0, 0.83, 0.47, 1);
+    border: 1px solid #aeaeae45;
+    background-color: #0d1117;
 }

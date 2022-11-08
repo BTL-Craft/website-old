@@ -765,6 +765,15 @@ img {
     background-color: #00000000;
     border: #00000000;
 }
+
+blockquote {
+    border-radius: 10px;
+    margin-left: 1.75px;
+    margin-right: 0px;
+    border: 1px solid #686868;
+    padding: 10px 16px 10px 22px;
+}
+
 div.yellow-box {
     margin: 0.8em 0;
     color: #6b5900;
@@ -787,10 +796,9 @@ div.red-box {
     border-radius: 8px;
 }
 
-blockquote {
-    border-radius: 10px;
-    margin-left: 1.75px;
-    margin-right: 0px;
-    border: 1px solid #686868;
-    padding: 10px 16px 10px 22px;
+div.yellow-box>strong::before,
+div.red-box>strong::before {
+    font-family: "fa";
+    content: "\f071";
+    margin-right: .3em;
 }

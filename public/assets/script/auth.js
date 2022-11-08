@@ -124,7 +124,6 @@ function register() {
         return false;
     }
     else {
-        setTimeout(function () {
             if (passwd != repasswd) {
                 show_alert('r-alert', 'r-msg', '密码和确认的密码不一样诶？', '下一步', 'register()');
             } else if (passwd.length < 8) {
@@ -169,7 +168,6 @@ function register() {
                 );
                 return;
             }
-        }, 800)
     }
 }
 function qid() {
@@ -254,14 +252,16 @@ function animation(id) {
 }
 
 function show_alert(id1, id2, msg, msg2, callback) {
-    document.getElementById(id1).setAttribute("onclick", "return false");
-    document.getElementById(id1).setAttribute("style", "background-color:#c00; pointer-events: none");
-    document.getElementById(id2).innerHTML = msg;
+    var a = document.getElementById(id1);
+    var b = document.getElementById(id2);
+    a.setAttribute("onclick", "return false");
+    a.setAttribute("style", "background-color:#c00; pointer-events: none");
+    b.innerHTML = msg;
     animation('#' + id1);
     setTimeout(function () {
-        document.getElementById(id2).innerHTML = msg2;
-        document.getElementById(id1).setAttribute("style", "background-color: #007bff; pointer-events: all");
-        document.getElementById(id1).setAttribute("onclick", callback);
+        b.innerHTML = msg2;
+        a.setAttribute("style", "bapointer-events: all");
+        a.setAttribute("onclick", callback);
     }, 1500)
 }
 function forget_page() {

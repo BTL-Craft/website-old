@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="/assets/style/auth.css" />
     <link rel="stylesheet" href="/assets/style/loading.css" />
     <meta name="csrf-token" id="token" content="" />
-    <!--         <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
-     -->
     <script src="/assets/script/jquery.js"></script>
     <script src="https://recaptcha.net/recaptcha/api.js?render=6LfwxPcgAAAAAItIZYokEteF7Fj0Or2vyv9Bg5pu"></script>
     <link rel="icon" type="img/png" href="/assets/image/icon.png" sizes="192x192" />
@@ -28,10 +26,10 @@
       </p>
       <div class="wrapper" id="main">
         <div class="blur"></div>
-        <p class="little-title">
-          <a href="/" class="title in-wrapper">{{ site_name }}</a>
-        </p>
-        <!-- 加载动画 -->
+        <h1 class="little-title">
+          <span class="a">BTL Craft </span><span class="b">单点登录</span>
+        </h1>
+        <!-- ↓加载动画↓ -->
         <div style="margin: auto auto; width: 36px; height:36px">
           <div class="Sf-Kd mspin-medium" id="loading" style="opacity: 0;">
             <div>
@@ -39,6 +37,7 @@
             </div>
           </div>
         </div>
+        <!-- ↑加载动画↑ -->
         <div class="login" id="log" style="z-index: 1;opacity: 1;margin-left: 0;">
           <form onsubmit="return false;">
             <div class="input-data">
@@ -102,7 +101,7 @@
             </div>
             <button class="btn" id="c-alert" onclick="qid()" type="submit"><span id="c-msg">下一步</span></button>
           </form>
-          <a href="/help/faq#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%9F" class="tip">为什么需要验证码？</a>
+          <a href="/help/faq#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%9F" class="tip" target="_blank">为什么需要验证码？</a>
         </div>
         <div class="remember" id="remember">
           <p class="tip-title">保持登录状态？</p>
@@ -111,15 +110,15 @@
           <button class="btn n" onclick="remember(false)">否</button>
         </div>
         <div class="forget" id="forg">
-        <p class="tip-title">我们需要验证你的身份</p>
-          <p class="tip">输入你注册时填写的电子邮箱并点击发送</p>
+          <p class="tip-title">重置密码</p>
+          <p class="tip">请在下面填写你注册时使用的邮箱</p>
           <form onsubmit="return false;">
             <div class="input-data">
               <input type="text" id="f-email" required />
               <div class="under-line"></div>
               <div class="underline"></div>
             </div>
-            <button type="submit" class="btn">发送</button>
+            <button type="submit" class="btn">继续</button>
           </form>
           <button class="bt" onclick="login_page()">我又想起来了</button>
         </div>

@@ -10,17 +10,17 @@
     <link rel="stylesheet" type="text/css" href="/assets/style/help.css" />
     <link href="/assets/style/loading.css" rel="stylesheet" type="text/css" />
     <script>
-    var a = 0
-    setTimeout(() => {
-      if (a == 0){
-        $('#loading').fadeIn(50)
-      }
-    }, 1000);
-        setTimeout(() => {
-      if (a == 0){
-        $('#loading-text').text('你的网络环境似乎不太好，请耐心等待页面加载完成')
-      }
-    }, 8000);
+      var a = 0
+      setTimeout(() => {
+        if (a == 0) {
+          $('#loading').fadeIn(50)
+        }
+      }, 1000)
+      setTimeout(() => {
+        if (a == 0) {
+          $('#loading-text').text('你的网络环境似乎不太好，请耐心等待页面加载完成')
+        }
+      }, 8000)
       window.onload = function () {
         a = 1
         $('#loading').fadeOut(50)
@@ -104,16 +104,16 @@
       </ul>
     </div>
     <main class="page" onclick="close_menu_and_sidebar()">
-              <div id="loading" style="display: none;">
-            <div class="Sf-Kd mspin-medium">
-                <div>
-                    <div></div>
-                </div>
-            </div>
-            <p id="loading-text">请稍候</p>
+      <div id="loading" style="display: none;">
+        <div class="Sf-Kd mspin-medium">
+          <div>
+            <div></div>
+          </div>
         </div>
+        <p id="loading-text">请稍候</p>
+      </div>
       <div class="page" id="page" style="display: none;">{{ page }}</div>
-{#       <hr>
+      {#       <hr>
       <div style="padding-left: 3rem; padding-top: 1rem; margin-bottom: 3rem">
         <a href="mailto:old_driver__@outlook.com" style="border-bottom: none; ">
           <span style="color: #007bff;">发送反馈</span>
@@ -123,9 +123,6 @@
           </svg>
         </a>
       </div> #}
-      <div class="copyright">
-        <p style="text-align: center;">Copyright 2022 <a href="/">BTL Craft</a>. 保留所有权利 | <a href="beian.miit.gov.cn">赣ICP备2022008840号</a></p>
-      </div>
       <script>
         /* eslint-disable */
         var url = {{url}}
@@ -136,9 +133,7 @@
           $('#welcome').attr('class', 'sidebar-active')
         }
       </script>
-      <script></script>
+      {{ include('/shared/copyright.twig') }}
     </main>
   </body>
-  {# 严禁删除或修改版权信息，如果删除或修改，作者保留追究其法律责任的权利！ #}
-  <script src="/assets/script/copyright.js"></script>
 </html>

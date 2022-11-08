@@ -516,7 +516,7 @@
     div.page {
         /* max-width: 75rem; */
         margin: 0 auto;
-        padding: 2.3rem 0vw 4rem 2.8vw;
+        padding: 2.3rem 0vw 4rem 1rem;
         display: block;
     }
 
@@ -603,6 +603,7 @@
             margin-left: -16.7rem !important;
             /* box-shadow: none !important; */
             background-color: #050403;
+            border-right: 1px solid #ffffff6e;
         }
 
         div#sidebar-overlay {

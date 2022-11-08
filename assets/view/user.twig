@@ -64,12 +64,7 @@
     </div>
     <main class="page" onclick="close_menu_and_sidebar()">
       <div class="page" id="main">{{ page }}</div>
-      <div class="copyright">
-        <p style="text-align: center;font-size: 0.9rem;
-    line-height: 3.6;">
-          Copyright 2022 <a href="/">BTL Craft</a>. 保留所有权利 | <a href="beian.miit.gov.cn">赣ICP备2022008840号</a>
-        </p>
-      </div>
+      {{ include('/shared/copyright.twig') }}
     </main>
   </div>
 </body>
