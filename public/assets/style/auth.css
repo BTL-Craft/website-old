@@ -258,7 +258,6 @@ button.back {
 }
 
 input {
-    /* max-width: 90%; */
     background-color: #f6f9ff00 !important;
 }
 
@@ -358,7 +357,6 @@ p.tip {
 p.tip-title {
     font-size: 1.5rem;
     margin-bottom: 17px;
-    /* margin-left: -10px; */
 }
 
 p.tip {
@@ -441,8 +439,6 @@ body>div {
     height: 2px;
     width: 100%;
     background-color: #00000033;
-    /* transform: scaleX(1); */
-    /* opacity: 0; */
     transition: all .5s cubic-bezier(0.85, 0, 0.05, 1);
     border-radius: 1px;
 }
