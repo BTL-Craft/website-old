@@ -1,9 +1,7 @@
 
 div.sidebar {
-    /* box-shadow: 0 0 20px #aeaeae; */
     font-size: 16px;
     background-color: #FFFFFF;
-    /* width: clamp(180px, 24vw, 245px); */
     position: fixed;
     z-index: 10;
     margin: 0;
@@ -15,20 +13,13 @@ div.sidebar {
     overflow-x: hidden;
     padding-top: 4rem;
     transition: all .2s cubic-bezier(0, 0.83, 0.47, 1);
-    /* border: 1px solid #aeaeae45; */
     padding: 6rem 0.5rem 0 0.5rem;
-    /* width: calc(250px - 1rem) !important; */
 }
 
 div.sidebar ul.sidebar-links {
     padding: 0;
     list-style-type: none;
     display: flex;
-    /* margin-top: 6rem; */
-    /* margin-block-start: 5em; */
-    /* margin-block-end: 1em; */
-    /* margin-inline-start: 0px; */
-    /* margin-inline-end: 0px; */
     width: calc(250px - 1rem);
     flex-wrap: wrap;
 }
@@ -65,7 +56,6 @@ div.sidebar .sidebar-active {
     font-size: 1.1em;
     line-height: 1.7;
     margin-top: 0.8em;
-    /* padding-left: 5px; */
     margin-left: -0.5rem;
 }
 
@@ -86,8 +76,6 @@ div.sidebar .sidebar-active a {
 div.sidebar a.sidebar {
     opacity: 1 !important;
     border-bottom: 0 !important;
-    /* height: 400%; */
-    /* line-height: 2.8rem; */
     padding: 0.4rem 1rem;
     width: calc(250px - 1rem);
     transition: all 0.1s ease;
