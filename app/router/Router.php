@@ -50,6 +50,9 @@ $Router->get('/user', function () {
 $Router->get('/anti-ie', function () {
     Web::anti_ie(null);
 });
+$Router->get('/rua/{rua}', function ($rua) {
+    Web::rua($rua);
+});
 
 $Router->post('', function () {
     switch ($_POST['source']) {

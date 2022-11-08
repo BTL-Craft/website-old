@@ -91,6 +91,7 @@ h6 {
     cursor: text;
     /* margin-top: -3.4rem; */
     /* padding-top: 4.8rem; */
+    margin-left: -0.8rem;
 }
 
 h1:hover a.anchor,

@@ -96,4 +96,20 @@ class Web
 
         return $twig->render($filename, $context);
     }
+
+    public static function rua($filename)
+    {
+        $Extra = new \ParsedownExtra();
+        $filler = DatabaseApp::load_custom_text();
+        $filler['url'] = '"' . $filename . '";';
+        if ($filename == null) {
+            self::throw_http_error('404');
+        } elseif (file_exists(__DIR__ . '/../../assets/doc/' . $filename . '.md')) {
+            $filler['page'] = $Extra->text(file_get_contents(__DIR__ . '/../../assets/doc/' . $filename . '.md'));
+        } else {
+            self::throw_http_error('404');
+            return;
+        }
+        echo self::render_view('rua.twig', $filler);
+    }
 }
